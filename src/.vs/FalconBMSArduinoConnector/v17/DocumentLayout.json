@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{2A514A6C-C1C5-4036-A89E-4C602762F32F}|FalconBMSArduinoConnector\\FalconBMSArduinoConnector.csproj|solutionrelative:falconbmsarduinoconnector\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2A514A6C-C1C5-4036-A89E-4C602762F32F}|FalconBMSArduinoConnector\\FalconBMSArduinoConnector.csproj|B:\\Github\\FalconBMSArduinoConnector\\src\\falconbmsarduinoconnector\\arduinoconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2A514A6C-C1C5-4036-A89E-4C602762F32F}|FalconBMSArduinoConnector\\FalconBMSArduinoConnector.csproj|solutionrelative:falconbmsarduinoconnector\\arduinoconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2A514A6C-C1C5-4036-A89E-4C602762F32F}|FalconBMSArduinoConnector\\FalconBMSArduinoConnector.csproj|b:\\github\\falconbmsarduinoconnector\\src\\falconbmsarduinoconnector\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{2A514A6C-C1C5-4036-A89E-4C602762F32F}|FalconBMSArduinoConnector\\FalconBMSArduinoConnector.csproj|solutionrelative:falconbmsarduinoconnector\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A514A6C-C1C5-4036-A89E-4C602762F32F}|FalconBMSArduinoConnector\\FalconBMSArduinoConnector.csproj|B:\\Github\\FalconBMSArduinoConnector\\src\\falconbmsarduinoconnector\\arduinoconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A514A6C-C1C5-4036-A89E-4C602762F32F}|FalconBMSArduinoConnector\\FalconBMSArduinoConnector.csproj|solutionrelative:falconbmsarduinoconnector\\arduinoconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2A514A6C-C1C5-4036-A89E-4C602762F32F}|FalconBMSArduinoConnector\\FalconBMSArduinoConnector.csproj|B:\\Github\\FalconBMSArduinoConnector\\src\\falconbmsarduinoconnector\\falconconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,17 +30,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 239,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "B:\\Github\\FalconBMSArduinoConnector\\src\\FalconBMSArduinoConnector\\Form1.cs",
+              "RelativeDocumentMoniker": "FalconBMSArduinoConnector\\Form1.cs",
+              "ToolTip": "B:\\Github\\FalconBMSArduinoConnector\\src\\FalconBMSArduinoConnector\\Form1.cs",
+              "RelativeToolTip": "FalconBMSArduinoConnector\\Form1.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAAwIoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-11T16:17:34.393Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ArduinoConnector.cs",
               "DocumentMoniker": "B:\\Github\\FalconBMSArduinoConnector\\src\\FalconBMSArduinoConnector\\ArduinoConnector.cs",
               "RelativeDocumentMoniker": "FalconBMSArduinoConnector\\ArduinoConnector.cs",
               "ToolTip": "B:\\Github\\FalconBMSArduinoConnector\\src\\FalconBMSArduinoConnector\\ArduinoConnector.cs",
               "RelativeToolTip": "FalconBMSArduinoConnector\\ArduinoConnector.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAwwDMAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAmwFoAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-12T13:14:24.168Z",
               "EditorCaption": ""
@@ -53,21 +66,9 @@
               "RelativeDocumentMoniker": "FalconBMSArduinoConnector\\FalconConnector.cs",
               "ToolTip": "B:\\Github\\FalconBMSArduinoConnector\\src\\FalconBMSArduinoConnector\\FalconConnector.cs",
               "RelativeToolTip": "FalconBMSArduinoConnector\\FalconConnector.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwCUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwCUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-12T00:48:22.125Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "B:\\Github\\FalconBMSArduinoConnector\\src\\FalconBMSArduinoConnector\\Form1.cs",
-              "RelativeDocumentMoniker": "FalconBMSArduinoConnector\\Form1.cs",
-              "ToolTip": "B:\\Github\\FalconBMSArduinoConnector\\src\\FalconBMSArduinoConnector\\Form1.cs",
-              "RelativeToolTip": "FalconBMSArduinoConnector\\Form1.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAmwFYAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T16:17:34.393Z",
+              "WhenOpened": "2025-07-12T00:48:22.125Z",
               "EditorCaption": ""
             },
             {
@@ -78,7 +79,7 @@
               "RelativeDocumentMoniker": "FalconBMSArduinoConnector\\Form1.Designer.cs",
               "ToolTip": "B:\\Github\\FalconBMSArduinoConnector\\src\\FalconBMSArduinoConnector\\Form1.Designer.cs",
               "RelativeToolTip": "FalconBMSArduinoConnector\\Form1.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8BAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-11T16:19:27.678Z",
               "EditorCaption": ""
@@ -91,7 +92,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "B:\\Github\\FalconBMSArduinoConnector\\src\\FalconBMSArduinoConnector\\Form1.cs",
               "RelativeDocumentMoniker": "FalconBMSArduinoConnector\\Form1.cs",

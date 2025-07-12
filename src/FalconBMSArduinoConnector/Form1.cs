@@ -57,7 +57,7 @@ namespace FalconBMSArduinoConnector
                 seatArmed_check.Checked = falcon.IsLightOn(LightBits2.SEAT_ARM);
 
 
-                Console.WriteLine(falcon.GetFalconState());
+               // Console.WriteLine(falcon.GetFalconState());
 
 
 
@@ -125,6 +125,17 @@ namespace FalconBMSArduinoConnector
             {
                 Console.WriteLine("Arduino is not connected. Cannot send message.");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            arduino.Send(falcon.GetFlightData().DEDLines[0]);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            arduino.SendPacket(0x01, BitConverter.GetBytes(falcon.GetFlightData().lightBits));
         }
     }
 }

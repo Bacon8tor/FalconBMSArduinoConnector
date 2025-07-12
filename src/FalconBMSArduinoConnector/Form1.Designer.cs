@@ -37,6 +37,7 @@
             this.gearLightFront_check = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.sendTest_button1 = new System.Windows.Forms.Button();
             this.flyState_label = new System.Windows.Forms.Label();
             this.serialConnect_button = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -49,7 +50,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.sendTest_button1 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -136,6 +138,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.sendTest_button1);
             this.panel2.Controls.Add(this.flyState_label);
             this.panel2.Controls.Add(this.serialConnect_button);
@@ -147,6 +151,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 415);
             this.panel2.TabIndex = 4;
+            // 
+            // sendTest_button1
+            // 
+            this.sendTest_button1.Enabled = false;
+            this.sendTest_button1.Location = new System.Drawing.Point(29, 191);
+            this.sendTest_button1.Name = "sendTest_button1";
+            this.sendTest_button1.Size = new System.Drawing.Size(75, 23);
+            this.sendTest_button1.TabIndex = 6;
+            this.sendTest_button1.Text = "Send Test";
+            this.sendTest_button1.UseVisualStyleBackColor = true;
+            this.sendTest_button1.Click += new System.EventHandler(this.sendTest1);
             // 
             // flyState_label
             // 
@@ -258,16 +273,25 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "LightBits3";
             // 
-            // sendTest_button1
+            // button1
             // 
-            this.sendTest_button1.Enabled = false;
-            this.sendTest_button1.Location = new System.Drawing.Point(29, 191);
-            this.sendTest_button1.Name = "sendTest_button1";
-            this.sendTest_button1.Size = new System.Drawing.Size(75, 23);
-            this.sendTest_button1.TabIndex = 6;
-            this.sendTest_button1.Text = "Send Test";
-            this.sendTest_button1.UseVisualStyleBackColor = true;
-            this.sendTest_button1.Click += new System.EventHandler(this.sendTest1);
+            this.button1.Location = new System.Drawing.Point(42, 221);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Send DED Line 1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(42, 273);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "SendPacket LightBits";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
@@ -319,6 +343,8 @@
         private System.Windows.Forms.ComboBox serialPort_combo;
         private System.Windows.Forms.Label flyState_label;
         private System.Windows.Forms.Button sendTest_button1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

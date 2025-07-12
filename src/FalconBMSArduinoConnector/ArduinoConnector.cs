@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO.Ports;
+using System.Linq;
 
 namespace FalconBMSArduinoConnector
 {
@@ -31,30 +32,26 @@ namespace FalconBMSArduinoConnector
 
                 _serialPort.Open();
                 Console.WriteLine("Connected to Arduino on " + portName);
+                // After opening serial port
+                _serialPort.WriteLine("PING");
+
                 var start = DateTime.Now;
                 while ((DateTime.Now - start).TotalMilliseconds < handshakeTimeoutMs)
                 {
                     try
                     {
-                        string line = _serialPort.ReadLine()?.Trim();
-                        Console.WriteLine($"Received from {portName}: {line}");
-                        if (line == "READY")
+                        if (_serialPort.BytesToRead > 0)
                         {
-                            Console.WriteLine("Handshake received from Arduino on " + portName);
-                            SelectedPort = portName;
-                            return true;
+                            string line = _serialPort.ReadLine()?.Trim();
+                            Console.WriteLine("Received from Arduino: " + line);
+                            if (line == "READY")
+                            {
+                                Console.WriteLine("Handshake received from Arduino on " + portName);
+                                return true;
+                            }
                         }
                     }
-                    //catch (TimeoutException)
-                    //{
-                    //    // Just wait — don’t log every timeout
-
-                    //}
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"Serial error on {portName}: {ex.Message}");
-                        break;
-                    }
+                    catch (TimeoutException) { }
                 }
 
                 Console.WriteLine("No handshake from Arduino on " + portName);
@@ -89,8 +86,27 @@ namespace FalconBMSArduinoConnector
                 _serialPort.WriteLine(data);
             }
         }
+        public enum PacketType : byte
+        {
+            LightBits = 0x01,
+            LightBits2 = 0x02,
+            // Add more as needed
+        }
+        public void SendPacket(byte type, byte[] data)
+        {
+            List<byte> packet = new List<byte>();
+            packet.Add(0xAA); // Start byte
+            packet.Add(type);
+            packet.Add((byte)data.Length);
+            packet.AddRange(data);
 
-        
+            // Checksum: sum of type + length + data
+            byte checksum = (byte)(type + data.Length + data.Sum(b => b));
+            packet.Add(checksum);
+
+            _serialPort.Write(packet.ToArray(), 0, packet.Count);
+        }
+
 
     }
 }
