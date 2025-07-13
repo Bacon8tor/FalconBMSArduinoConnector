@@ -100,6 +100,7 @@ namespace FalconBMSArduinoConnector
                 if(arduino.IsConnected)
                 {
                     Console.WriteLine("Failed to disconnect from " + portName);
+                   
                     return;
                 } else
                 {
