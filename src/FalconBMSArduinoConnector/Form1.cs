@@ -41,7 +41,7 @@ namespace FalconBMSArduinoConnector
             falconCheckTimer.Start();
 
             packetTimer = new System.Windows.Forms.Timer();
-            packetTimer.Interval = 10; // Send every 10ms (adjust as needed)
+            packetTimer.Interval = 500; // Send every 10ms (adjust as needed)
             packetTimer.Tick += SendLightBitsTimer_Tick;
 
         }

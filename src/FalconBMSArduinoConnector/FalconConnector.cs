@@ -14,12 +14,13 @@ namespace FalconBMSArduinoConnector
     internal class FalconConnector
     {
         private Reader _reader = new Reader();
-
+        private IntellivibeData _intellivibeData = new IntellivibeData();
         public FlyStates falconState;
-
+        private bool _isFalconRunning;
         public bool isFalconRunning()
         {
             FlightData fData =  _reader.GetCurrentData();
+
             
             bool isFalconDetected =  _reader.IsFalconRunning;
             bool isProcessRunning = Process.GetProcessesByName("Falcon BMS").Length > 0;
@@ -27,29 +28,34 @@ namespace FalconBMSArduinoConnector
 
             if (isFalconDetected && isProcessRunning || isBMSRecorderRunning)
             {
-               //falconState = (FlyStates)fData.pilotsStatus[0];
+                //check if in 3d _intellivibeData.In3D.ToString();
+                ;
 
+                _isFalconRunning = true;
                 return true;
                 
             }
-
+                
                     return false;
         }
 
         public bool IsLightOn(LightBits bit)
         {
+            if(!_isFalconRunning) return false; // If Falcon is not running
             FlightData data = _reader.GetCurrentData();
             return (data.lightBits & (uint)bit) != 0;
         }
 
         public bool IsLightOn( LightBits2 bit)
         {
+            if (!_isFalconRunning) return false; // If Falcon is not running
             FlightData data = _reader.GetCurrentData();
             return (data.lightBits2 & (uint)bit) != 0;
         }
 
         public bool IsLightOn( LightBits3 bit)
         {
+            if (!_isFalconRunning) return false; // If Falcon is not running
             FlightData data = _reader.GetCurrentData();
             return (data.lightBits3 & (uint)bit) != 0;
             
@@ -57,10 +63,12 @@ namespace FalconBMSArduinoConnector
 
         public string GetFalconVersion()
         {
+            if (!_isFalconRunning) return "N/A"; // If Falcon is not running
             try
             {
 
                 FlightData data = _reader.GetCurrentData();
+                if(data == null) { return ""; }
                 return data.BMSVersionMajor + "." + data.BMSVersionMinor + "." + data.BMSVersionMinor;
             }
             catch (Exception ex)
