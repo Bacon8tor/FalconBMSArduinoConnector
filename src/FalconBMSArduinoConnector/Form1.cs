@@ -19,6 +19,7 @@ namespace FalconBMSArduinoConnector
         //private Reader bmsReader = new Reader();
         //private Writer bmsWrite = new Writer();
         private Timer falconCheckTimer;
+        private Timer packetTimer;
 
         public Form1()
         {
@@ -29,27 +30,32 @@ namespace FalconBMSArduinoConnector
         {
 
             //falcon.isFalconRunning();
-            CheckFalconStatus(); 
+            CheckFalconStatus();
 
             serialPort_combo.DataSource = SerialPort.GetPortNames();
-            
+
 
             falconCheckTimer = new Timer();
             falconCheckTimer.Interval = 500;
             falconCheckTimer.Tick += (s, args) => CheckFalconStatus();
             falconCheckTimer.Start();
+
+            packetTimer = new System.Windows.Forms.Timer();
+            packetTimer.Interval = 10; // Send every 10ms (adjust as needed)
+            packetTimer.Tick += SendLightBitsTimer_Tick;
+
         }
 
         private void CheckFalconStatus()
         {
-            
+
             if (falcon.isFalconRunning())
             {
                 falconRunning.Checked = falcon.isFalconRunning();
                 falconRunning.Text = "Falcon is Running";
                 falconBuild_text.Text = "v." + falcon.GetFalconVersion();
-                
-               // Console.WriteLine(falcon.falconState.ToString());
+
+                // Console.WriteLine(falcon.falconState.ToString());
                 masterCaution_check.Checked = falcon.IsLightOn(LightBits.MasterCaution);
                 tf_check.Checked = falcon.IsLightOn(LightBits.TF);
                 gearLightFront_check.Checked = falcon.IsLightOn(LightBits3.NoseGearDown);
@@ -57,11 +63,12 @@ namespace FalconBMSArduinoConnector
                 seatArmed_check.Checked = falcon.IsLightOn(LightBits2.SEAT_ARM);
 
 
-               // Console.WriteLine(falcon.GetFalconState());
+                // Console.WriteLine(falcon.GetFalconState());
 
 
 
-            } else
+            }
+            else
             {
                 falconRunning.Checked = false;
                 falconRunning.Text = "Falcon is Not Running";
@@ -94,30 +101,32 @@ namespace FalconBMSArduinoConnector
                 else { Console.WriteLine("Failed to connect to " + portName); }
 
 
-            }else
+            }
+            else
             {
                 arduino.Disconnect();
-                if(arduino.IsConnected)
+                if (arduino.IsConnected)
                 {
                     Console.WriteLine("Failed to disconnect from " + portName);
-                   
+
                     return;
-                } else
+                }
+                else
                 {
                     Console.WriteLine("Disconnected from " + portName);
                     serialConnect_button.Text = "Connect";
                 }
             }
-            
-            
 
-            
+
+
+
 
         }
 
         private void sendTest1(object sender, EventArgs e)
         {
-            if(arduino.IsConnected)
+            if (arduino.IsConnected)
             {
                 arduino.Send("FBAC");
                 Console.WriteLine("Sent test message to Arduino.");
@@ -137,6 +146,34 @@ namespace FalconBMSArduinoConnector
         {
 
             arduino.SendPacket(0x01, BitConverter.GetBytes(falcon.GetFlightData().lightBits));
+        }
+
+        private void sendLight_CheckedChange(object sender, EventArgs e)
+        {
+            if (sendlightbits_check.Checked)
+            {
+                packetTimer.Start();
+            }
+            else
+            {
+                packetTimer.Stop();
+            }
+
+        }
+        private void SendLightBitsTimer_Tick(object sender, EventArgs e)
+        {
+            if (arduino.IsConnected)
+            {
+                // Send light bits to Arduino
+                arduino.SendPacket(0x01, BitConverter.GetBytes(falcon.GetFlightData().lightBits));
+                //arduino.SendPacket(0x02, BitConverter.GetBytes(falcon.GetFlightData().lightBits2));
+                // arduino.SendPacket(0x03, BitConverter.GetBytes(falcon.GetFlightData().lightBits3));
+                //Console.WriteLine("Sent light bits to Arduino.");
+            }
+            else
+            {
+                Console.WriteLine("Arduino is not connected. Cannot send light bits.");
+            }
         }
     }
 }

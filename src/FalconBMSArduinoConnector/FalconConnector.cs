@@ -57,8 +57,19 @@ namespace FalconBMSArduinoConnector
 
         public string GetFalconVersion()
         {
-            FlightData data = _reader.GetCurrentData();
-            return  data.BMSVersionMajor + "." + data.BMSVersionMinor + "." + data.BMSVersionMinor;
+            try
+            {
+
+                FlightData data = _reader.GetCurrentData();
+                return data.BMSVersionMajor + "." + data.BMSVersionMinor + "." + data.BMSVersionMinor;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error getting Falcon version: " + ex.Message);
+                return "N/A";
+            }
+            
+            
         }
 
         public FlyStates GetFalconState()
