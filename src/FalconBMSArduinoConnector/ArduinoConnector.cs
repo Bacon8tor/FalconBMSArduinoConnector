@@ -103,8 +103,11 @@ namespace FalconBMSArduinoConnector
             // Checksum: sum of type + length + data
             byte checksum = (byte)(type + data.Length + data.Sum(b => b));
             packet.Add(checksum);
-
-            _serialPort.Write(packet.ToArray(), 0, packet.Count);
+            if(_serialPort != null && _serialPort.IsOpen)
+            {
+                _serialPort.Write(packet.ToArray(), 0, packet.Count);
+            }
+            //_serialPort.Write(packet.ToArray(), 0, packet.Count);
         }
 
 

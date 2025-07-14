@@ -62,7 +62,7 @@ namespace FalconBMSArduinoConnector
                 gearLightFront_check.Checked = falcon.IsLightOn(LightBits3.LeftGearDown);
                 seatArmed_check.Checked = falcon.IsLightOn(LightBits2.SEAT_ARM);
 
-
+                sendlightbits_check.Enabled = true;
                 // Console.WriteLine(falcon.GetFalconState());
 
 
@@ -70,6 +70,7 @@ namespace FalconBMSArduinoConnector
             }
             else
             {
+                sendlightbits_check.Enabled = false;
                 falconRunning.Checked = false;
                 falconRunning.Text = "Falcon is Not Running";
                 falconBuild_text.Text = "v.";
@@ -166,7 +167,7 @@ namespace FalconBMSArduinoConnector
             {
                 // Send light bits to Arduino
                 arduino.SendPacket(0x01, BitConverter.GetBytes(falcon.GetFlightData().lightBits));
-                //arduino.SendPacket(0x02, BitConverter.GetBytes(falcon.GetFlightData().lightBits2));
+                arduino.SendPacket(0x02, BitConverter.GetBytes(falcon.GetFlightData().lightBits2));
                 // arduino.SendPacket(0x03, BitConverter.GetBytes(falcon.GetFlightData().lightBits3));
                 //Console.WriteLine("Sent light bits to Arduino.");
             }
