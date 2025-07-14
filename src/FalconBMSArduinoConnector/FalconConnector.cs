@@ -43,6 +43,7 @@ namespace FalconBMSArduinoConnector
         {
             if(!_isFalconRunning) return false; // If Falcon is not running
             FlightData data = _reader.GetCurrentData();
+            if (data == null) return false;
             return (data.lightBits & (uint)bit) != 0;
         }
 
@@ -50,6 +51,7 @@ namespace FalconBMSArduinoConnector
         {
             if (!_isFalconRunning) return false; // If Falcon is not running
             FlightData data = _reader.GetCurrentData();
+            if (data == null) return false;
             return (data.lightBits2 & (uint)bit) != 0;
         }
 
@@ -57,6 +59,7 @@ namespace FalconBMSArduinoConnector
         {
             if (!_isFalconRunning) return false; // If Falcon is not running
             FlightData data = _reader.GetCurrentData();
+            if (data == null) return false;
             return (data.lightBits3 & (uint)bit) != 0;
             
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FalconBMSArduinoConnector
 {
@@ -25,7 +26,7 @@ namespace FalconBMSArduinoConnector
             {
                 _serialPort = new SerialPort(portName, baudRate)
                 {
-                    ReadTimeout = 100,   // Timeout in milliseconds
+                    ReadTimeout = 1000,   // Timeout in milliseconds
                     WriteTimeout = 1000,
                     NewLine = "\n"
                 };
@@ -103,13 +104,36 @@ namespace FalconBMSArduinoConnector
             // Checksum: sum of type + length + data
             byte checksum = (byte)(type + data.Length + data.Sum(b => b));
             packet.Add(checksum);
-            if(_serialPort != null && _serialPort.IsOpen)
+            if (_serialPort != null && _serialPort.IsOpen)
             {
-                _serialPort.Write(packet.ToArray(), 0, packet.Count);
+                // _ = WaitForReadyAsync();
+                Console.WriteLine("Sending packet");
+
+                try
+                {
+                    _serialPort.Write(packet.ToArray(), 0, packet.Count);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error sending packet: " + ex.Message);
+
+                }
             }
-            //_serialPort.Write(packet.ToArray(), 0, packet.Count);
+       
         }
 
+        private async Task WaitForReadyAsync()
+        {
+            while (true)
+            {
+                if (_serialPort.BytesToRead > 0)
+                {
+                    int b = _serialPort.ReadByte();
+                    if (b == 0x55) break;
+                }
+                await Task.Delay(5);
+            }
+        }
 
     }
 }

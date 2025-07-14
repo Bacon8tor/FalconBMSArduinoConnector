@@ -17,7 +17,6 @@ C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoCon
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\F4SharedMem.pdb
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.csproj.AssemblyReference.cache
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.exe.config
-C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.Form1.resources
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.Properties.Resources.resources
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.csproj.GenerateResource.cache
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.csproj.CoreCompileInputs.cache
@@ -50,3 +49,4 @@ C:\Users\bac0n\OneDrive\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMS
 C:\Users\bac0n\OneDrive\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBM.F562539A.Up2Date
 C:\Users\bac0n\OneDrive\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.exe
 C:\Users\bac0n\OneDrive\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.pdb
+C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.FalconBMSArduinoConnector.resources

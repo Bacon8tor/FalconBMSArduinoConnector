@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace FalconBMSArduinoConnector
 {
-    public partial class Form1 : Form
+    public partial class FalconBMSArduinoConnector : Form
     {
         FalconConnector falcon = new FalconConnector();
         ArduinoConnector arduino = new ArduinoConnector();
@@ -21,7 +21,7 @@ namespace FalconBMSArduinoConnector
         private Timer falconCheckTimer;
         private Timer packetTimer;
 
-        public Form1()
+        public FalconBMSArduinoConnector()
         {
             InitializeComponent();
         }
@@ -166,8 +166,22 @@ namespace FalconBMSArduinoConnector
             if (arduino.IsConnected)
             {
                 // Send light bits to Arduino
-                arduino.SendPacket(0x01, BitConverter.GetBytes(falcon.GetFlightData().lightBits));
-                arduino.SendPacket(0x02, BitConverter.GetBytes(falcon.GetFlightData().lightBits2));
+                try { 
+                        if (falcon.GetFlightData() == null)
+                        {
+                            Console.WriteLine("Flight data is null. Cannot send light bits.");
+                            return;
+                        }
+                        arduino.SendPacket(0x01, BitConverter.GetBytes(falcon.GetFlightData().lightBits));
+                        arduino.SendPacket(0x02, BitConverter.GetBytes(falcon.GetFlightData().lightBits2)); //Console.WriteLine("Sending light bits to Arduino...");
+                    }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error sending light bits: " + ex.Message);
+                }
+                
+
+                
                 // arduino.SendPacket(0x03, BitConverter.GetBytes(falcon.GetFlightData().lightBits3));
                 //Console.WriteLine("Sent light bits to Arduino.");
             }
