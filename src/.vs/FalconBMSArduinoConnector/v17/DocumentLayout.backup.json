@@ -52,7 +52,7 @@
               "RelativeDocumentMoniker": "FalconBMSArduinoConnector\\Form1.cs",
               "ToolTip": "C:\\Users\\Alex\\Documents\\GitHub\\FalconBMSArduinoConnector\\src\\FalconBMSArduinoConnector\\Form1.cs",
               "RelativeToolTip": "FalconBMSArduinoConnector\\Form1.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAIwLcAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAmwLcAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-11T16:17:34.393Z",
               "EditorCaption": ""
@@ -67,8 +67,7 @@
               "RelativeToolTip": "FalconBMSArduinoConnector\\ArduinoConnector.cs",
               "ViewState": "AgIAAIYAAAAAAAAAAAAuwHsAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-12T13:14:24.168Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-12T13:14:24.168Z"
             },
             {
               "$type": "Document",
@@ -92,8 +91,7 @@
               "RelativeToolTip": "FalconBMSArduinoConnector\\Form1.Designer.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAAwBYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T16:19:27.678Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-11T16:19:27.678Z"
             }
           ]
         }
