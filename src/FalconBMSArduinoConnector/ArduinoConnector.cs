@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace FalconBMSArduinoConnector
@@ -17,6 +19,8 @@ namespace FalconBMSArduinoConnector
         // Optional: expose selected port
         public string SelectedPort { get; set; }
 
+        public event EventHandler<string> OnDataReceived;
+
         // Optional: connect logic (if needed later)
         private SerialPort _serialPort;
 
@@ -31,7 +35,16 @@ namespace FalconBMSArduinoConnector
                     NewLine = "\n"
                 };
 
+                //_serialPort.Parity = Parity.None;
+                //_serialPort.StopBits = StopBits.One;
+                //_serialPort.DataBits = 8;
+                //_serialPort.Handshake = Handshake.None;
+                //_serialPort.RtsEnable = true;
+
+                _serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+
                 _serialPort.Open();
+
                 Console.WriteLine("Connected to Arduino on " + portName);
                 // After opening serial port
                 _serialPort.WriteLine("PING");
@@ -67,6 +80,29 @@ namespace FalconBMSArduinoConnector
             }
         }
 
+        private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
+        {
+            SerialPort sp = (SerialPort)sender;
+            try
+            {
+                string indata = sp.ReadExisting();
+                OnDataReceived?.Invoke(this, indata); // Fix: Use 'this' to reference the instance of ArduinoConnector
+            }
+            catch (TimeoutException)
+            {
+                Console.WriteLine("Read timeout occurred.");
+                return;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error reading data: " + ex.Message);
+                return;
+            }
+           
+            //Console.Write(indata);
+           
+            
+        }
 
 
         public void Disconnect()
@@ -86,12 +122,6 @@ namespace FalconBMSArduinoConnector
             {
                 _serialPort.WriteLine(data);
             }
-        }
-        public enum PacketType : byte
-        {
-            LightBits = 0x01,
-            LightBits2 = 0x02,
-            // Add more as needed
         }
         public void SendPacket(byte type, byte[] data)
         {
@@ -120,6 +150,23 @@ namespace FalconBMSArduinoConnector
                 }
             }
        
+        }
+
+        public void SendDEDLines(string[] lines)
+        {
+            if (lines.Length != 5)
+                throw new ArgumentException("DED must contain exactly 5 lines.");
+
+            byte[] buffer = new byte[130]; // 5 × 26
+
+            for (int i = 0; i < 5; i++)
+            {
+                string padded = (lines[i] ?? "").PadRight(26).Substring(0, 26);
+                byte[] lineBytes = Encoding.ASCII.GetBytes(padded);
+                Array.Copy(lineBytes, 0, buffer, i * 26, 26);
+            }
+
+            SendPacket(0x10, buffer);
         }
 
         private async Task WaitForReadyAsync()

@@ -37,10 +37,6 @@
             this.gearLightFront_check = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.sendlightbits_check = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.sendTest_button1 = new System.Windows.Forms.Button();
             this.flyState_label = new System.Windows.Forms.Label();
             this.serialConnect_button = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -53,11 +49,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.DED_Line1_text = new System.Windows.Forms.Label();
+            this.DED_Line2_text = new System.Windows.Forms.Label();
+            this.DED_Line3_text = new System.Windows.Forms.Label();
+            this.DED_Line4_text = new System.Windows.Forms.Label();
+            this.DED_Line5_text = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // falconRunning
@@ -139,10 +142,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.sendlightbits_check);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.sendTest_button1);
             this.panel2.Controls.Add(this.flyState_label);
             this.panel2.Controls.Add(this.serialConnect_button);
             this.panel2.Controls.Add(this.label5);
@@ -153,53 +152,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 415);
             this.panel2.TabIndex = 4;
-            // 
-            // sendlightbits_check
-            // 
-            this.sendlightbits_check.AutoSize = true;
-            this.sendlightbits_check.Enabled = false;
-            this.sendlightbits_check.Location = new System.Drawing.Point(16, 170);
-            this.sendlightbits_check.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.sendlightbits_check.Name = "sendlightbits_check";
-            this.sendlightbits_check.Size = new System.Drawing.Size(86, 17);
-            this.sendlightbits_check.TabIndex = 9;
-            this.sendlightbits_check.Text = "Sendlightbits";
-            this.sendlightbits_check.UseVisualStyleBackColor = true;
-            this.sendlightbits_check.CheckedChanged += new System.EventHandler(this.sendLight_CheckedChange);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(42, 258);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "SendPacket LightBits";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(42, 221);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Send DED Line 1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // sendTest_button1
-            // 
-            this.sendTest_button1.Enabled = false;
-            this.sendTest_button1.Location = new System.Drawing.Point(29, 191);
-            this.sendTest_button1.Name = "sendTest_button1";
-            this.sendTest_button1.Size = new System.Drawing.Size(75, 23);
-            this.sendTest_button1.TabIndex = 6;
-            this.sendTest_button1.Text = "Send Test";
-            this.sendTest_button1.UseVisualStyleBackColor = true;
-            this.sendTest_button1.Visible = false;
-            this.sendTest_button1.Click += new System.EventHandler(this.sendTest1);
             // 
             // flyState_label
             // 
@@ -311,11 +263,69 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "LightBits3";
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.DED_Line5_text);
+            this.panel6.Controls.Add(this.DED_Line4_text);
+            this.panel6.Controls.Add(this.DED_Line3_text);
+            this.panel6.Controls.Add(this.DED_Line2_text);
+            this.panel6.Controls.Add(this.DED_Line1_text);
+            this.panel6.Location = new System.Drawing.Point(22, 287);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(217, 125);
+            this.panel6.TabIndex = 8;
+            // 
+            // DED_Line1_text
+            // 
+            this.DED_Line1_text.AutoSize = true;
+            this.DED_Line1_text.Location = new System.Drawing.Point(3, 10);
+            this.DED_Line1_text.Name = "DED_Line1_text";
+            this.DED_Line1_text.Size = new System.Drawing.Size(62, 13);
+            this.DED_Line1_text.TabIndex = 0;
+            this.DED_Line1_text.Text = "DED_Line1";
+            // 
+            // DED_Line2_text
+            // 
+            this.DED_Line2_text.AutoSize = true;
+            this.DED_Line2_text.Location = new System.Drawing.Point(3, 32);
+            this.DED_Line2_text.Name = "DED_Line2_text";
+            this.DED_Line2_text.Size = new System.Drawing.Size(62, 13);
+            this.DED_Line2_text.TabIndex = 1;
+            this.DED_Line2_text.Text = "DED_Line2";
+            // 
+            // DED_Line3_text
+            // 
+            this.DED_Line3_text.AutoSize = true;
+            this.DED_Line3_text.Location = new System.Drawing.Point(3, 54);
+            this.DED_Line3_text.Name = "DED_Line3_text";
+            this.DED_Line3_text.Size = new System.Drawing.Size(62, 13);
+            this.DED_Line3_text.TabIndex = 2;
+            this.DED_Line3_text.Text = "DED_Line3";
+            // 
+            // DED_Line4_text
+            // 
+            this.DED_Line4_text.AutoSize = true;
+            this.DED_Line4_text.Location = new System.Drawing.Point(3, 77);
+            this.DED_Line4_text.Name = "DED_Line4_text";
+            this.DED_Line4_text.Size = new System.Drawing.Size(62, 13);
+            this.DED_Line4_text.TabIndex = 3;
+            this.DED_Line4_text.Text = "DED_Line4";
+            // 
+            // DED_Line5_text
+            // 
+            this.DED_Line5_text.AutoSize = true;
+            this.DED_Line5_text.Location = new System.Drawing.Point(3, 100);
+            this.DED_Line5_text.Name = "DED_Line5_text";
+            this.DED_Line5_text.Size = new System.Drawing.Size(62, 13);
+            this.DED_Line5_text.TabIndex = 4;
+            this.DED_Line5_text.Text = "DED_Line5";
+            // 
             // FalconBMSArduinoConnector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 450);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -333,6 +343,8 @@
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -360,10 +372,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox serialPort_combo;
         private System.Windows.Forms.Label flyState_label;
-        private System.Windows.Forms.Button sendTest_button1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.CheckBox sendlightbits_check;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label DED_Line4_text;
+        private System.Windows.Forms.Label DED_Line3_text;
+        private System.Windows.Forms.Label DED_Line2_text;
+        private System.Windows.Forms.Label DED_Line1_text;
+        private System.Windows.Forms.Label DED_Line5_text;
     }
 }
 

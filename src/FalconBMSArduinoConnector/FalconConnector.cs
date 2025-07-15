@@ -72,7 +72,7 @@ namespace FalconBMSArduinoConnector
 
                 FlightData data = _reader.GetCurrentData();
                 if(data == null) { return ""; }
-                return data.BMSVersionMajor + "." + data.BMSVersionMinor + "." + data.BMSVersionMinor;
+                return data.BMSVersionMajor + "." + data.BMSVersionMinor + "." + data.BMSBuildNumber;
             }
             catch (Exception ex)
             {
