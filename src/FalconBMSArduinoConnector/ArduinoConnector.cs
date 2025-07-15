@@ -121,6 +121,7 @@ namespace FalconBMSArduinoConnector
             if (IsConnected)
             {
                 _serialPort.WriteLine(data);
+                
             }
         }
         public void SendPacket(byte type, byte[] data)
@@ -137,10 +138,11 @@ namespace FalconBMSArduinoConnector
             if (_serialPort != null && _serialPort.IsOpen)
             {
                 // _ = WaitForReadyAsync();
-                Console.WriteLine("Sending packet");
+               
 
                 try
                 {
+                    
                     _serialPort.Write(packet.ToArray(), 0, packet.Count);
                 }
                 catch (Exception ex)
@@ -148,14 +150,20 @@ namespace FalconBMSArduinoConnector
                     Console.WriteLine("Error sending packet: " + ex.Message);
 
                 }
+                Console.WriteLine("Packet Sent ");
             }
        
         }
 
         public void SendDEDLines(string[] lines)
         {
+            Console.WriteLine("Sending DED lines to Arduino22...");
             if (lines.Length != 5)
+            {
+                Console.WriteLine("DED must contain exactly 5 lines.");
                 throw new ArgumentException("DED must contain exactly 5 lines.");
+                
+            }
 
             byte[] buffer = new byte[130]; // 5 × 26
 
@@ -165,6 +173,7 @@ namespace FalconBMSArduinoConnector
                 byte[] lineBytes = Encoding.ASCII.GetBytes(padded);
                 Array.Copy(lineBytes, 0, buffer, i * 26, 26);
             }
+            Console.WriteLine($"Sending packet type: {0x10}, length: {buffer.Length}");
 
             SendPacket(0x10, buffer);
         }
