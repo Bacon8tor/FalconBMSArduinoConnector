@@ -71,19 +71,68 @@ namespace FalconBMSArduinoConnector
                 aoaAbove_check.Checked = falcon.IsLightOn(LightBits.AOAAbove);
                 aoaOn_check.Checked = falcon.IsLightOn(LightBits.AOAOn);
                 aoaBelow_check.Checked = falcon.IsLightOn(LightBits.AOABelow);
+                refuelRDY_check.Checked = falcon.IsLightOn(LightBits.RefuelRDY);
+                refuelAR_check.Checked = falcon.IsLightOn(LightBits.RefuelAR);
+                refuelDSC_check.Checked = falcon.IsLightOn(LightBits.RefuelDSC);
+                FltControlSys_check.Checked = falcon.IsLightOn(LightBits.FltControlSys);
+                LEFlaps_check.Checked = falcon.IsLightOn(LightBits.LEFlaps);
+                EngineFault_check.Checked = falcon.IsLightOn(LightBits.EngineFault);
+                Overheat_check.Checked = falcon.IsLightOn(LightBits.Overheat);
+                FuelLow_check.Checked = falcon.IsLightOn(LightBits.FuelLow);
+                Avionics_check.Checked = falcon.IsLightOn(LightBits.Avionics);
+                RadarAlt_check.Checked = falcon.IsLightOn(LightBits.RadarAlt);
+                IFF_check.Checked = falcon.IsLightOn(LightBits.IFF);
+                ECM_check.Checked = falcon.IsLightOn(LightBits.ECM);
+                Hook_check.Checked = falcon.IsLightOn(LightBits.Hook);
+                NWSFail_check.Checked = falcon.IsLightOn(LightBits.NWSFail);
+                CabinPress_check.Checked = falcon.IsLightOn(LightBits.CabinPress);
+                AutoPilotOn_check.Checked = falcon.IsLightOn(LightBits.AutoPilotOn);
+                TFR_STBY_check.Checked = falcon.IsLightOn(LightBits.TFR_STBY);
 
                 //LightBits2
+                HandOff_check.Checked = falcon.IsLightOn(LightBits2.HandOff);
+                Launch_check.Checked = falcon.IsLightOn(LightBits2.Launch);
+                PriMode_check.Checked = falcon.IsLightOn(LightBits2.PriMode);
+                Naval_Check.Checked = falcon.IsLightOn(LightBits2.Naval);
+                Unk_check.Checked = falcon.IsLightOn(LightBits2.Unk);
+                TgtSep_check.Checked = falcon.IsLightOn(LightBits2.TgtSep);
+                Go_check.Checked = falcon.IsLightOn(LightBits2.Go);
+                NoGo_check.Checked = falcon.IsLightOn(LightBits2.NoGo);
+                Degr_check.Checked = falcon.IsLightOn(LightBits2.Degr);
+                Rdy_check.Checked = falcon.IsLightOn(LightBits2.Rdy);
+                ChaffLo_check.Checked = falcon.IsLightOn(LightBits2.ChaffLo);
+                FlareLo_check.Checked = falcon.IsLightOn(LightBits2.FlareLo);
+                AuxSrch_check.Checked = falcon.IsLightOn(LightBits2.AuxSrch);
+                AuxAct_check.Checked = falcon.IsLightOn(LightBits2.AuxAct);
+                AuxLow_check.Checked = falcon.IsLightOn(LightBits2.AuxLow);
+                AuxPwr_check.Checked = falcon.IsLightOn(LightBits2.AuxPwr);
+                EcmPwr_check.Checked = falcon.IsLightOn(LightBits2.EcmPwr);
+                EcmFail_check.Checked = falcon.IsLightOn(LightBits2.EcmFail);
+                FwdFuelLow_check.Checked = falcon.IsLightOn(LightBits2.FwdFuelLow);
+                AftFuelLow_check.Checked = falcon.IsLightOn(LightBits2.AftFuelLow);
+                EPUOn_check.Checked = falcon.IsLightOn(LightBits2.EPUOn);
+                JFSOn_check.Checked = falcon.IsLightOn(LightBits2.JFSOn);
+                SEC_check.Checked = falcon.IsLightOn(LightBits2.SEC);
+                OXY_LOW_check.Checked = falcon.IsLightOn(LightBits2.OXY_LOW);
+                PROBEHEAT_check.Checked = falcon.IsLightOn(LightBits2.PROBEHEAT);
+                SEAT_ARM_check.Checked = falcon.IsLightOn(LightBits2.SEAT_ARM);
+                BUC_check.Checked = falcon.IsLightOn(LightBits2.BUC);
+                FUEL_OIL_HOT_check.Checked = falcon.IsLightOn(LightBits2.FUEL_OIL_HOT);
+                ANTI_SKID_check.Checked = falcon.IsLightOn(LightBits2.ANTI_SKID);
+                TFR_ENGAGED_check.Checked = falcon.IsLightOn(LightBits2.TFR_ENGAGED);
+                GEARHANDLE_check.Checked = falcon.IsLightOn(LightBits2.GEARHANDLE);
+                ENGINE_check.Checked = falcon.IsLightOn(LightBits2.ENGINE);
+
+                //Lightbits3
                 gearLightFront_check.Checked = falcon.IsLightOn(LightBits3.NoseGearDown);
                 gearLightFront_check.Checked = falcon.IsLightOn(LightBits3.LeftGearDown);
-                seatArmed_check.Checked = falcon.IsLightOn(LightBits2.SEAT_ARM);
-
 
                 //Show DED data
-                DED_Line1_text.Text = data.DEDLines[0];
-                DED_Line2_text.Text = data.DEDLines[1];
-                DED_Line3_text.Text = data.DEDLines[2];
-                DED_Line4_text.Text = data.DEDLines[3];
-                DED_Line5_text.Text = data.DEDLines[4];
+                DED_Line1_text.Text = data.DEDLines[0].ToUpper();
+                DED_Line2_text.Text = data.DEDLines[1].ToUpper();
+                DED_Line3_text.Text = data.DEDLines[2].ToUpper();
+                DED_Line4_text.Text = data.DEDLines[3].ToUpper();
+                DED_Line5_text.Text = data.DEDLines[4].ToUpper();
 
             }
             else
