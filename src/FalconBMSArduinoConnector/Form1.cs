@@ -55,12 +55,28 @@ namespace FalconBMSArduinoConnector
                 falconBuild_text.Text = "v." + falcon.GetFalconVersion();
                 
                 var data = falcon.GetFlightData();
-                // Console.WriteLine(falcon.falconState.ToString());
+                //LightBits
                 masterCaution_check.Checked = falcon.IsLightOn(LightBits.MasterCaution);
                 tf_check.Checked = falcon.IsLightOn(LightBits.TF);
+                oxyBrow_check.Checked = falcon.IsLightOn(LightBits.OXY_BROW);
+                equipHot_check.Checked = falcon.IsLightOn(LightBits.EQUIP_HOT);
+                onground_check.Checked = falcon.IsLightOn(LightBits.ONGROUND);
+                engFire_check.Checked = falcon.IsLightOn(LightBits.ENG_FIRE);
+                config_check.Checked = falcon.IsLightOn(LightBits.CONFIG);
+                hyd_check.Checked = falcon.IsLightOn(LightBits.HYD);
+                flcsABCD_check.Checked = falcon.IsLightOn(LightBits.Flcs_ABCD);
+                flcs_check.Checked = falcon.IsLightOn(LightBits.FLCS);
+                CAN_check.Checked = falcon.IsLightOn(LightBits.CAN);
+                tlCFG_check.Checked = falcon.IsLightOn(LightBits.T_L_CFG);
+                aoaAbove_check.Checked = falcon.IsLightOn(LightBits.AOAAbove);
+                aoaOn_check.Checked = falcon.IsLightOn(LightBits.AOAOn);
+                aoaBelow_check.Checked = falcon.IsLightOn(LightBits.AOABelow);
+
+                //LightBits2
                 gearLightFront_check.Checked = falcon.IsLightOn(LightBits3.NoseGearDown);
                 gearLightFront_check.Checked = falcon.IsLightOn(LightBits3.LeftGearDown);
                 seatArmed_check.Checked = falcon.IsLightOn(LightBits2.SEAT_ARM);
+
 
                 //Show DED data
                 DED_Line1_text.Text = data.DEDLines[0];
