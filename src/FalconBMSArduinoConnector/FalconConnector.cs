@@ -20,7 +20,7 @@ namespace FalconBMSArduinoConnector
         public bool isFalconRunning()
         {
             FlightData fData =  _reader.GetCurrentData();
-
+           
             
             bool isFalconDetected =  _reader.IsFalconRunning;
             bool isProcessRunning = Process.GetProcessesByName("Falcon BMS").Length > 0;

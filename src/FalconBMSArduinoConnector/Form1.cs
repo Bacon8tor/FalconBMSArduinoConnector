@@ -17,8 +17,6 @@ namespace FalconBMSArduinoConnector
     {
         FalconConnector falcon = new FalconConnector();
         ArduinoConnector arduino = new ArduinoConnector();
-        //private Reader bmsReader = new Reader();
-        //private Writer bmsWrite = new Writer();
         private Timer falconCheckTimer;
         
 
@@ -50,6 +48,7 @@ namespace FalconBMSArduinoConnector
 
             if (falcon.isFalconRunning())
             {
+
                 falconRunning.Checked = falcon.isFalconRunning();
                 falconRunning.Text = "Falcon is Running";
                 falconBuild_text.Text = "v." + falcon.GetFalconVersion();
@@ -128,11 +127,14 @@ namespace FalconBMSArduinoConnector
                 gearLightFront_check.Checked = falcon.IsLightOn(LightBits3.LeftGearDown);
 
                 //Show DED data
-                DED_Line1_text.Text = data.DEDLines[0].ToUpper();
-                DED_Line2_text.Text = data.DEDLines[1].ToUpper();
-                DED_Line3_text.Text = data.DEDLines[2].ToUpper();
-                DED_Line4_text.Text = data.DEDLines[3].ToUpper();
-                DED_Line5_text.Text = data.DEDLines[4].ToUpper();
+                if (data.DEDLines != null)
+                {
+                    DED_Line1_text.Text = data.DEDLines[0].ToUpper();
+                    DED_Line2_text.Text = data.DEDLines[1].ToUpper();
+                    DED_Line3_text.Text = data.DEDLines[2].ToUpper();
+                    DED_Line4_text.Text = data.DEDLines[3].ToUpper();
+                    DED_Line5_text.Text = data.DEDLines[4].ToUpper();
+                }
 
             }
             else
@@ -189,66 +191,144 @@ namespace FalconBMSArduinoConnector
             return;
         }
 
+        private string lastRequest = null;
+        private DateTime lastRequestTime = DateTime.MinValue;
+        private TimeSpan requestCooldown = TimeSpan.FromMilliseconds(50); // adjust as needed
+
         private void Send_DataToArduino(object sender, string data)
         {
-            // Handle incoming data from Arduino here
-            Console.WriteLine("Data received from Arduino: " + data);
+            string trimmedData = data.Trim();
+
+            // Ignore duplicate requests received too soon
+            if (trimmedData == lastRequest && (DateTime.Now - lastRequestTime) < requestCooldown)
+            {
+                // Optional: log ignoring duplicate
+                // Console.WriteLine($"Ignoring duplicate request: {trimmedData}");
+                return;
+            }
+
+            lastRequest = trimmedData;
+            lastRequestTime = DateTime.Now;
+
+            Console.WriteLine("Data received from Arduino: " + trimmedData);
+
             if (falcon.GetFlightData() == null)
             {
                 Console.WriteLine("Flight data is null. Cannot send light bits.");
                 return;
             }
-                   var flightData = falcon.GetFlightData();
-            if (data.Trim() == "lb")
-            {
-                Console.WriteLine("Sending light bits to Arduino...");
-                arduino.SendPacket(0x01, BitConverter.GetBytes(flightData.lightBits));
-            }
-            else if (data.Trim() == "lb2")
-            {
-                Console.WriteLine("Sending light bits 2 to Arduino...");
-                arduino.SendPacket(0x02, BitConverter.GetBytes(flightData.lightBits2));
-            }
-            else if (data.Trim() == "lb3")
-            {
-                Console.WriteLine("Sending light bits 3 to Arduino...");
-                arduino.SendPacket(0x03, BitConverter.GetBytes(flightData.lightBits3));
-            }
-            else if (data.Trim() == "DED0")
-            {
-                Console.WriteLine("Sending DED 0 data to Arduino...");
-                //arduino.SendDEDLines(flightData.DEDLines);
-                arduino.Send(flightData.DEDLines[0]);
 
-            }
-            else if (data.Trim() == "DED1")
-            {
-                Console.WriteLine("Sending DED 1 data to Arduino...");
-                //arduino.SendDEDLines(flightData.DEDLines);
-                arduino.Send(flightData.DEDLines[1]);
+            var flightData = falcon.GetFlightData();
 
-            }
-            else if (data.Trim() == "DED2")
+            switch (trimmedData)
             {
-                Console.WriteLine("Sending DED 2 data to Arduino...");
-                //arduino.SendDEDLines(flightData.DEDLines);
-                arduino.Send(flightData.DEDLines[2]);
+                case "lb":
+                    Console.WriteLine("Sending light bits to Arduino...");
+                    arduino.SendPacket(0x01, BitConverter.GetBytes(flightData.lightBits));
+                    break;
+                case "lb2":
+                    Console.WriteLine("Sending light bits 2 to Arduino...");
+                    arduino.SendPacket(0x02, BitConverter.GetBytes(flightData.lightBits2));
+                    break;
+                case "lb3":
+                    Console.WriteLine("Sending light bits 3 to Arduino...");
+                    arduino.SendPacket(0x03, BitConverter.GetBytes(flightData.lightBits3));
+                    break;
+                case "DED0":
+                    Console.WriteLine("Sending DED 0 data to Arduino...");
+                    arduino.Send(flightData.DEDLines[0]);
+                    break;
+                case "DED1":
+                    Console.WriteLine("Sending DED 1 data to Arduino...");
+                    arduino.Send(flightData.DEDLines[1]);
+                    break;
+                case "DED2":
+                    Console.WriteLine("Sending DED 2 data to Arduino...");
+                    arduino.Send(flightData.DEDLines[2]);
+                    break;
+                case "DED3":
+                    Console.WriteLine("Sending DED 3 data to Arduino...");
+                    arduino.Send(flightData.DEDLines[3]);
+                    break;
+                case "DED4":
+                    Console.WriteLine("Sending DED 4 data to Arduino...");
+                    arduino.Send(flightData.DEDLines[4]);
+                    break;
+                case "Fuel":
+                    Console.WriteLine("Sending Fuel data to Arduino...");
+                    arduino.SendPacket(0xF0, BitConverter.GetBytes(flightData.fuelFlow));
+                    break;
+                default:
+                    Console.WriteLine($"Unknown request: {trimmedData}");
+                    break;
+            }
+        }
 
-            }
-            else if (data.Trim() == "DED3")
-            {
-                Console.WriteLine("Sending DED 3 data to Arduino...");
-                //arduino.SendDEDLines(flightData.DEDLines);
-                arduino.Send(flightData.DEDLines[3]);
+        //private void Send_DataToArduino(object sender, string data)
+        //{
+        //    // Handle incoming data from Arduino here
+        //    Console.WriteLine("Data received from Arduino: " + data);
+        //    if (falcon.GetFlightData() == null)
+        //    {
+        //        Console.WriteLine("Flight data is null. Cannot send light bits.");
+        //        return;
+        //    }
+        //           var flightData = falcon.GetFlightData();
+        //    if (data.Trim() == "lb")
+        //    {
+        //        Console.WriteLine("Sending light bits to Arduino...");
+        //        arduino.SendPacket(0x01, BitConverter.GetBytes(flightData.lightBits));
+        //    }
+        //    else if (data.Trim() == "lb2")
+        //    {
+        //        Console.WriteLine("Sending light bits 2 to Arduino...");
+        //        arduino.SendPacket(0x02, BitConverter.GetBytes(flightData.lightBits2));
+        //    }
+        //    else if (data.Trim() == "lb3")
+        //    {
+        //        Console.WriteLine("Sending light bits 3 to Arduino...");
+        //        arduino.SendPacket(0x03, BitConverter.GetBytes(flightData.lightBits3));
+        //    }
+        //    else if (data.Trim() == "DED0")
+        //    {
+        //        Console.WriteLine("Sending DED 0 data to Arduino...");
+        //        //arduino.SendDEDLines(flightData.DEDLines);
+        //        arduino.Send(flightData.DEDLines[0]);
 
-            }
-            else if (data.Trim() == "DED4")
-            {
-                Console.WriteLine("Sending DED 4 data to Arduino...");
-                //arduino.SendDEDLines(flightData.DEDLines);
-                arduino.Send(flightData.DEDLines[4]);
-            }
+        //    }
+        //    else if (data.Trim() == "DED1")
+        //    {
+        //        Console.WriteLine("Sending DED 1 data to Arduino...");
+        //        //arduino.SendDEDLines(flightData.DEDLines);
+        //        arduino.Send(flightData.DEDLines[1]);
 
-            }
+        //    }
+        //    else if (data.Trim() == "DED2")
+        //    {
+        //        Console.WriteLine("Sending DED 2 data to Arduino...");
+        //        //arduino.SendDEDLines(flightData.DEDLines);
+        //        arduino.Send(flightData.DEDLines[2]);
+
+        //    }
+        //    else if (data.Trim() == "DED3")
+        //    {
+        //        Console.WriteLine("Sending DED 3 data to Arduino...");
+        //        //arduino.SendDEDLines(flightData.DEDLines);
+        //        arduino.Send(flightData.DEDLines[3]);
+
+        //    }
+        //    else if (data.Trim() == "DED4")
+        //    {
+        //        Console.WriteLine("Sending DED 4 data to Arduino...");
+        //        //arduino.SendDEDLines(flightData.DEDLines);
+        //        arduino.Send(flightData.DEDLines[4]);
+        //    }
+        //    else if (data.Trim() == "Fuel")
+        //    {   
+        //        Console.WriteLine("Sending Fuel data to Arduino...");
+        //        //arduino.SendDEDLines(flightData.DEDLines);
+        //        arduino.SendPacket(0xF0, BitConverter.GetBytes(flightData.fuelFlow));
+        //    }
+        //}
     }
 }

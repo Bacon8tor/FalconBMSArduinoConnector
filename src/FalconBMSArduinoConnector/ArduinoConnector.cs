@@ -84,7 +84,8 @@ namespace FalconBMSArduinoConnector
         {
             SerialPort sp = (SerialPort)sender;
             try
-            {
+            {   
+                
                 string indata = sp.ReadExisting();
                 OnDataReceived?.Invoke(this, indata); // Fix: Use 'this' to reference the instance of ArduinoConnector
             }
@@ -142,7 +143,6 @@ namespace FalconBMSArduinoConnector
 
                 try
                 {
-                    
                     _serialPort.Write(packet.ToArray(), 0, packet.Count);
                 }
                 catch (Exception ex)
@@ -157,7 +157,7 @@ namespace FalconBMSArduinoConnector
 
         public void SendDEDLines(string[] lines)
         {
-            Console.WriteLine("Sending DED lines to Arduino22...");
+            Console.WriteLine("Sending DED lines to Arduino...");
             if (lines.Length != 5)
             {
                 Console.WriteLine("DED must contain exactly 5 lines.");
