@@ -80,33 +80,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.lightBits_Page = new System.Windows.Forms.TabPage();
             this.lightBits2_Page = new System.Windows.Forms.TabPage();
-            this.lightBits3_Page = new System.Windows.Forms.TabPage();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.HandOff_check = new System.Windows.Forms.CheckBox();
-            this.Launch_check = new System.Windows.Forms.CheckBox();
-            this.PriMode_check = new System.Windows.Forms.CheckBox();
-            this.Naval_Check = new System.Windows.Forms.CheckBox();
-            this.Unk_check = new System.Windows.Forms.CheckBox();
-            this.TgtSep_check = new System.Windows.Forms.CheckBox();
-            this.Go_check = new System.Windows.Forms.CheckBox();
-            this.NoGo_check = new System.Windows.Forms.CheckBox();
-            this.Degr_check = new System.Windows.Forms.CheckBox();
-            this.Rdy_check = new System.Windows.Forms.CheckBox();
-            this.ChaffLo_check = new System.Windows.Forms.CheckBox();
-            this.FlareLo_check = new System.Windows.Forms.CheckBox();
-            this.AuxSrch_check = new System.Windows.Forms.CheckBox();
-            this.AuxAct_check = new System.Windows.Forms.CheckBox();
-            this.AuxLow_check = new System.Windows.Forms.CheckBox();
-            this.AuxPwr_check = new System.Windows.Forms.CheckBox();
-            this.EcmPwr_check = new System.Windows.Forms.CheckBox();
-            this.EcmFail_check = new System.Windows.Forms.CheckBox();
-            this.FwdFuelLow_check = new System.Windows.Forms.CheckBox();
-            this.AftFuelLow_check = new System.Windows.Forms.CheckBox();
-            this.EPUOn_check = new System.Windows.Forms.CheckBox();
-            this.JFSOn_check = new System.Windows.Forms.CheckBox();
             this.ENGINE_check = new System.Windows.Forms.CheckBox();
             this.GEARHANDLE_check = new System.Windows.Forms.CheckBox();
             this.TFR_ENGAGED_check = new System.Windows.Forms.CheckBox();
@@ -117,6 +90,33 @@
             this.PROBEHEAT_check = new System.Windows.Forms.CheckBox();
             this.OXY_LOW_check = new System.Windows.Forms.CheckBox();
             this.SEC_check = new System.Windows.Forms.CheckBox();
+            this.JFSOn_check = new System.Windows.Forms.CheckBox();
+            this.EPUOn_check = new System.Windows.Forms.CheckBox();
+            this.AftFuelLow_check = new System.Windows.Forms.CheckBox();
+            this.FwdFuelLow_check = new System.Windows.Forms.CheckBox();
+            this.EcmFail_check = new System.Windows.Forms.CheckBox();
+            this.EcmPwr_check = new System.Windows.Forms.CheckBox();
+            this.AuxPwr_check = new System.Windows.Forms.CheckBox();
+            this.AuxLow_check = new System.Windows.Forms.CheckBox();
+            this.AuxAct_check = new System.Windows.Forms.CheckBox();
+            this.AuxSrch_check = new System.Windows.Forms.CheckBox();
+            this.FlareLo_check = new System.Windows.Forms.CheckBox();
+            this.ChaffLo_check = new System.Windows.Forms.CheckBox();
+            this.Rdy_check = new System.Windows.Forms.CheckBox();
+            this.Degr_check = new System.Windows.Forms.CheckBox();
+            this.NoGo_check = new System.Windows.Forms.CheckBox();
+            this.Go_check = new System.Windows.Forms.CheckBox();
+            this.TgtSep_check = new System.Windows.Forms.CheckBox();
+            this.Unk_check = new System.Windows.Forms.CheckBox();
+            this.Naval_Check = new System.Windows.Forms.CheckBox();
+            this.PriMode_check = new System.Windows.Forms.CheckBox();
+            this.Launch_check = new System.Windows.Forms.CheckBox();
+            this.HandOff_check = new System.Windows.Forms.CheckBox();
+            this.lightBits3_Page = new System.Windows.Forms.TabPage();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.DED_Panel.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -705,282 +705,6 @@
             this.lightBits2_Page.Text = "LightBits2";
             this.lightBits2_Page.UseVisualStyleBackColor = true;
             // 
-            // lightBits3_Page
-            // 
-            this.lightBits3_Page.Controls.Add(this.panel1);
-            this.lightBits3_Page.Location = new System.Drawing.Point(4, 22);
-            this.lightBits3_Page.Name = "lightBits3_Page";
-            this.lightBits3_Page.Size = new System.Drawing.Size(460, 379);
-            this.lightBits3_Page.TabIndex = 2;
-            this.lightBits3_Page.Text = "LightBits3";
-            this.lightBits3_Page.UseVisualStyleBackColor = true;
-            // 
-            // tabControl2
-            // 
-            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl2.Controls.Add(this.tabPage1);
-            this.tabControl2.Controls.Add(this.tabPage2);
-            this.tabControl2.Location = new System.Drawing.Point(445, 34);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(283, 207);
-            this.tabControl2.TabIndex = 4;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.falconRunning);
-            this.tabPage1.Controls.Add(this.serialConnect_button);
-            this.tabPage1.Controls.Add(this.falconBuild_text);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.serialPort_combo);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(275, 181);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Main Page";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(270, 181);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Info";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(255, 78);
-            this.label2.TabIndex = 0;
-            this.label2.Text = resources.GetString("label2.Text");
-            // 
-            // HandOff_check
-            // 
-            this.HandOff_check.AutoSize = true;
-            this.HandOff_check.Location = new System.Drawing.Point(6, 12);
-            this.HandOff_check.Name = "HandOff_check";
-            this.HandOff_check.Size = new System.Drawing.Size(66, 17);
-            this.HandOff_check.TabIndex = 3;
-            this.HandOff_check.Text = "HandOff";
-            this.HandOff_check.UseVisualStyleBackColor = true;
-            // 
-            // Launch_check
-            // 
-            this.Launch_check.AutoSize = true;
-            this.Launch_check.Location = new System.Drawing.Point(6, 35);
-            this.Launch_check.Name = "Launch_check";
-            this.Launch_check.Size = new System.Drawing.Size(62, 17);
-            this.Launch_check.TabIndex = 4;
-            this.Launch_check.Text = "Launch";
-            this.Launch_check.UseVisualStyleBackColor = true;
-            // 
-            // PriMode_check
-            // 
-            this.PriMode_check.AutoSize = true;
-            this.PriMode_check.Location = new System.Drawing.Point(6, 58);
-            this.PriMode_check.Name = "PriMode_check";
-            this.PriMode_check.Size = new System.Drawing.Size(65, 17);
-            this.PriMode_check.TabIndex = 5;
-            this.PriMode_check.Text = "PriMode";
-            this.PriMode_check.UseVisualStyleBackColor = true;
-            // 
-            // Naval_Check
-            // 
-            this.Naval_Check.AutoSize = true;
-            this.Naval_Check.Location = new System.Drawing.Point(6, 81);
-            this.Naval_Check.Name = "Naval_Check";
-            this.Naval_Check.Size = new System.Drawing.Size(54, 17);
-            this.Naval_Check.TabIndex = 6;
-            this.Naval_Check.Text = "Naval";
-            this.Naval_Check.UseVisualStyleBackColor = true;
-            // 
-            // Unk_check
-            // 
-            this.Unk_check.AutoSize = true;
-            this.Unk_check.Location = new System.Drawing.Point(6, 104);
-            this.Unk_check.Name = "Unk_check";
-            this.Unk_check.Size = new System.Drawing.Size(46, 17);
-            this.Unk_check.TabIndex = 7;
-            this.Unk_check.Text = "Unk";
-            this.Unk_check.UseVisualStyleBackColor = true;
-            // 
-            // TgtSep_check
-            // 
-            this.TgtSep_check.AutoSize = true;
-            this.TgtSep_check.Location = new System.Drawing.Point(6, 127);
-            this.TgtSep_check.Name = "TgtSep_check";
-            this.TgtSep_check.Size = new System.Drawing.Size(61, 17);
-            this.TgtSep_check.TabIndex = 8;
-            this.TgtSep_check.Text = "TgtSep";
-            this.TgtSep_check.UseVisualStyleBackColor = true;
-            // 
-            // Go_check
-            // 
-            this.Go_check.AutoSize = true;
-            this.Go_check.Location = new System.Drawing.Point(6, 150);
-            this.Go_check.Name = "Go_check";
-            this.Go_check.Size = new System.Drawing.Size(40, 17);
-            this.Go_check.TabIndex = 9;
-            this.Go_check.Text = "Go";
-            this.Go_check.UseVisualStyleBackColor = true;
-            // 
-            // NoGo_check
-            // 
-            this.NoGo_check.AutoSize = true;
-            this.NoGo_check.Location = new System.Drawing.Point(6, 173);
-            this.NoGo_check.Name = "NoGo_check";
-            this.NoGo_check.Size = new System.Drawing.Size(54, 17);
-            this.NoGo_check.TabIndex = 10;
-            this.NoGo_check.Text = "NoGo";
-            this.NoGo_check.UseVisualStyleBackColor = true;
-            // 
-            // Degr_check
-            // 
-            this.Degr_check.AutoSize = true;
-            this.Degr_check.Location = new System.Drawing.Point(6, 196);
-            this.Degr_check.Name = "Degr_check";
-            this.Degr_check.Size = new System.Drawing.Size(49, 17);
-            this.Degr_check.TabIndex = 11;
-            this.Degr_check.Text = "Degr";
-            this.Degr_check.UseVisualStyleBackColor = true;
-            // 
-            // Rdy_check
-            // 
-            this.Rdy_check.AutoSize = true;
-            this.Rdy_check.Location = new System.Drawing.Point(6, 219);
-            this.Rdy_check.Name = "Rdy_check";
-            this.Rdy_check.Size = new System.Drawing.Size(45, 17);
-            this.Rdy_check.TabIndex = 12;
-            this.Rdy_check.Text = "Rdy";
-            this.Rdy_check.UseVisualStyleBackColor = true;
-            // 
-            // ChaffLo_check
-            // 
-            this.ChaffLo_check.AutoSize = true;
-            this.ChaffLo_check.Location = new System.Drawing.Point(7, 242);
-            this.ChaffLo_check.Name = "ChaffLo_check";
-            this.ChaffLo_check.Size = new System.Drawing.Size(63, 17);
-            this.ChaffLo_check.TabIndex = 13;
-            this.ChaffLo_check.Text = "ChaffLo";
-            this.ChaffLo_check.UseVisualStyleBackColor = true;
-            // 
-            // FlareLo_check
-            // 
-            this.FlareLo_check.AutoSize = true;
-            this.FlareLo_check.Location = new System.Drawing.Point(6, 265);
-            this.FlareLo_check.Name = "FlareLo_check";
-            this.FlareLo_check.Size = new System.Drawing.Size(61, 17);
-            this.FlareLo_check.TabIndex = 14;
-            this.FlareLo_check.Text = "FlareLo";
-            this.FlareLo_check.UseVisualStyleBackColor = true;
-            // 
-            // AuxSrch_check
-            // 
-            this.AuxSrch_check.AutoSize = true;
-            this.AuxSrch_check.Location = new System.Drawing.Point(104, 12);
-            this.AuxSrch_check.Name = "AuxSrch_check";
-            this.AuxSrch_check.Size = new System.Drawing.Size(66, 17);
-            this.AuxSrch_check.TabIndex = 15;
-            this.AuxSrch_check.Text = "AuxSrch";
-            this.AuxSrch_check.UseVisualStyleBackColor = true;
-            // 
-            // AuxAct_check
-            // 
-            this.AuxAct_check.AutoSize = true;
-            this.AuxAct_check.Location = new System.Drawing.Point(104, 35);
-            this.AuxAct_check.Name = "AuxAct_check";
-            this.AuxAct_check.Size = new System.Drawing.Size(60, 17);
-            this.AuxAct_check.TabIndex = 16;
-            this.AuxAct_check.Text = "AuxAct";
-            this.AuxAct_check.UseVisualStyleBackColor = true;
-            // 
-            // AuxLow_check
-            // 
-            this.AuxLow_check.AutoSize = true;
-            this.AuxLow_check.Location = new System.Drawing.Point(104, 58);
-            this.AuxLow_check.Name = "AuxLow_check";
-            this.AuxLow_check.Size = new System.Drawing.Size(64, 17);
-            this.AuxLow_check.TabIndex = 17;
-            this.AuxLow_check.Text = "AuxLow";
-            this.AuxLow_check.UseVisualStyleBackColor = true;
-            // 
-            // AuxPwr_check
-            // 
-            this.AuxPwr_check.AutoSize = true;
-            this.AuxPwr_check.Location = new System.Drawing.Point(104, 81);
-            this.AuxPwr_check.Name = "AuxPwr_check";
-            this.AuxPwr_check.Size = new System.Drawing.Size(62, 17);
-            this.AuxPwr_check.TabIndex = 18;
-            this.AuxPwr_check.Text = "AuxPwr";
-            this.AuxPwr_check.UseVisualStyleBackColor = true;
-            // 
-            // EcmPwr_check
-            // 
-            this.EcmPwr_check.AutoSize = true;
-            this.EcmPwr_check.Location = new System.Drawing.Point(104, 104);
-            this.EcmPwr_check.Name = "EcmPwr_check";
-            this.EcmPwr_check.Size = new System.Drawing.Size(65, 17);
-            this.EcmPwr_check.TabIndex = 19;
-            this.EcmPwr_check.Text = "EcmPwr";
-            this.EcmPwr_check.UseVisualStyleBackColor = true;
-            // 
-            // EcmFail_check
-            // 
-            this.EcmFail_check.AutoSize = true;
-            this.EcmFail_check.Location = new System.Drawing.Point(104, 127);
-            this.EcmFail_check.Name = "EcmFail_check";
-            this.EcmFail_check.Size = new System.Drawing.Size(63, 17);
-            this.EcmFail_check.TabIndex = 20;
-            this.EcmFail_check.Text = "EcmFail";
-            this.EcmFail_check.UseVisualStyleBackColor = true;
-            // 
-            // FwdFuelLow_check
-            // 
-            this.FwdFuelLow_check.AutoSize = true;
-            this.FwdFuelLow_check.Location = new System.Drawing.Point(104, 150);
-            this.FwdFuelLow_check.Name = "FwdFuelLow_check";
-            this.FwdFuelLow_check.Size = new System.Drawing.Size(86, 17);
-            this.FwdFuelLow_check.TabIndex = 21;
-            this.FwdFuelLow_check.Text = "FwdFuelLow";
-            this.FwdFuelLow_check.UseVisualStyleBackColor = true;
-            // 
-            // AftFuelLow_check
-            // 
-            this.AftFuelLow_check.AutoSize = true;
-            this.AftFuelLow_check.Location = new System.Drawing.Point(104, 173);
-            this.AftFuelLow_check.Name = "AftFuelLow_check";
-            this.AftFuelLow_check.Size = new System.Drawing.Size(79, 17);
-            this.AftFuelLow_check.TabIndex = 22;
-            this.AftFuelLow_check.Text = "AftFuelLow";
-            this.AftFuelLow_check.UseVisualStyleBackColor = true;
-            // 
-            // EPUOn_check
-            // 
-            this.EPUOn_check.AutoSize = true;
-            this.EPUOn_check.Location = new System.Drawing.Point(104, 196);
-            this.EPUOn_check.Name = "EPUOn_check";
-            this.EPUOn_check.Size = new System.Drawing.Size(62, 17);
-            this.EPUOn_check.TabIndex = 23;
-            this.EPUOn_check.Text = "EPUOn";
-            this.EPUOn_check.UseVisualStyleBackColor = true;
-            // 
-            // JFSOn_check
-            // 
-            this.JFSOn_check.AutoSize = true;
-            this.JFSOn_check.Location = new System.Drawing.Point(104, 219);
-            this.JFSOn_check.Name = "JFSOn_check";
-            this.JFSOn_check.Size = new System.Drawing.Size(58, 17);
-            this.JFSOn_check.TabIndex = 24;
-            this.JFSOn_check.Text = "JFSOn";
-            this.JFSOn_check.UseVisualStyleBackColor = true;
-            // 
             // ENGINE_check
             // 
             this.ENGINE_check.AutoSize = true;
@@ -1081,6 +805,282 @@
             this.SEC_check.Text = "SEC";
             this.SEC_check.UseVisualStyleBackColor = true;
             // 
+            // JFSOn_check
+            // 
+            this.JFSOn_check.AutoSize = true;
+            this.JFSOn_check.Location = new System.Drawing.Point(104, 219);
+            this.JFSOn_check.Name = "JFSOn_check";
+            this.JFSOn_check.Size = new System.Drawing.Size(58, 17);
+            this.JFSOn_check.TabIndex = 24;
+            this.JFSOn_check.Text = "JFSOn";
+            this.JFSOn_check.UseVisualStyleBackColor = true;
+            // 
+            // EPUOn_check
+            // 
+            this.EPUOn_check.AutoSize = true;
+            this.EPUOn_check.Location = new System.Drawing.Point(104, 196);
+            this.EPUOn_check.Name = "EPUOn_check";
+            this.EPUOn_check.Size = new System.Drawing.Size(62, 17);
+            this.EPUOn_check.TabIndex = 23;
+            this.EPUOn_check.Text = "EPUOn";
+            this.EPUOn_check.UseVisualStyleBackColor = true;
+            // 
+            // AftFuelLow_check
+            // 
+            this.AftFuelLow_check.AutoSize = true;
+            this.AftFuelLow_check.Location = new System.Drawing.Point(104, 173);
+            this.AftFuelLow_check.Name = "AftFuelLow_check";
+            this.AftFuelLow_check.Size = new System.Drawing.Size(79, 17);
+            this.AftFuelLow_check.TabIndex = 22;
+            this.AftFuelLow_check.Text = "AftFuelLow";
+            this.AftFuelLow_check.UseVisualStyleBackColor = true;
+            // 
+            // FwdFuelLow_check
+            // 
+            this.FwdFuelLow_check.AutoSize = true;
+            this.FwdFuelLow_check.Location = new System.Drawing.Point(104, 150);
+            this.FwdFuelLow_check.Name = "FwdFuelLow_check";
+            this.FwdFuelLow_check.Size = new System.Drawing.Size(86, 17);
+            this.FwdFuelLow_check.TabIndex = 21;
+            this.FwdFuelLow_check.Text = "FwdFuelLow";
+            this.FwdFuelLow_check.UseVisualStyleBackColor = true;
+            // 
+            // EcmFail_check
+            // 
+            this.EcmFail_check.AutoSize = true;
+            this.EcmFail_check.Location = new System.Drawing.Point(104, 127);
+            this.EcmFail_check.Name = "EcmFail_check";
+            this.EcmFail_check.Size = new System.Drawing.Size(63, 17);
+            this.EcmFail_check.TabIndex = 20;
+            this.EcmFail_check.Text = "EcmFail";
+            this.EcmFail_check.UseVisualStyleBackColor = true;
+            // 
+            // EcmPwr_check
+            // 
+            this.EcmPwr_check.AutoSize = true;
+            this.EcmPwr_check.Location = new System.Drawing.Point(104, 104);
+            this.EcmPwr_check.Name = "EcmPwr_check";
+            this.EcmPwr_check.Size = new System.Drawing.Size(65, 17);
+            this.EcmPwr_check.TabIndex = 19;
+            this.EcmPwr_check.Text = "EcmPwr";
+            this.EcmPwr_check.UseVisualStyleBackColor = true;
+            // 
+            // AuxPwr_check
+            // 
+            this.AuxPwr_check.AutoSize = true;
+            this.AuxPwr_check.Location = new System.Drawing.Point(104, 81);
+            this.AuxPwr_check.Name = "AuxPwr_check";
+            this.AuxPwr_check.Size = new System.Drawing.Size(62, 17);
+            this.AuxPwr_check.TabIndex = 18;
+            this.AuxPwr_check.Text = "AuxPwr";
+            this.AuxPwr_check.UseVisualStyleBackColor = true;
+            // 
+            // AuxLow_check
+            // 
+            this.AuxLow_check.AutoSize = true;
+            this.AuxLow_check.Location = new System.Drawing.Point(104, 58);
+            this.AuxLow_check.Name = "AuxLow_check";
+            this.AuxLow_check.Size = new System.Drawing.Size(64, 17);
+            this.AuxLow_check.TabIndex = 17;
+            this.AuxLow_check.Text = "AuxLow";
+            this.AuxLow_check.UseVisualStyleBackColor = true;
+            // 
+            // AuxAct_check
+            // 
+            this.AuxAct_check.AutoSize = true;
+            this.AuxAct_check.Location = new System.Drawing.Point(104, 35);
+            this.AuxAct_check.Name = "AuxAct_check";
+            this.AuxAct_check.Size = new System.Drawing.Size(60, 17);
+            this.AuxAct_check.TabIndex = 16;
+            this.AuxAct_check.Text = "AuxAct";
+            this.AuxAct_check.UseVisualStyleBackColor = true;
+            // 
+            // AuxSrch_check
+            // 
+            this.AuxSrch_check.AutoSize = true;
+            this.AuxSrch_check.Location = new System.Drawing.Point(104, 12);
+            this.AuxSrch_check.Name = "AuxSrch_check";
+            this.AuxSrch_check.Size = new System.Drawing.Size(66, 17);
+            this.AuxSrch_check.TabIndex = 15;
+            this.AuxSrch_check.Text = "AuxSrch";
+            this.AuxSrch_check.UseVisualStyleBackColor = true;
+            // 
+            // FlareLo_check
+            // 
+            this.FlareLo_check.AutoSize = true;
+            this.FlareLo_check.Location = new System.Drawing.Point(6, 265);
+            this.FlareLo_check.Name = "FlareLo_check";
+            this.FlareLo_check.Size = new System.Drawing.Size(61, 17);
+            this.FlareLo_check.TabIndex = 14;
+            this.FlareLo_check.Text = "FlareLo";
+            this.FlareLo_check.UseVisualStyleBackColor = true;
+            // 
+            // ChaffLo_check
+            // 
+            this.ChaffLo_check.AutoSize = true;
+            this.ChaffLo_check.Location = new System.Drawing.Point(7, 242);
+            this.ChaffLo_check.Name = "ChaffLo_check";
+            this.ChaffLo_check.Size = new System.Drawing.Size(63, 17);
+            this.ChaffLo_check.TabIndex = 13;
+            this.ChaffLo_check.Text = "ChaffLo";
+            this.ChaffLo_check.UseVisualStyleBackColor = true;
+            // 
+            // Rdy_check
+            // 
+            this.Rdy_check.AutoSize = true;
+            this.Rdy_check.Location = new System.Drawing.Point(6, 219);
+            this.Rdy_check.Name = "Rdy_check";
+            this.Rdy_check.Size = new System.Drawing.Size(45, 17);
+            this.Rdy_check.TabIndex = 12;
+            this.Rdy_check.Text = "Rdy";
+            this.Rdy_check.UseVisualStyleBackColor = true;
+            // 
+            // Degr_check
+            // 
+            this.Degr_check.AutoSize = true;
+            this.Degr_check.Location = new System.Drawing.Point(6, 196);
+            this.Degr_check.Name = "Degr_check";
+            this.Degr_check.Size = new System.Drawing.Size(49, 17);
+            this.Degr_check.TabIndex = 11;
+            this.Degr_check.Text = "Degr";
+            this.Degr_check.UseVisualStyleBackColor = true;
+            // 
+            // NoGo_check
+            // 
+            this.NoGo_check.AutoSize = true;
+            this.NoGo_check.Location = new System.Drawing.Point(6, 173);
+            this.NoGo_check.Name = "NoGo_check";
+            this.NoGo_check.Size = new System.Drawing.Size(54, 17);
+            this.NoGo_check.TabIndex = 10;
+            this.NoGo_check.Text = "NoGo";
+            this.NoGo_check.UseVisualStyleBackColor = true;
+            // 
+            // Go_check
+            // 
+            this.Go_check.AutoSize = true;
+            this.Go_check.Location = new System.Drawing.Point(6, 150);
+            this.Go_check.Name = "Go_check";
+            this.Go_check.Size = new System.Drawing.Size(40, 17);
+            this.Go_check.TabIndex = 9;
+            this.Go_check.Text = "Go";
+            this.Go_check.UseVisualStyleBackColor = true;
+            // 
+            // TgtSep_check
+            // 
+            this.TgtSep_check.AutoSize = true;
+            this.TgtSep_check.Location = new System.Drawing.Point(6, 127);
+            this.TgtSep_check.Name = "TgtSep_check";
+            this.TgtSep_check.Size = new System.Drawing.Size(61, 17);
+            this.TgtSep_check.TabIndex = 8;
+            this.TgtSep_check.Text = "TgtSep";
+            this.TgtSep_check.UseVisualStyleBackColor = true;
+            // 
+            // Unk_check
+            // 
+            this.Unk_check.AutoSize = true;
+            this.Unk_check.Location = new System.Drawing.Point(6, 104);
+            this.Unk_check.Name = "Unk_check";
+            this.Unk_check.Size = new System.Drawing.Size(46, 17);
+            this.Unk_check.TabIndex = 7;
+            this.Unk_check.Text = "Unk";
+            this.Unk_check.UseVisualStyleBackColor = true;
+            // 
+            // Naval_Check
+            // 
+            this.Naval_Check.AutoSize = true;
+            this.Naval_Check.Location = new System.Drawing.Point(6, 81);
+            this.Naval_Check.Name = "Naval_Check";
+            this.Naval_Check.Size = new System.Drawing.Size(54, 17);
+            this.Naval_Check.TabIndex = 6;
+            this.Naval_Check.Text = "Naval";
+            this.Naval_Check.UseVisualStyleBackColor = true;
+            // 
+            // PriMode_check
+            // 
+            this.PriMode_check.AutoSize = true;
+            this.PriMode_check.Location = new System.Drawing.Point(6, 58);
+            this.PriMode_check.Name = "PriMode_check";
+            this.PriMode_check.Size = new System.Drawing.Size(65, 17);
+            this.PriMode_check.TabIndex = 5;
+            this.PriMode_check.Text = "PriMode";
+            this.PriMode_check.UseVisualStyleBackColor = true;
+            // 
+            // Launch_check
+            // 
+            this.Launch_check.AutoSize = true;
+            this.Launch_check.Location = new System.Drawing.Point(6, 35);
+            this.Launch_check.Name = "Launch_check";
+            this.Launch_check.Size = new System.Drawing.Size(62, 17);
+            this.Launch_check.TabIndex = 4;
+            this.Launch_check.Text = "Launch";
+            this.Launch_check.UseVisualStyleBackColor = true;
+            // 
+            // HandOff_check
+            // 
+            this.HandOff_check.AutoSize = true;
+            this.HandOff_check.Location = new System.Drawing.Point(6, 12);
+            this.HandOff_check.Name = "HandOff_check";
+            this.HandOff_check.Size = new System.Drawing.Size(66, 17);
+            this.HandOff_check.TabIndex = 3;
+            this.HandOff_check.Text = "HandOff";
+            this.HandOff_check.UseVisualStyleBackColor = true;
+            // 
+            // lightBits3_Page
+            // 
+            this.lightBits3_Page.Controls.Add(this.panel1);
+            this.lightBits3_Page.Location = new System.Drawing.Point(4, 22);
+            this.lightBits3_Page.Name = "lightBits3_Page";
+            this.lightBits3_Page.Size = new System.Drawing.Size(402, 340);
+            this.lightBits3_Page.TabIndex = 2;
+            this.lightBits3_Page.Text = "LightBits3";
+            this.lightBits3_Page.UseVisualStyleBackColor = true;
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl2.Controls.Add(this.tabPage1);
+            this.tabControl2.Controls.Add(this.tabPage2);
+            this.tabControl2.Location = new System.Drawing.Point(445, 34);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(283, 207);
+            this.tabControl2.TabIndex = 4;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.falconRunning);
+            this.tabPage1.Controls.Add(this.serialConnect_button);
+            this.tabPage1.Controls.Add(this.falconBuild_text);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.serialPort_combo);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(275, 181);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Main Page";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(275, 181);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Info";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(255, 78);
+            this.label2.TabIndex = 0;
+            this.label2.Text = resources.GetString("label2.Text");
+            // 
             // FalconBMSArduinoConnector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1090,6 +1090,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.DED_Panel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FalconBMSArduinoConnector";
             this.Text = "Falcon BMS Arduino Connector";
             this.Load += new System.EventHandler(this.Form1_Load);

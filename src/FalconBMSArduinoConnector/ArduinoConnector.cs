@@ -147,45 +147,55 @@ namespace FalconBMSArduinoConnector
 
                         Console.WriteLine($"Received command: 0x{command:X2}");
 
-                        switch (command)
+                        if (fData == null)
                         {
-                            //LightBits
-                            case 0x01:
-                                byte[] lightBits = BitConverter.GetBytes(fData.lightBits);
-                                SendResponse(0x01, lightBits);
-                                break;
-                            //LightBits2
-                            case 0x02:
-                                byte[] lightBits2 = BitConverter.GetBytes(fData.lightBits2);
-                                SendResponse(0x02, lightBits2);
-                                break;
-                            //LightBits2
-                            case 0x03:
-                                byte[] lightBits3 = BitConverter.GetBytes(fData.lightBits3);
-                                SendResponse(0x03, lightBits3);
-                                break;
-                            case 0x04:
-                                byte[] blinkBits = BitConverter.GetBytes(fData.blinkBits);
-                                SendResponse(0x04,blinkBits);
-                                break;
-                            case 0x05:
-                                byte[] mergedDED = new byte[120];
-                                for (int i = 0; i < 5; i++)
-                                {
-                                    byte[] norm = NormalizeLine(fData.DEDLines[i], fData.Invert[i]);
-                                    Array.Copy(norm, 0, mergedDED, i * 24, 24);
-                                }
-                                SendResponse(0x05, mergedDED);
-                                break;
-                            case 0x0F:
-                                SendResponse(0x0F, new byte[] { 0xAB });
-                                break;
+                            Console.WriteLine("Flight data is null, skipping command processing.");
+                            continue;
+                        }
+                        else
+                        {
+                            switch (command)
+                            {
+                                //LightBits
+                                case 0x01:
+                                    byte[] lightBits = BitConverter.GetBytes(fData.lightBits);
+                                    SendResponse(0x01, lightBits);
+                                    break;
+                                //LightBits2
+                                case 0x02:
+                                    byte[] lightBits2 = BitConverter.GetBytes(fData.lightBits2);
+                                    SendResponse(0x02, lightBits2);
+                                    break;
+                                //LightBits2
+                                case 0x03:
+                                    byte[] lightBits3 = BitConverter.GetBytes(fData.lightBits3);
+                                    SendResponse(0x03, lightBits3);
+                                    break;
+                                case 0x04:
+                                    byte[] blinkBits = BitConverter.GetBytes(fData.blinkBits);
+                                    SendResponse(0x04, blinkBits);
+                                    break;
+                                case 0x05:
+                                    byte[] mergedDED = new byte[120];
+                                    for (int i = 0; i < 5; i++)
+                                    {
+                                        byte[] norm = NormalizeLine(fData.DEDLines[i], fData.Invert[i]);
+                                        Array.Copy(norm, 0, mergedDED, i * 24, 24);
+                                    }
+                                    SendResponse(0x05, mergedDED);
+                                    break;
+                                case 0x0F:
+                                    SendResponse(0x0F, new byte[] { 0xAB });
+                                    break;
 
-                            // Add more cases as needed
-                            default:
-                                SendResponse(0x00, new byte[] { 0x00 });
-                                Console.WriteLine($"Unknown command: 0x{command:X2}");
-                                break;
+                                // Add more cases as needed
+                                default:
+                                    SendResponse(0x00, new byte[] { 0x00 });
+                                    Console.WriteLine($"Unknown command: 0x{command:X2}");
+                                    break;
+
+
+                            }
                         }
                     }
                     else
