@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\Alex\\Documents\\GitHub\\FalconBMSArduinoConnector\\src\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2A514A6C-C1C5-4036-A89E-4C602762F32F}|FalconBMSArduinoConnector\\FalconBMSArduinoConnector.csproj|C:\\Users\\Alex\\Documents\\GitHub\\FalconBMSArduinoConnector\\src\\falconbmsarduinoconnector\\arduinoconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2A514A6C-C1C5-4036-A89E-4C602762F32F}|FalconBMSArduinoConnector\\FalconBMSArduinoConnector.csproj|c:\\users\\alex\\documents\\github\\falconbmsarduinoconnector\\src\\falconbmsarduinoconnector\\arduinoconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2A514A6C-C1C5-4036-A89E-4C602762F32F}|FalconBMSArduinoConnector\\FalconBMSArduinoConnector.csproj|solutionrelative:falconbmsarduinoconnector\\arduinoconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{2A514A6C-C1C5-4036-A89E-4C602762F32F}|FalconBMSArduinoConnector\\FalconBMSArduinoConnector.csproj|solutionrelative:falconbmsarduinoconnector\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2A514A6C-C1C5-4036-A89E-4C602762F32F}|FalconBMSArduinoConnector\\FalconBMSArduinoConnector.csproj|c:\\users\\alex\\documents\\github\\falconbmsarduinoconnector\\src\\falconbmsarduinoconnector\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{2A514A6C-C1C5-4036-A89E-4C602762F32F}|FalconBMSArduinoConnector\\FalconBMSArduinoConnector.csproj|C:\\Users\\Alex\\Documents\\GitHub\\FalconBMSArduinoConnector\\src\\falconbmsarduinoconnector\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{2A514A6C-C1C5-4036-A89E-4C602762F32F}|FalconBMSArduinoConnector\\FalconBMSArduinoConnector.csproj|solutionrelative:falconbmsarduinoconnector\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -54,8 +54,7 @@
               "RelativeToolTip": "FalconBMSArduinoConnector\\Form1.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T16:19:27.678Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-11T16:19:27.678Z"
             },
             {
               "$type": "Document",
@@ -66,8 +65,7 @@
               "ToolTip": "C:\\Users\\Alex\\Documents\\GitHub\\FalconBMSArduinoConnector\\src\\FalconBMSArduinoConnector\\Form1.cs [Design]",
               "RelativeToolTip": "FalconBMSArduinoConnector\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T16:14:44.175Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-07-11T16:14:44.175Z"
             },
             {
               "$type": "Document",
@@ -79,8 +77,7 @@
               "RelativeToolTip": "FalconBMSArduinoConnector\\Form1.cs",
               "ViewState": "AgIAAG4AAAAAAAAAAAAiwH8AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T16:17:34.393Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-11T16:17:34.393Z"
             },
             {
               "$type": "Document",
@@ -90,7 +87,7 @@
               "RelativeDocumentMoniker": "FalconBMSArduinoConnector\\ArduinoConnector.cs",
               "ToolTip": "C:\\Users\\Alex\\Documents\\GitHub\\FalconBMSArduinoConnector\\src\\FalconBMSArduinoConnector\\ArduinoConnector.cs",
               "RelativeToolTip": "FalconBMSArduinoConnector\\ArduinoConnector.cs",
-              "ViewState": "AgIAAJUAAAAAAAAAAAAkwKgAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAAkBAAAAAAAAAAAcwLEAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-12T13:14:24.168Z",
               "EditorCaption": ""
