@@ -9,3 +9,15 @@ C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoCon
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBM.F562539A.Up2Date
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.exe
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.pdb
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\FalconBMSArduinoConnector.exe.config
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\FalconBMSArduinoConnector.exe
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\FalconBMSArduinoConnector.pdb
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.csproj.AssemblyReference.cache
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.exe.config
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.FalconBMSArduinoConnector.resources
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.Properties.Resources.resources
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.csproj.GenerateResource.cache
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.csproj.CoreCompileInputs.cache
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBM.F562539A.Up2Date
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.exe
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.pdb

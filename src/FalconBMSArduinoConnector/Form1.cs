@@ -50,7 +50,7 @@ namespace FalconBMSArduinoConnector
                 falconRunning.Checked = falcon.isFalconRunning();
                 falconRunning.Text = "Falcon is Running";
                 falconBuild_text.Text = "v." + falcon.GetFalconVersion();
-                
+
                 var data = falcon.GetFlightData();
                 //LightBits
                 masterCaution_check.Checked = falcon.IsLightOn(LightBits.MasterCaution);
@@ -85,6 +85,7 @@ namespace FalconBMSArduinoConnector
                 CabinPress_check.Checked = falcon.IsLightOn(LightBits.CabinPress);
                 AutoPilotOn_check.Checked = falcon.IsLightOn(LightBits.AutoPilotOn);
                 TFR_STBY_check.Checked = falcon.IsLightOn(LightBits.TFR_STBY);
+                
 
                 //LightBits2
                 HandOff_check.Checked = falcon.IsLightOn(LightBits2.HandOff);
@@ -125,19 +126,26 @@ namespace FalconBMSArduinoConnector
                 gearLightFront_check.Checked = falcon.IsLightOn(LightBits3.LeftGearDown);
 
                 //Show DED data
-                if (data.DEDLines != null)
+                try
                 {
-                    DED_Line1_text.Text = data.DEDLines[0].ToUpper();
-                    DED_Line2_text.Text = data.DEDLines[1].ToUpper();
-                    DED_Line3_text.Text = data.DEDLines[2].ToUpper();
-                    DED_Line4_text.Text = data.DEDLines[3].ToUpper();
-                    DED_Line5_text.Text = data.DEDLines[4].ToUpper();
+                    if (data != null)
+                    {
+                        DED_Line1_text.Text = data.DEDLines[0].ToUpper();
+                        DED_Line2_text.Text = data.DEDLines[1].ToUpper();
+                        DED_Line3_text.Text = data.DEDLines[2].ToUpper();
+                        DED_Line4_text.Text = data.DEDLines[3].ToUpper();
+                        DED_Line5_text.Text = data.DEDLines[4].ToUpper();
+                    }
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error displaying DED data: " + ex.Message);
 
+                }
             }
             else
             {
-               
+
                 falconRunning.Checked = false;
                 falconRunning.Text = "Falcon is Not Running";
                 falconBuild_text.Text = "v.";
@@ -147,6 +155,7 @@ namespace FalconBMSArduinoConnector
                 gearLightLeft_check.Checked = false;
                 gearLightRight_check.Checked = false;
             }
+
         }
 
         private void update_comports(object sender, EventArgs e)
@@ -185,5 +194,16 @@ namespace FalconBMSArduinoConnector
             return;
         }
 
+        private void Form_Closing(object sender, FormClosingEventArgs e)
+        {
+            arduino.Disconnect();
+            if (arduino.IsConnected) {
+                Console.WriteLine("Failed to disconnect from " + serialPort_combo.Text);
+            }
+            else
+            {
+                Console.WriteLine("Disconnected from " + serialPort_combo.Text);
+            }
+        }
     }
 }

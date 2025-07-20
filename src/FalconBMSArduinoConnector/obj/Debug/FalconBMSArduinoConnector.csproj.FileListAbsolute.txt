@@ -50,3 +50,16 @@ C:\Users\bac0n\OneDrive\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMS
 C:\Users\bac0n\OneDrive\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.pdb
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.FalconBMSArduinoConnector.resources
 C:\Users\bac0n\OneDrive\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.FalconBMSArduinoConnector.resources
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\FalconBMSArduinoConnector.exe.config
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\FalconBMSArduinoConnector.exe
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\FalconBMSArduinoConnector.pdb
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\F4SharedMem.pdb
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.csproj.AssemblyReference.cache
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.exe.config
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.FalconBMSArduinoConnector.resources
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.Properties.Resources.resources
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.csproj.GenerateResource.cache
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.csproj.CoreCompileInputs.cache
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBM.F562539A.Up2Date
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.exe
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.pdb
