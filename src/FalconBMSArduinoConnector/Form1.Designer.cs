@@ -77,7 +77,7 @@
             this.CabinPress_check = new System.Windows.Forms.CheckBox();
             this.AutoPilotOn_check = new System.Windows.Forms.CheckBox();
             this.TFR_STBY_check = new System.Windows.Forms.CheckBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.falconDataTabs = new System.Windows.Forms.TabControl();
             this.lightBits_Page = new System.Windows.Forms.TabPage();
             this.lightBits2_Page = new System.Windows.Forms.TabPage();
             this.ENGINE_check = new System.Windows.Forms.CheckBox();
@@ -113,21 +113,24 @@
             this.Launch_check = new System.Windows.Forms.CheckBox();
             this.HandOff_check = new System.Windows.Forms.CheckBox();
             this.lightBits3_Page = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.isntrLights_text = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.DED_Panel.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.falconDataTabs.SuspendLayout();
             this.lightBits_Page.SuspendLayout();
             this.lightBits2_Page.SuspendLayout();
             this.lightBits3_Page.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // falconRunning
@@ -422,50 +425,50 @@
             // DED_Line5_text
             // 
             this.DED_Line5_text.AutoSize = true;
-            this.DED_Line5_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DED_Line5_text.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DED_Line5_text.Location = new System.Drawing.Point(3, 100);
             this.DED_Line5_text.Name = "DED_Line5_text";
-            this.DED_Line5_text.Size = new System.Drawing.Size(62, 13);
+            this.DED_Line5_text.Size = new System.Drawing.Size(60, 13);
             this.DED_Line5_text.TabIndex = 4;
             this.DED_Line5_text.Text = "DED_Line5";
             // 
             // DED_Line4_text
             // 
             this.DED_Line4_text.AutoSize = true;
-            this.DED_Line4_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DED_Line4_text.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DED_Line4_text.Location = new System.Drawing.Point(3, 77);
             this.DED_Line4_text.Name = "DED_Line4_text";
-            this.DED_Line4_text.Size = new System.Drawing.Size(62, 13);
+            this.DED_Line4_text.Size = new System.Drawing.Size(60, 13);
             this.DED_Line4_text.TabIndex = 3;
             this.DED_Line4_text.Text = "DED_Line4";
             // 
             // DED_Line3_text
             // 
             this.DED_Line3_text.AutoSize = true;
-            this.DED_Line3_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DED_Line3_text.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DED_Line3_text.Location = new System.Drawing.Point(3, 54);
             this.DED_Line3_text.Name = "DED_Line3_text";
-            this.DED_Line3_text.Size = new System.Drawing.Size(62, 13);
+            this.DED_Line3_text.Size = new System.Drawing.Size(60, 13);
             this.DED_Line3_text.TabIndex = 2;
             this.DED_Line3_text.Text = "DED_Line3";
             // 
             // DED_Line2_text
             // 
             this.DED_Line2_text.AutoSize = true;
-            this.DED_Line2_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DED_Line2_text.Font = new System.Drawing.Font("FalconDED", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DED_Line2_text.Location = new System.Drawing.Point(3, 32);
             this.DED_Line2_text.Name = "DED_Line2_text";
-            this.DED_Line2_text.Size = new System.Drawing.Size(62, 13);
+            this.DED_Line2_text.Size = new System.Drawing.Size(106, 15);
             this.DED_Line2_text.TabIndex = 1;
             this.DED_Line2_text.Text = "DED_Line2";
             // 
             // DED_Line1_text
             // 
             this.DED_Line1_text.AutoSize = true;
-            this.DED_Line1_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DED_Line1_text.Font = new System.Drawing.Font("FalconDED", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DED_Line1_text.Location = new System.Drawing.Point(3, 10);
             this.DED_Line1_text.Name = "DED_Line1_text";
-            this.DED_Line1_text.Size = new System.Drawing.Size(62, 13);
+            this.DED_Line1_text.Size = new System.Drawing.Size(105, 15);
             this.DED_Line1_text.TabIndex = 0;
             this.DED_Line1_text.Text = "DED_Line1";
             // 
@@ -609,19 +612,20 @@
             this.TFR_STBY_check.Text = "TFR_STBY";
             this.TFR_STBY_check.UseVisualStyleBackColor = true;
             // 
-            // tabControl1
+            // falconDataTabs
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.falconDataTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.lightBits_Page);
-            this.tabControl1.Controls.Add(this.lightBits2_Page);
-            this.tabControl1.Controls.Add(this.lightBits3_Page);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(413, 367);
-            this.tabControl1.TabIndex = 9;
+            this.falconDataTabs.Controls.Add(this.lightBits_Page);
+            this.falconDataTabs.Controls.Add(this.lightBits2_Page);
+            this.falconDataTabs.Controls.Add(this.lightBits3_Page);
+            this.falconDataTabs.Controls.Add(this.tabPage3);
+            this.falconDataTabs.Location = new System.Drawing.Point(12, 12);
+            this.falconDataTabs.Name = "falconDataTabs";
+            this.falconDataTabs.SelectedIndex = 0;
+            this.falconDataTabs.Size = new System.Drawing.Size(413, 367);
+            this.falconDataTabs.TabIndex = 9;
             // 
             // lightBits_Page
             // 
@@ -702,7 +706,7 @@
             this.lightBits2_Page.Location = new System.Drawing.Point(4, 22);
             this.lightBits2_Page.Name = "lightBits2_Page";
             this.lightBits2_Page.Padding = new System.Windows.Forms.Padding(3);
-            this.lightBits2_Page.Size = new System.Drawing.Size(402, 340);
+            this.lightBits2_Page.Size = new System.Drawing.Size(405, 341);
             this.lightBits2_Page.TabIndex = 1;
             this.lightBits2_Page.Text = "LightBits2";
             this.lightBits2_Page.UseVisualStyleBackColor = true;
@@ -1032,10 +1036,29 @@
             this.lightBits3_Page.Controls.Add(this.panel1);
             this.lightBits3_Page.Location = new System.Drawing.Point(4, 22);
             this.lightBits3_Page.Name = "lightBits3_Page";
-            this.lightBits3_Page.Size = new System.Drawing.Size(402, 340);
+            this.lightBits3_Page.Size = new System.Drawing.Size(405, 341);
             this.lightBits3_Page.TabIndex = 2;
             this.lightBits3_Page.Text = "LightBits3";
             this.lightBits3_Page.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.isntrLights_text);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(405, 341);
+            this.tabPage3.TabIndex = 3;
+            this.tabPage3.Text = "Flight Data";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // isntrLights_text
+            // 
+            this.isntrLights_text.AutoSize = true;
+            this.isntrLights_text.Location = new System.Drawing.Point(3, 12);
+            this.isntrLights_text.Name = "isntrLights_text";
+            this.isntrLights_text.Size = new System.Drawing.Size(93, 13);
+            this.isntrLights_text.TabIndex = 0;
+            this.isntrLights_text.Text = "Instrument Lights: ";
             // 
             // tabControl2
             // 
@@ -1064,6 +1087,16 @@
             this.tabPage1.Text = "Main Page";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::FalconBMSArduinoConnector.Properties.Resources.FBAC;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(169, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 104);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label2);
@@ -1084,23 +1117,13 @@
             this.label2.TabIndex = 0;
             this.label2.Text = resources.GetString("label2.Text");
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::FalconBMSArduinoConnector.Properties.Resources.FBAC;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(169, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 104);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
             // FalconBMSArduinoConnector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 381);
             this.Controls.Add(this.tabControl2);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.falconDataTabs);
             this.Controls.Add(this.DED_Panel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1112,18 +1135,20 @@
             this.panel1.PerformLayout();
             this.DED_Panel.ResumeLayout(false);
             this.DED_Panel.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.falconDataTabs.ResumeLayout(false);
             this.lightBits_Page.ResumeLayout(false);
             this.lightBits_Page.PerformLayout();
             this.lightBits2_Page.ResumeLayout(false);
             this.lightBits2_Page.PerformLayout();
             this.lightBits3_Page.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.tabControl2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1178,7 +1203,7 @@
         private System.Windows.Forms.CheckBox NWSFail_check;
         private System.Windows.Forms.CheckBox Hook_check;
         private System.Windows.Forms.CheckBox ECM_check;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl falconDataTabs;
         private System.Windows.Forms.TabPage lightBits_Page;
         private System.Windows.Forms.TabPage lightBits2_Page;
         private System.Windows.Forms.TabPage lightBits3_Page;
@@ -1219,6 +1244,8 @@
         private System.Windows.Forms.CheckBox OXY_LOW_check;
         private System.Windows.Forms.CheckBox SEC_check;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label isntrLights_text;
     }
 }
 

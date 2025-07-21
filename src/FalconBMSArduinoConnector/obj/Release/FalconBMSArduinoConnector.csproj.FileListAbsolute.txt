@@ -21,3 +21,4 @@ D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\R
 D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBM.F562539A.Up2Date
 D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.exe
 D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.pdb
+C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.exe.config

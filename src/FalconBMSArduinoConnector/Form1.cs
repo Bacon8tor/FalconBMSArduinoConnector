@@ -125,6 +125,9 @@ namespace FalconBMSArduinoConnector
                 gearLightFront_check.Checked = falcon.IsLightOn(LightBits3.NoseGearDown);
                 gearLightFront_check.Checked = falcon.IsLightOn(LightBits3.LeftGearDown);
 
+
+                // Show flight data
+               
                 //Show DED data
                 try
                 {
@@ -135,6 +138,8 @@ namespace FalconBMSArduinoConnector
                         DED_Line3_text.Text = data.DEDLines[2].ToUpper();
                         DED_Line4_text.Text = data.DEDLines[3].ToUpper();
                         DED_Line5_text.Text = data.DEDLines[4].ToUpper();
+                        
+                        isntrLights_text.Text = "Instrument Lights: " + data.instrLight.ToString();
                     }
                 }
                 catch (Exception ex)
@@ -154,6 +159,7 @@ namespace FalconBMSArduinoConnector
                 gearLightFront_check.Checked = false;
                 gearLightLeft_check.Checked = false;
                 gearLightRight_check.Checked = false;
+                isntrLights_text.Text = "Instrument Lights: ";
             }
 
         }

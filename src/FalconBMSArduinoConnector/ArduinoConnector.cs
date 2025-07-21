@@ -187,8 +187,37 @@ namespace FalconBMSArduinoConnector
                                     break;
                                 case 0x06:
                                     byte[] fuelFLow = BitConverter.GetBytes(fData.fuelFlow);
-                                    Console.WriteLine($"Fuel flow: {fData.fuelFlow}");
+                                    //Console.WriteLine($"Fuel flow: {fData.fuelFlow}");
                                     SendResponse(0x06, fuelFLow);
+                                    break;
+                                case 0x07:
+                                    byte[] instrLight = BitConverter.GetBytes(fData.instrLight);
+                                    SendResponse(0x07, instrLight);
+                                    break;
+                                case 0x08:
+                                    byte[] mergedPFL = new byte[120];
+                                    for (int i = 0; i < 5; i++)
+                                    {
+                                        byte[] norm = NormalizeLine(fData.PFLLines[i], fData.PFLInvert[i]);
+                                        Array.Copy(norm, 0, mergedPFL, i * 24, 24);
+                                    }
+                                    SendResponse(0x05, mergedPFL);
+                                    break;
+                                case 0x09:
+                                    byte[] chaffCount = BitConverter.GetBytes(fData.ChaffCount);
+                                    SendResponse(0x09, chaffCount);
+                                    break;
+                                case 0x10:
+                                    byte[] flareCount = BitConverter.GetBytes(fData.FlareCount);
+                                    SendResponse(0x10, flareCount);
+                                    break;
+                                case 0x11:
+                                    //byte[] floodConsole = BitConverter.GetBytes(fData.floodConsole); //1-6
+                                    SendResponse(0x11, new byte[] { 0x00 }); //floodConsole);
+                                    break;
+                                case 0x12:
+                                    byte[] rpm = BitConverter.GetBytes(fData.rpm);
+                                    SendResponse(0x12, rpm);
                                     break;
                                 case 0x0F:
                                     SendResponse(0x0F, new byte[] { 0xAB });
@@ -215,6 +244,16 @@ namespace FalconBMSArduinoConnector
                 catch (Exception ex)
                 {
                     Console.WriteLine("Read error: " + ex.Message);
+                    if(ex.Message == "The port is closed.")
+                    {
+                        _continue = false; // stop read loop if port is closed
+                        _isConnected = false;
+                        Console.WriteLine("Port is closed, stopping read loop.");
+                    }
+                    else
+                    {
+                        // Handle other exceptions as needed
+                    }
                     break;
                 }
             }
@@ -291,7 +330,6 @@ namespace FalconBMSArduinoConnector
             
         }
         
-        
         private void SendResponse(byte type, byte[] data)
         {
             List<byte> packet = new List<byte>();
@@ -316,6 +354,7 @@ namespace FalconBMSArduinoConnector
         {
             get { return _isConnected; }
         }
+        
         public void Disconnect()
         {
             if (_serialPort != null && _serialPort.IsOpen)
