@@ -258,25 +258,7 @@ namespace FalconBMSArduinoConnector
                     Console.WriteLine("Unexpected error: " + ex.Message);
                     HandleDisconnection();
                 }
-                //catch (Exception ex)
-                //{
-                //    Console.WriteLine("Read error: " + ex.Message);
-                //    if(ex.Message == "The port is closed.")
-                //    {
-                //        _continue = false; // stop read loop if port is closed
-                //        _isConnected = false;
-                //        Console.WriteLine("Port is closed, stopping read loop.");
-                //    }
-                //    else
-                //    {
-                //        // Handle other exceptions as needed
-                //        _continue = false; // stop read loop if port is closed
-                //        _isConnected = false;
-                //        if (_serialPort.IsOpen)
-                //            _serialPort.Close();
-                //    }
-                //    break;
-                //}
+
             }
         }
 

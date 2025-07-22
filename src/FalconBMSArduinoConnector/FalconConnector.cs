@@ -87,6 +87,7 @@ namespace FalconBMSArduinoConnector
         {
             bool isProcessRunning = Process.GetProcessesByName("Falcon BMS").Length > 0;
             bool isBMSRecorderRunning = Process.GetProcessesByName("F4SharedMemoryRecorder").Length > 0; //You can use F4SharedMemoryRecorder to test lights 
+            bool isRTTRunning = Process.GetProcessesByName("RTTClient64").Length > 0;
             if (isProcessRunning)
             {
                 return "Falcon BMS";
@@ -94,6 +95,10 @@ namespace FalconBMSArduinoConnector
             else if (isBMSRecorderRunning)
             {
                 return "F4SharedMemoryRecorder";
+            }
+            else if (isRTTRunning)
+            {
+                return "RTTClient64";
             }
             else
             {
