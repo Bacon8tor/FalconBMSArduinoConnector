@@ -17,7 +17,13 @@ The application currently supports the following Falcon BMS data outputs:
 - ✅ **All DED Lines**
   - Full support for the 5-line DED (Data Entry Display) content
   - Compatible with external OLEDs or LCDs using Arduino
-
+- ✅ **All PFL Lines**
+  - Full support for the 5-line PFL content
+  - Compatible with external OLEDs or LCDs using Arduino
+- ✅ **Fuel Flow**
+  - Full support for the Fuel Flow
+- ✅ **Chaff / Flare Count**
+  
 ---
 
 ## 🛠 How It Works
@@ -72,13 +78,7 @@ An official Arduino library is available to simplify integration on the microcon
 
 ## 📄 License
 
-This project is open source and distributed under the **MIT License**.
-
----
-
-## 🤝 Contributing
-
-Pull requests and feature suggestions are welcome! Please fork the repo and submit your changes via PR.
+This project is open source and distributed under the **CC**.
 
 ---
 
