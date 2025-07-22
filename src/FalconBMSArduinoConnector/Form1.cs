@@ -1,15 +1,14 @@
-﻿
-using F4SharedMem;
+﻿using F4SharedMem;
 using F4SharedMem.Headers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
-using System.Net.Http.Headers;
+using System.Linq;
 using System.Windows.Forms;
-
-
+using System.IO;
+using System.Xml.Serialization;
 
 namespace FalconBMSArduinoConnector
 {
@@ -18,7 +17,14 @@ namespace FalconBMSArduinoConnector
         FalconConnector falcon = new FalconConnector();
         ArduinoConnector arduino = new ArduinoConnector();
         private Timer falconCheckTimer;
-        
+        List<ArduinoConnector> arduinoConnections = new List<ArduinoConnector>();
+
+        private const string SaveFile = "arduino_tabs.xml";
+
+        public class ArduinoTabInfo
+        {
+            public string PortName { get; set; }
+        }
 
         public FalconBMSArduinoConnector()
         {
@@ -27,18 +33,44 @@ namespace FalconBMSArduinoConnector
 
         private void Form1_Load(object sender, EventArgs e)
         {
+//            this.FormBorderStyle = FormBorderStyle.None;
+            this.BackColor = Color.FromArgb(30, 30, 30);  // Dark theme
 
-            //falcon.isFalconRunning();
             CheckFalconStatus();
 
-            serialPort_combo.DataSource = SerialPort.GetPortNames();
-
+            LoadArduinoTabs();
 
             falconCheckTimer = new Timer();
             falconCheckTimer.Interval = 50;
             falconCheckTimer.Tick += (s, args) => CheckFalconStatus();
             falconCheckTimer.Start();
+        }
 
+        private void LoadArduinoTabs()
+        {
+            if (File.Exists(SaveFile))
+            {
+                try
+                {
+                    var serializer = new XmlSerializer(typeof(List<ArduinoTabInfo>));
+                    using (var stream = File.OpenRead(SaveFile))
+                    {
+                        var tabs = (List<ArduinoTabInfo>)serializer.Deserialize(stream);
+                        foreach (var tab in tabs)
+                        {
+                            AddArduinoConnectionTab(tab.PortName);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to load saved tabs: {ex.Message}");
+                }
+            }
+            else
+            {
+                AddArduinoConnectionTab(); // add at least one default tab
+            }
         }
 
         private void CheckFalconStatus()
@@ -48,7 +80,7 @@ namespace FalconBMSArduinoConnector
             {
 
                 falconRunning.Checked = falcon.isFalconRunning();
-                falconRunning.Text = "Falcon is Running";
+                falconRunning.Text = falcon.GetFalconProcessName();
                 falconBuild_text.Text = "v." + falcon.GetFalconVersion();
 
                 var data = falcon.GetFlightData();
@@ -85,7 +117,7 @@ namespace FalconBMSArduinoConnector
                 CabinPress_check.Checked = falcon.IsLightOn(LightBits.CabinPress);
                 AutoPilotOn_check.Checked = falcon.IsLightOn(LightBits.AutoPilotOn);
                 TFR_STBY_check.Checked = falcon.IsLightOn(LightBits.TFR_STBY);
-                
+
 
                 //LightBits2
                 HandOff_check.Checked = falcon.IsLightOn(LightBits2.HandOff);
@@ -127,7 +159,7 @@ namespace FalconBMSArduinoConnector
 
 
                 // Show flight data
-               
+
                 //Show DED data
                 try
                 {
@@ -138,7 +170,7 @@ namespace FalconBMSArduinoConnector
                         DED_Line3_text.Text = data.DEDLines[2].ToUpper();
                         DED_Line4_text.Text = data.DEDLines[3].ToUpper();
                         DED_Line5_text.Text = data.DEDLines[4].ToUpper();
-                        
+
                         isntrLights_text.Text = "Instrument Lights: " + data.instrLight.ToString();
                     }
                 }
@@ -163,53 +195,133 @@ namespace FalconBMSArduinoConnector
             }
 
         }
-
-        private void update_comports(object sender, EventArgs e)
+        private void SaveArduinoTabs()
         {
-            serialPort_combo.DataSource = SerialPort.GetPortNames();
-        }
+            var data = new List<ArduinoTabInfo>();
 
-        private void connectToSerial(object sender, EventArgs e)
-        {
-            var portName = serialPort_combo.Text;
-            if (!arduino.IsConnected)
+            foreach (TabPage page in tabControl_Arduinos.TabPages)
             {
-                if (arduino.ConnectSerial(portName))
+                var combo = page.Controls.OfType<ComboBox>().FirstOrDefault();
+                if (combo != null)
                 {
-                    serialConnect_button.Text = "Disconnect";
-                }
-                else { 
-                    Console.WriteLine("Failed to connect to " + portName); 
+                    data.Add(new ArduinoTabInfo { PortName = combo.Text });
                 }
             }
-            else
-            {
-                arduino.Disconnect();
-                if (arduino.IsConnected)
-                {
-                    Console.WriteLine("Failed to disconnect from " + portName);
 
-                    return;
+            try
+            {
+                var serializer = new XmlSerializer(typeof(List<ArduinoTabInfo>));
+                using (var stream = File.Create(SaveFile))
+                {
+                    serializer.Serialize(stream, data);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to save tabs: {ex.Message}");
+            }
+        }
+
+        private void AddArduinoConnectionTab(string selectedPort = null)
+        {
+            var connector = new ArduinoConnector();
+            arduinoConnections.Add(connector);
+
+            var tabPage = new TabPage($"Arduino {arduinoConnections.Count}");
+
+            var comboBox = new ComboBox() { Left = 10, Top = 10, Width = 100 };
+            var button = new Button() { Text = "Connect", Left = 120, Top = 10 };
+            var removeButton = new Button() { Text = "Remove", Left = 200, Top = 90 };
+            button.FlatStyle = FlatStyle.Flat;
+            removeButton.FlatStyle = FlatStyle.Flat;
+
+            comboBox.DataSource = SerialPort.GetPortNames();
+            if (!string.IsNullOrEmpty(selectedPort) && comboBox.Items.Contains(selectedPort))
+                comboBox.SelectedItem = selectedPort;
+
+            comboBox.DropDown += (s, e) =>
+            {
+                string currentSelection = comboBox.Text;
+                var ports = SerialPort.GetPortNames();
+                comboBox.DataSource = null;
+                comboBox.DataSource = ports;
+
+                if (ports.Contains(currentSelection))
+                    comboBox.SelectedItem = currentSelection;
+            };
+
+            button.Click += (s, args) =>
+            {
+                if (!connector.IsConnected)
+                {
+                    if (connector.ConnectSerial(comboBox.Text))
+                    {
+                        button.Text = "Disconnect";
+                        Console.WriteLine($"Connected to {comboBox.Text}");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to connect: " + comboBox.Text );
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Disconnected from " + portName);
-                    serialConnect_button.Text = "Connect";
+                    connector.Disconnect();
+                    button.Text = "Connect";
+                    Console.WriteLine($"Disconnected from {comboBox.Text}");
                 }
-            }
-            return;
+            };
+
+            removeButton.Click += (s, args) =>
+            {
+                if (connector.IsConnected)
+                {
+                    connector.Disconnect();
+                    Console.WriteLine("Disconnected before removal.");
+                }
+
+                int index = tabControl_Arduinos.TabPages.IndexOf(tabPage);
+                if (index >= 0 && index < arduinoConnections.Count)
+                {
+                    arduinoConnections.RemoveAt(index);
+                }
+
+                tabControl_Arduinos.TabPages.Remove(tabPage);
+                SaveArduinoTabs();
+            };
+            connector.OnDataReceived += (s, msg) =>
+            {
+                if (msg == "Disconnected")
+                {
+                    Invoke((Action)(() => {
+                        button.Text = "Connect";
+                        button.Enabled = true;
+                    }));
+                }
+            };
+
+
+            tabPage.Controls.Add(comboBox);
+            tabPage.Controls.Add(button);
+            tabPage.Controls.Add(removeButton);
+
+            tabControl_Arduinos.TabPages.Add(tabPage);
+        }
+
+        private void addArduinoButton_Click(object sender, EventArgs e)
+        {
+            AddArduinoConnectionTab();
+            SaveArduinoTabs();
         }
 
         private void Form_Closing(object sender, FormClosingEventArgs e)
         {
-            arduino.Disconnect();
-            if (arduino.IsConnected) {
-                Console.WriteLine("Failed to disconnect from " + serialPort_combo.Text);
-            }
-            else
+            foreach (var connector in arduinoConnections)
             {
-                Console.WriteLine("Disconnected from " + serialPort_combo.Text);
+                connector.Disconnect();
             }
+            Console.WriteLine("All Arduino connections closed.");
+            SaveArduinoTabs();
         }
     }
 }

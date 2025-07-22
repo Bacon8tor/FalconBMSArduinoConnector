@@ -1,13 +1,14 @@
-﻿using System;
+﻿using F4SharedMem;
+using F4SharedMem.Headers;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using F4SharedMem;
-using F4SharedMem.Headers;
 
 namespace FalconBMSArduinoConnector
 {
@@ -28,7 +29,7 @@ namespace FalconBMSArduinoConnector
         private Reader bmsReader = new Reader();
         // Optional: connect logic (if needed later)
         private SerialPort _serialPort;
-        static bool _continue;
+        private volatile bool _continue;
         private Thread readThread = null;
         private bool _isConnected = false;
         public bool ConnectSerial(String name)
@@ -79,7 +80,7 @@ namespace FalconBMSArduinoConnector
                 // Wait for response (0x5A) with manual timeout
                 int response = -1;
                 int timeoutMs = 1000;
-                int waitInterval = 10;
+                int waitInterval = 100;
                 int waited = 0;
 
                 while (waited < timeoutMs)
@@ -140,6 +141,7 @@ namespace FalconBMSArduinoConnector
                 {
                     
                     var fData = bmsReader.GetCurrentData();
+                    flightData = fData; // Store the flight data for later use
                     if (_serialPort.BytesToRead > 0 && _serialPort.BytesToRead < 2)
                     {
                         int incoming = _serialPort.ReadByte(); // Read one byte
@@ -241,22 +243,56 @@ namespace FalconBMSArduinoConnector
                         Thread.Sleep(10); // reduce CPU usage
                     }
                 }
+                catch (IOException ioEx)
+                {
+                    Console.WriteLine("Serial IO error: " + ioEx.Message);
+                    HandleDisconnection();
+                }
+                catch (InvalidOperationException opEx)
+                {
+                    Console.WriteLine("Serial operation error: " + opEx.Message);
+                    HandleDisconnection();
+                }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Read error: " + ex.Message);
-                    if(ex.Message == "The port is closed.")
-                    {
-                        _continue = false; // stop read loop if port is closed
-                        _isConnected = false;
-                        Console.WriteLine("Port is closed, stopping read loop.");
-                    }
-                    else
-                    {
-                        // Handle other exceptions as needed
-                    }
-                    break;
+                    Console.WriteLine("Unexpected error: " + ex.Message);
+                    HandleDisconnection();
                 }
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine("Read error: " + ex.Message);
+                //    if(ex.Message == "The port is closed.")
+                //    {
+                //        _continue = false; // stop read loop if port is closed
+                //        _isConnected = false;
+                //        Console.WriteLine("Port is closed, stopping read loop.");
+                //    }
+                //    else
+                //    {
+                //        // Handle other exceptions as needed
+                //        _continue = false; // stop read loop if port is closed
+                //        _isConnected = false;
+                //        if (_serialPort.IsOpen)
+                //            _serialPort.Close();
+                //    }
+                //    break;
+                //}
             }
+        }
+
+        private void HandleDisconnection()
+        {
+            _continue = false;
+            _isConnected = false;
+
+            try
+            {
+                if (_serialPort != null && _serialPort.IsOpen)
+                    _serialPort.Close();
+            }
+            catch { }
+
+            OnDataReceived?.Invoke(this, "Disconnected");  // UI can listen and toggle button
         }
 
         //Copied FROM DEDUINO Project , was good example of how to send DED accounting for Inverese.  https://github.com/uriba107/deduino_connector

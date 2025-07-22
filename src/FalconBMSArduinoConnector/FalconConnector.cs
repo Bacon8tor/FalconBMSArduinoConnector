@@ -72,7 +72,7 @@ namespace FalconBMSArduinoConnector
 
                 FlightData data = _reader.GetCurrentData();
                 if(data == null) { return ""; }
-                return data.BMSVersionMajor + "." + data.BMSVersionMinor + "." + data.BMSBuildNumber;
+                return data.BMSVersionMajor + "." + data.BMSVersionMinor + "." + data.BMSVersionMicro + "." + data.BMSBuildNumber;
             }
             catch (Exception ex)
             {
@@ -81,6 +81,24 @@ namespace FalconBMSArduinoConnector
             }
             
             
+        }
+
+        public string GetFalconProcessName()
+        {
+            bool isProcessRunning = Process.GetProcessesByName("Falcon BMS").Length > 0;
+            bool isBMSRecorderRunning = Process.GetProcessesByName("F4SharedMemoryRecorder").Length > 0; //You can use F4SharedMemoryRecorder to test lights 
+            if (isProcessRunning)
+            {
+                return "Falcon BMS";
+            }
+            else if (isBMSRecorderRunning)
+            {
+                return "F4SharedMemoryRecorder";
+            }
+            else
+            {
+                return "N/A";
+            }
         }
 
         public FlyStates GetFalconState()

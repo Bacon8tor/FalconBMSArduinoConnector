@@ -36,9 +36,6 @@
             this.gearLightLeft_check = new System.Windows.Forms.CheckBox();
             this.gearLightFront_check = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.serialConnect_button = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.serialPort_combo = new System.Windows.Forms.ComboBox();
             this.falconBuild_text = new System.Windows.Forms.Label();
             this.refuelDSC_check = new System.Windows.Forms.CheckBox();
             this.refuelAR_check = new System.Windows.Forms.CheckBox();
@@ -113,29 +110,30 @@
             this.Launch_check = new System.Windows.Forms.CheckBox();
             this.HandOff_check = new System.Windows.Forms.CheckBox();
             this.lightBits3_Page = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.flightData_Page = new System.Windows.Forms.TabPage();
             this.isntrLights_text = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.add_arduino_button = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
+            this.tabControl_Arduinos = new System.Windows.Forms.TabControl();
             this.panel1.SuspendLayout();
             this.DED_Panel.SuspendLayout();
             this.falconDataTabs.SuspendLayout();
             this.lightBits_Page.SuspendLayout();
             this.lightBits2_Page.SuspendLayout();
             this.lightBits3_Page.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.flightData_Page.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // falconRunning
             // 
             this.falconRunning.AutoSize = true;
+            this.falconRunning.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.falconRunning.Location = new System.Drawing.Point(6, 6);
             this.falconRunning.Name = "falconRunning";
             this.falconRunning.Size = new System.Drawing.Size(131, 17);
@@ -200,37 +198,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Gear";
             // 
-            // serialConnect_button
-            // 
-            this.serialConnect_button.Location = new System.Drawing.Point(16, 141);
-            this.serialConnect_button.Name = "serialConnect_button";
-            this.serialConnect_button.Size = new System.Drawing.Size(75, 23);
-            this.serialConnect_button.TabIndex = 4;
-            this.serialConnect_button.Text = "connect";
-            this.serialConnect_button.UseVisualStyleBackColor = true;
-            this.serialConnect_button.Click += new System.EventHandler(this.connectToSerial);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 97);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 13);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Arduino Connection";
-            // 
-            // serialPort_combo
-            // 
-            this.serialPort_combo.FormattingEnabled = true;
-            this.serialPort_combo.Location = new System.Drawing.Point(16, 113);
-            this.serialPort_combo.Name = "serialPort_combo";
-            this.serialPort_combo.Size = new System.Drawing.Size(121, 21);
-            this.serialPort_combo.TabIndex = 2;
-            this.serialPort_combo.DropDown += new System.EventHandler(this.update_comports);
-            // 
             // falconBuild_text
             // 
             this.falconBuild_text.AutoSize = true;
+            this.falconBuild_text.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.falconBuild_text.Location = new System.Drawing.Point(26, 26);
             this.falconBuild_text.Name = "falconBuild_text";
             this.falconBuild_text.Size = new System.Drawing.Size(16, 13);
@@ -409,7 +380,6 @@
             // 
             // DED_Panel
             // 
-            this.DED_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DED_Panel.BackColor = System.Drawing.SystemColors.InfoText;
             this.DED_Panel.Controls.Add(this.DED_Line5_text);
             this.DED_Panel.Controls.Add(this.DED_Line4_text);
@@ -417,9 +387,9 @@
             this.DED_Panel.Controls.Add(this.DED_Line2_text);
             this.DED_Panel.Controls.Add(this.DED_Line1_text);
             this.DED_Panel.ForeColor = System.Drawing.Color.Lime;
-            this.DED_Panel.Location = new System.Drawing.Point(448, 247);
+            this.DED_Panel.Location = new System.Drawing.Point(429, 311);
             this.DED_Panel.Name = "DED_Panel";
-            this.DED_Panel.Size = new System.Drawing.Size(285, 125);
+            this.DED_Panel.Size = new System.Drawing.Size(294, 125);
             this.DED_Panel.TabIndex = 8;
             // 
             // DED_Line5_text
@@ -614,21 +584,21 @@
             // 
             // falconDataTabs
             // 
-            this.falconDataTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.falconDataTabs.Controls.Add(this.lightBits_Page);
             this.falconDataTabs.Controls.Add(this.lightBits2_Page);
             this.falconDataTabs.Controls.Add(this.lightBits3_Page);
-            this.falconDataTabs.Controls.Add(this.tabPage3);
-            this.falconDataTabs.Location = new System.Drawing.Point(12, 12);
+            this.falconDataTabs.Controls.Add(this.flightData_Page);
+            this.falconDataTabs.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.falconDataTabs.Dock = System.Windows.Forms.DockStyle.Left;
+            this.falconDataTabs.Location = new System.Drawing.Point(0, 0);
             this.falconDataTabs.Name = "falconDataTabs";
             this.falconDataTabs.SelectedIndex = 0;
-            this.falconDataTabs.Size = new System.Drawing.Size(413, 367);
+            this.falconDataTabs.Size = new System.Drawing.Size(425, 484);
             this.falconDataTabs.TabIndex = 9;
             // 
             // lightBits_Page
             // 
+            this.lightBits_Page.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.lightBits_Page.Controls.Add(this.TFR_STBY_check);
             this.lightBits_Page.Controls.Add(this.AutoPilotOn_check);
             this.lightBits_Page.Controls.Add(this.CabinPress_check);
@@ -664,13 +634,13 @@
             this.lightBits_Page.Location = new System.Drawing.Point(4, 22);
             this.lightBits_Page.Name = "lightBits_Page";
             this.lightBits_Page.Padding = new System.Windows.Forms.Padding(3);
-            this.lightBits_Page.Size = new System.Drawing.Size(405, 341);
+            this.lightBits_Page.Size = new System.Drawing.Size(417, 458);
             this.lightBits_Page.TabIndex = 0;
             this.lightBits_Page.Text = "LightBits";
-            this.lightBits_Page.UseVisualStyleBackColor = true;
             // 
             // lightBits2_Page
             // 
+            this.lightBits2_Page.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.lightBits2_Page.Controls.Add(this.ENGINE_check);
             this.lightBits2_Page.Controls.Add(this.GEARHANDLE_check);
             this.lightBits2_Page.Controls.Add(this.TFR_ENGAGED_check);
@@ -706,10 +676,9 @@
             this.lightBits2_Page.Location = new System.Drawing.Point(4, 22);
             this.lightBits2_Page.Name = "lightBits2_Page";
             this.lightBits2_Page.Padding = new System.Windows.Forms.Padding(3);
-            this.lightBits2_Page.Size = new System.Drawing.Size(405, 341);
+            this.lightBits2_Page.Size = new System.Drawing.Size(453, 450);
             this.lightBits2_Page.TabIndex = 1;
             this.lightBits2_Page.Text = "LightBits2";
-            this.lightBits2_Page.UseVisualStyleBackColor = true;
             // 
             // ENGINE_check
             // 
@@ -1033,23 +1002,23 @@
             // 
             // lightBits3_Page
             // 
+            this.lightBits3_Page.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.lightBits3_Page.Controls.Add(this.panel1);
             this.lightBits3_Page.Location = new System.Drawing.Point(4, 22);
             this.lightBits3_Page.Name = "lightBits3_Page";
-            this.lightBits3_Page.Size = new System.Drawing.Size(405, 341);
+            this.lightBits3_Page.Size = new System.Drawing.Size(453, 450);
             this.lightBits3_Page.TabIndex = 2;
             this.lightBits3_Page.Text = "LightBits3";
-            this.lightBits3_Page.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // flightData_Page
             // 
-            this.tabPage3.Controls.Add(this.isntrLights_text);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(405, 341);
-            this.tabPage3.TabIndex = 3;
-            this.tabPage3.Text = "Flight Data";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.flightData_Page.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.flightData_Page.Controls.Add(this.isntrLights_text);
+            this.flightData_Page.Location = new System.Drawing.Point(4, 22);
+            this.flightData_Page.Name = "flightData_Page";
+            this.flightData_Page.Size = new System.Drawing.Size(453, 450);
+            this.flightData_Page.TabIndex = 3;
+            this.flightData_Page.Text = "Flight Data";
             // 
             // isntrLights_text
             // 
@@ -1062,66 +1031,78 @@
             // 
             // tabControl2
             // 
-            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl2.Controls.Add(this.tabPage1);
             this.tabControl2.Controls.Add(this.tabPage2);
-            this.tabControl2.Location = new System.Drawing.Point(448, 34);
+            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabControl2.Location = new System.Drawing.Point(425, 0);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(283, 207);
+            this.tabControl2.Size = new System.Drawing.Size(302, 161);
             this.tabControl2.TabIndex = 4;
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.tabPage1.Controls.Add(this.add_arduino_button);
             this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Controls.Add(this.falconRunning);
-            this.tabPage1.Controls.Add(this.serialConnect_button);
             this.tabPage1.Controls.Add(this.falconBuild_text);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.serialPort_combo);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(275, 181);
+            this.tabPage1.Size = new System.Drawing.Size(294, 135);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main Page";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // add_arduino_button
+            // 
+            this.add_arduino_button.BackColor = System.Drawing.Color.CadetBlue;
+            this.add_arduino_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.add_arduino_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.add_arduino_button.Location = new System.Drawing.Point(26, 106);
+            this.add_arduino_button.Name = "add_arduino_button";
+            this.add_arduino_button.Size = new System.Drawing.Size(75, 23);
+            this.add_arduino_button.TabIndex = 6;
+            this.add_arduino_button.Text = "Add Arduino";
+            this.add_arduino_button.UseVisualStyleBackColor = false;
+            this.add_arduino_button.Click += new System.EventHandler(this.addArduinoButton_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::FalconBMSArduinoConnector.Properties.Resources.FBAC;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(169, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(187, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 104);
+            this.pictureBox1.Size = new System.Drawing.Size(82, 87);
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(275, 181);
+            this.tabPage2.Size = new System.Drawing.Size(275, 135);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Info";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // tabControl_Arduinos
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(255, 78);
-            this.label2.TabIndex = 0;
-            this.label2.Text = resources.GetString("label2.Text");
+            this.tabControl_Arduinos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabControl_Arduinos.Location = new System.Drawing.Point(425, 161);
+            this.tabControl_Arduinos.Name = "tabControl_Arduinos";
+            this.tabControl_Arduinos.SelectedIndex = 0;
+            this.tabControl_Arduinos.Size = new System.Drawing.Size(302, 144);
+            this.tabControl_Arduinos.TabIndex = 6;
             // 
             // FalconBMSArduinoConnector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 381);
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.ClientSize = new System.Drawing.Size(727, 484);
+            this.Controls.Add(this.tabControl_Arduinos);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.falconDataTabs);
             this.Controls.Add(this.DED_Panel);
@@ -1141,14 +1122,12 @@
             this.lightBits2_Page.ResumeLayout(false);
             this.lightBits2_Page.PerformLayout();
             this.lightBits3_Page.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            this.flightData_Page.ResumeLayout(false);
+            this.flightData_Page.PerformLayout();
             this.tabControl2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1164,9 +1143,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label falconBuild_text;
         private System.Windows.Forms.CheckBox tf_check;
-        private System.Windows.Forms.Button serialConnect_button;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox serialPort_combo;
         private System.Windows.Forms.Panel DED_Panel;
         private System.Windows.Forms.Label DED_Line4_text;
         private System.Windows.Forms.Label DED_Line3_text;
@@ -1210,7 +1186,6 @@
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox FlareLo_check;
         private System.Windows.Forms.CheckBox ChaffLo_check;
         private System.Windows.Forms.CheckBox Rdy_check;
@@ -1244,8 +1219,10 @@
         private System.Windows.Forms.CheckBox OXY_LOW_check;
         private System.Windows.Forms.CheckBox SEC_check;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage flightData_Page;
         private System.Windows.Forms.Label isntrLights_text;
+        private System.Windows.Forms.TabControl tabControl_Arduinos;
+        private System.Windows.Forms.Button add_arduino_button;
     }
 }
 
