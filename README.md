@@ -87,7 +87,7 @@ This project is open source and distributed under the **CC**.
 For support, ideas, or collaboration:
 
 - GitHub Issues: [Submit here](https://github.com/Bacon8tor/FalconBMSArduinoConnector/issues)
-- Email: [your-email@example.com]
+- [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/bacon8tor)
 
 ---
 
