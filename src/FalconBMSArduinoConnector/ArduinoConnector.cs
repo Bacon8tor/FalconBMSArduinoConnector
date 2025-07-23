@@ -224,7 +224,7 @@ namespace FalconBMSArduinoConnector
                                 case 0x0F:
                                     SendResponse(0x0F, new byte[] { 0xAB });
                                     break;
-                                case 0xA5:
+                                case 0x5A:
                                     SendResponse(0xA5, new byte[] { 0x5A });
                                     break;
                                     
