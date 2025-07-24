@@ -118,6 +118,18 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl_Arduinos = new System.Windows.Forms.TabControl();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ecmBits_1_text = new System.Windows.Forms.Label();
+            this.ecmBits_2_text = new System.Windows.Forms.Label();
+            this.ecmStatus_text = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.ecmBits_3_text = new System.Windows.Forms.Label();
+            this.ecmBits_4_text = new System.Windows.Forms.Label();
+            this.ecmBits_5_text = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.DED_Panel.SuspendLayout();
             this.falconDataTabs.SuspendLayout();
@@ -676,7 +688,7 @@
             this.lightBits2_Page.Location = new System.Drawing.Point(4, 22);
             this.lightBits2_Page.Name = "lightBits2_Page";
             this.lightBits2_Page.Padding = new System.Windows.Forms.Padding(3);
-            this.lightBits2_Page.Size = new System.Drawing.Size(453, 450);
+            this.lightBits2_Page.Size = new System.Drawing.Size(417, 458);
             this.lightBits2_Page.TabIndex = 1;
             this.lightBits2_Page.Text = "LightBits2";
             // 
@@ -1006,17 +1018,29 @@
             this.lightBits3_Page.Controls.Add(this.panel1);
             this.lightBits3_Page.Location = new System.Drawing.Point(4, 22);
             this.lightBits3_Page.Name = "lightBits3_Page";
-            this.lightBits3_Page.Size = new System.Drawing.Size(453, 450);
+            this.lightBits3_Page.Size = new System.Drawing.Size(417, 458);
             this.lightBits3_Page.TabIndex = 2;
             this.lightBits3_Page.Text = "LightBits3";
             // 
             // flightData_Page
             // 
             this.flightData_Page.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.flightData_Page.Controls.Add(this.ecmBits_5_text);
+            this.flightData_Page.Controls.Add(this.ecmBits_4_text);
+            this.flightData_Page.Controls.Add(this.ecmBits_3_text);
+            this.flightData_Page.Controls.Add(this.label7);
+            this.flightData_Page.Controls.Add(this.label6);
+            this.flightData_Page.Controls.Add(this.label5);
+            this.flightData_Page.Controls.Add(this.label4);
+            this.flightData_Page.Controls.Add(this.label3);
+            this.flightData_Page.Controls.Add(this.ecmStatus_text);
+            this.flightData_Page.Controls.Add(this.ecmBits_2_text);
+            this.flightData_Page.Controls.Add(this.ecmBits_1_text);
+            this.flightData_Page.Controls.Add(this.label2);
             this.flightData_Page.Controls.Add(this.isntrLights_text);
             this.flightData_Page.Location = new System.Drawing.Point(4, 22);
             this.flightData_Page.Name = "flightData_Page";
-            this.flightData_Page.Size = new System.Drawing.Size(453, 450);
+            this.flightData_Page.Size = new System.Drawing.Size(417, 458);
             this.flightData_Page.TabIndex = 3;
             this.flightData_Page.Text = "Flight Data";
             // 
@@ -1082,7 +1106,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(275, 135);
+            this.tabPage2.Size = new System.Drawing.Size(294, 135);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Info";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1095,6 +1119,114 @@
             this.tabControl_Arduinos.SelectedIndex = 0;
             this.tabControl_Arduinos.Size = new System.Drawing.Size(302, 144);
             this.tabControl_Arduinos.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(20, 70);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "ECM Bits";
+            // 
+            // ecmBits_1_text
+            // 
+            this.ecmBits_1_text.AutoSize = true;
+            this.ecmBits_1_text.Location = new System.Drawing.Point(53, 97);
+            this.ecmBits_1_text.Name = "ecmBits_1_text";
+            this.ecmBits_1_text.Size = new System.Drawing.Size(56, 13);
+            this.ecmBits_1_text.TabIndex = 2;
+            this.ecmBits_1_text.Text = "ECMBits 1";
+            // 
+            // ecmBits_2_text
+            // 
+            this.ecmBits_2_text.AutoSize = true;
+            this.ecmBits_2_text.Location = new System.Drawing.Point(53, 122);
+            this.ecmBits_2_text.Name = "ecmBits_2_text";
+            this.ecmBits_2_text.Size = new System.Drawing.Size(56, 13);
+            this.ecmBits_2_text.TabIndex = 3;
+            this.ecmBits_2_text.Text = "ECMBits 2";
+            // 
+            // ecmStatus_text
+            // 
+            this.ecmStatus_text.AutoSize = true;
+            this.ecmStatus_text.Location = new System.Drawing.Point(76, 70);
+            this.ecmStatus_text.Name = "ecmStatus_text";
+            this.ecmStatus_text.Size = new System.Drawing.Size(37, 13);
+            this.ecmStatus_text.TabIndex = 4;
+            this.ecmStatus_text.Text = "Status";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 97);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "ECM 1";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 122);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "ECM 2";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 149);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "ECM 3";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 174);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "ECM 4";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 199);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(39, 13);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "ECM 5";
+            // 
+            // ecmBits_3_text
+            // 
+            this.ecmBits_3_text.AutoSize = true;
+            this.ecmBits_3_text.Location = new System.Drawing.Point(53, 149);
+            this.ecmBits_3_text.Name = "ecmBits_3_text";
+            this.ecmBits_3_text.Size = new System.Drawing.Size(56, 13);
+            this.ecmBits_3_text.TabIndex = 10;
+            this.ecmBits_3_text.Text = "ECMBits 3";
+            // 
+            // ecmBits_4_text
+            // 
+            this.ecmBits_4_text.AutoSize = true;
+            this.ecmBits_4_text.Location = new System.Drawing.Point(53, 174);
+            this.ecmBits_4_text.Name = "ecmBits_4_text";
+            this.ecmBits_4_text.Size = new System.Drawing.Size(56, 13);
+            this.ecmBits_4_text.TabIndex = 11;
+            this.ecmBits_4_text.Text = "ECMBits 4";
+            // 
+            // ecmBits_5_text
+            // 
+            this.ecmBits_5_text.AutoSize = true;
+            this.ecmBits_5_text.Location = new System.Drawing.Point(53, 199);
+            this.ecmBits_5_text.Name = "ecmBits_5_text";
+            this.ecmBits_5_text.Size = new System.Drawing.Size(56, 13);
+            this.ecmBits_5_text.TabIndex = 12;
+            this.ecmBits_5_text.Text = "ECMBits 5";
             // 
             // FalconBMSArduinoConnector
             // 
@@ -1223,6 +1355,18 @@
         private System.Windows.Forms.Label isntrLights_text;
         private System.Windows.Forms.TabControl tabControl_Arduinos;
         private System.Windows.Forms.Button add_arduino_button;
+        private System.Windows.Forms.Label ecmBits_2_text;
+        private System.Windows.Forms.Label ecmBits_1_text;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label ecmStatus_text;
+        private System.Windows.Forms.Label ecmBits_5_text;
+        private System.Windows.Forms.Label ecmBits_4_text;
+        private System.Windows.Forms.Label ecmBits_3_text;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
     }
 }
 

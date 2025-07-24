@@ -221,6 +221,20 @@ namespace FalconBMSArduinoConnector
                                     byte[] rpm = BitConverter.GetBytes(fData.rpm);
                                     SendResponse(0x12, rpm);
                                     break;
+                                case 0x13:
+                                    uint[] eBits = fData.ecmBits;
+
+                                    // Convert the entire uint[] into a byte[] (4 bytes per uint)
+                                    byte[] ecmBitsBytes = new byte[eBits.Length * sizeof(uint)];
+
+                                    for (int i = 0; i < eBits.Length; i++)
+                                    {
+                                        byte[] bytes = BitConverter.GetBytes(eBits[i]);
+                                        Array.Copy(bytes, 0, ecmBitsBytes, i * 4, 4);
+                                    }
+                                    // Send all the ecmBits at once
+                                    SendResponse(0x13, ecmBitsBytes);
+                                    break;
                                 case 0x0F:
                                     SendResponse(0x0F, new byte[] { 0xAB });
                                     break;

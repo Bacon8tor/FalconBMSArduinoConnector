@@ -160,6 +160,29 @@ namespace FalconBMSArduinoConnector
 
                 // Show flight data
 
+                uint eb0 = data.ecmBits[0];
+                EcmBits flag0 = (EcmBits)eb0;
+                ecmBits_1_text.Text = flag0.ToString();
+
+                uint eb1 = data.ecmBits[1];
+                EcmBits flag1 = (EcmBits)eb1;
+                ecmBits_2_text.Text = flag1.ToString();
+                
+                uint eb2 = data.ecmBits[2];
+                EcmBits flag2 = (EcmBits)eb2;
+                ecmBits_3_text.Text = flag2.ToString();
+
+                uint eb3 = data.ecmBits[3];
+                EcmBits flag3 = (EcmBits)eb3;
+                ecmBits_4_text.Text = flag3.ToString();
+
+                uint eb4 = data.ecmBits[4];
+                EcmBits flag4 = (EcmBits)eb4;
+                ecmBits_5_text.Text = flag4.ToString();
+
+               
+                 ecmStatus_text.Text = data.ecmOper.ToString();
+
                 //Show DED data
                 try
                 {
