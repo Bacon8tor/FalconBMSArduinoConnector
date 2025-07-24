@@ -235,6 +235,58 @@ namespace FalconBMSArduinoConnector
                                     // Send all the ecmBits at once
                                     SendResponse(0x13, ecmBitsBytes);
                                     break;
+                                case 0x14:
+                                    byte[] oilPress = BitConverter.GetBytes(fData.oilPressure);
+                                    SendResponse(0x14, oilPress);
+                                    break;
+                                case 0x15:
+                                    byte[] oilPress2 = BitConverter.GetBytes(fData.oilPressure2);
+                                    SendResponse(0x15, oilPress2);
+                                    break;
+                                case 0x16:
+                                    byte[] nozzlePos = BitConverter.GetBytes(fData.nozzlePos);
+                                    SendResponse(0x16, nozzlePos);
+                                    break;
+                                case 0x17:
+                                    byte[] nozzlePos2 = BitConverter.GetBytes(fData.nozzlePos2);
+                                    SendResponse(0x17, nozzlePos2);
+                                    break;
+                                case 0x18:
+                                    byte[] ftit = BitConverter.GetBytes(fData.ftit);
+                                    SendResponse(0x18, ftit);
+                                    break;
+                                case 0x19:
+                                    byte[] ftit2 = BitConverter.GetBytes(fData.ftit2);
+                                    SendResponse(0x19, ftit2);
+                                    break;
+                                case 0x20:
+                                    byte[] cabinAlt = BitConverter.GetBytes(fData.cabinAlt);
+                                    SendResponse(0x20, cabinAlt);
+                                    break;
+                                case 0x21:
+                                    byte[] kias = BitConverter.GetBytes(fData.kias);
+                                    SendResponse(0x21, kias);
+                                    break;
+                                case 0x22:
+                                    byte[] internalFuel = BitConverter.GetBytes(fData.internalFuel);
+                                    SendResponse(0x22, internalFuel);
+                                    break;
+                                case 0x23:
+                                    byte[] externalFuel = BitConverter.GetBytes(fData.externalFuel);
+                                    SendResponse(0x23, externalFuel);
+                                    break;
+                                case 0x24:
+                                    byte[] epuFuel = BitConverter.GetBytes(fData.epuFuel);
+                                    SendResponse(0x24, epuFuel);
+                                    break;
+                                case 0x25:
+                                    byte[] hydPressA = BitConverter.GetBytes(fData.hydPressureA);
+                                    SendResponse(0x25, hydPressA);
+                                    break;
+                                case 0x26:
+                                    byte[] hydPressB = BitConverter.GetBytes(fData.hydPressureB);
+                                    SendResponse(0x26, hydPressB);
+                                    break;
                                 case 0x0F:
                                     SendResponse(0x0F, new byte[] { 0xAB });
                                     break;
