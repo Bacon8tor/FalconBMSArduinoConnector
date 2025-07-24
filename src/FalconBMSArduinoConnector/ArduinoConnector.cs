@@ -287,6 +287,10 @@ namespace FalconBMSArduinoConnector
                                     byte[] hydPressB = BitConverter.GetBytes(fData.hydPressureB);
                                     SendResponse(0x26, hydPressB);
                                     break;
+                                case 0x27:
+                                    byte[] cmdsMode = BitConverter.GetBytes(fData.cmdsMode);
+                                    SendResponse(0x27, cmdsMode);
+                                    break;
                                 case 0x0F:
                                     SendResponse(0x0F, new byte[] { 0xAB });
                                     break;
