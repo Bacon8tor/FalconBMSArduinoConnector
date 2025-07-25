@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <ArrayOfArduinoTabInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArduinoTabInfo>
-    <PortName>COM15</PortName>
-  </ArduinoTabInfo>
-  <ArduinoTabInfo>
-    <PortName>COM1</PortName>
+    <PortName>COM14</PortName>
   </ArduinoTabInfo>
 </ArrayOfArduinoTabInfo>

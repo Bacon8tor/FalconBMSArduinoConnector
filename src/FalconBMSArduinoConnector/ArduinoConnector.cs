@@ -32,6 +32,7 @@ namespace FalconBMSArduinoConnector
         private volatile bool _continue;
         private Thread readThread = null;
         private bool _isConnected = false;
+        
         public bool ConnectSerial(String name)
         {
             // If already connected, disconnect
@@ -73,6 +74,8 @@ namespace FalconBMSArduinoConnector
                 _serialPort.Open();
                 Console.WriteLine("Opened port " + _serialPort.PortName);
 
+                //Thread.Sleep(1000); //Possibly needed when using arduin oleonardo not sure 
+
                 // Send handshake byte to Arduino
                 _serialPort.Write(new byte[] { 0xA5 }, 0, 1);
                 Console.WriteLine("Sent handshake byte (0xA5)");
@@ -104,12 +107,25 @@ namespace FalconBMSArduinoConnector
                     _isConnected = true;
                     return true; // Handshake successful
                 }
+                //if (response == -1)
+                //{
+                //    Console.WriteLine("Handshake successful! Starting read thread...");
+                //    _serialPort.Write(new byte[] { 0xAA }, 0, 1);
+                //    _continue = true;
+                //    readThread = new Thread(Read);
+                //    readThread.Start();
+                //    _isConnected = true;
+                //    return true; // Handshake successful
+                //}
                 else
                 {
+
                     Console.WriteLine("Handshake failed or timed out.");
+                    Console.WriteLine("Failed Data: " + response);
                     _serialPort.Close();
                     _isConnected = false;
                     return false; // Handshake failed
+
                 }
             }
             catch (TimeoutException)

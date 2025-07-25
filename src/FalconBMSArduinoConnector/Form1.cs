@@ -258,18 +258,21 @@ namespace FalconBMSArduinoConnector
             button.FlatStyle = FlatStyle.Flat;
             removeButton.FlatStyle = FlatStyle.Flat;
 
-            comboBox.DataSource = SerialPort.GetPortNames();
+            var ports = SerialPort.GetPortNames().Distinct().ToArray();
+            comboBox.DataSource = ports;
             if (!string.IsNullOrEmpty(selectedPort) && comboBox.Items.Contains(selectedPort))
                 comboBox.SelectedItem = selectedPort;
 
+            // Update on dropdown open
             comboBox.DropDown += (s, e) =>
             {
                 string currentSelection = comboBox.Text;
-                var ports = SerialPort.GetPortNames();
-                comboBox.DataSource = null;
-                comboBox.DataSource = ports;
+                var refreshedPorts = SerialPort.GetPortNames().Distinct().ToArray();
 
-                if (ports.Contains(currentSelection))
+                comboBox.DataSource = null; // Clear before resetting
+                comboBox.DataSource = refreshedPorts;
+
+                if (refreshedPorts.Contains(currentSelection))
                     comboBox.SelectedItem = currentSelection;
             };
 
