@@ -33,7 +33,7 @@ namespace FalconBMSArduinoConnector
         private Thread readThread = null;
         private bool _isConnected = false;
         
-        public bool ConnectSerial(String name)
+        public bool ConnectSerial(String name,bool DTR)
         {
             // If already connected, disconnect
             if (_serialPort != null && _serialPort.IsOpen)
@@ -65,7 +65,10 @@ namespace FalconBMSArduinoConnector
             _serialPort.DataBits = 8;
             _serialPort.StopBits = StopBits.One;
             _serialPort.Handshake = Handshake.None;
-
+            if (DTR)
+            {
+                _serialPort.DtrEnable = true;
+            }
             _serialPort.ReadTimeout = 1000;
             _serialPort.WriteTimeout = 1000;
 
@@ -83,7 +86,7 @@ namespace FalconBMSArduinoConnector
                 // Wait for response (0x5A) with manual timeout
                 int response = -1;
                 int timeoutMs = 1000;
-                int waitInterval = 100;
+                int waitInterval = 250;
                 int waited = 0;
 
                 while (waited < timeoutMs)

@@ -255,6 +255,7 @@ namespace FalconBMSArduinoConnector
             var comboBox = new ComboBox() { Left = 10, Top = 10, Width = 100 };
             var button = new Button() { Text = "Connect", Left = 120, Top = 10 };
             var removeButton = new Button() { Text = "Remove", Left = 200, Top = 90 };
+            var DTRcheckbox = new CheckBox() {  Left = 10 , Top = 40, Text = "Micro/ProMicro/Leonardo Device" };
             button.FlatStyle = FlatStyle.Flat;
             removeButton.FlatStyle = FlatStyle.Flat;
 
@@ -280,7 +281,7 @@ namespace FalconBMSArduinoConnector
             {
                 if (!connector.IsConnected)
                 {
-                    if (connector.ConnectSerial(comboBox.Text))
+                    if (connector.ConnectSerial(comboBox.Text, DTRcheckbox.Checked))
                     {
                         button.Text = "Disconnect";
                         Console.WriteLine($"Connected to {comboBox.Text}");
@@ -330,6 +331,7 @@ namespace FalconBMSArduinoConnector
             tabPage.Controls.Add(comboBox);
             tabPage.Controls.Add(button);
             tabPage.Controls.Add(removeButton);
+            tabPage.Controls.Add(DTRcheckbox);
 
             tabControl_Arduinos.TabPages.Add(tabPage);
         }
