@@ -255,7 +255,7 @@ namespace FalconBMSArduinoConnector
             var comboBox = new ComboBox() { Left = 10, Top = 10, Width = 100 };
             var button = new Button() { Text = "Connect", Left = 120, Top = 10 };
             var removeButton = new Button() { Text = "Remove", Left = 200, Top = 90 };
-            var DTRcheckbox = new CheckBox() {  Left = 10 , Top = 40, Text = "Micro/ProMicro/Leonardo Device" };
+            var DTRcheckbox = new CheckBox() { Width = 220, Left = 10 , Top = 40, Text = "Micro/ProMicro/Leonardo_Device" };
             button.FlatStyle = FlatStyle.Flat;
             removeButton.FlatStyle = FlatStyle.Flat;
 
