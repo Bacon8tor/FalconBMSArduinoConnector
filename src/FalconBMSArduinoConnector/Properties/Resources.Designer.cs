@@ -69,5 +69,15 @@ namespace FalconBMSArduinoConnector.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FBAC_SSD1322_OLED {
+            get {
+                object obj = ResourceManager.GetObject("FBAC_SSD1322_OLED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

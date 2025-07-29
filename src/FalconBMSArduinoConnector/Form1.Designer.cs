@@ -29,1344 +29,1109 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FalconBMSArduinoConnector));
-            this.falconRunning = new System.Windows.Forms.CheckBox();
-            this.masterCaution_check = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.gearLightRight_check = new System.Windows.Forms.CheckBox();
-            this.gearLightLeft_check = new System.Windows.Forms.CheckBox();
-            this.gearLightFront_check = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.falconBuild_text = new System.Windows.Forms.Label();
-            this.refuelDSC_check = new System.Windows.Forms.CheckBox();
-            this.refuelAR_check = new System.Windows.Forms.CheckBox();
-            this.refuelRDY_check = new System.Windows.Forms.CheckBox();
-            this.aoaBelow_check = new System.Windows.Forms.CheckBox();
-            this.aoaOn_check = new System.Windows.Forms.CheckBox();
-            this.aoaAbove_check = new System.Windows.Forms.CheckBox();
-            this.tlCFG_check = new System.Windows.Forms.CheckBox();
-            this.CAN_check = new System.Windows.Forms.CheckBox();
-            this.flcs_check = new System.Windows.Forms.CheckBox();
-            this.flcsABCD_check = new System.Windows.Forms.CheckBox();
-            this.hyd_check = new System.Windows.Forms.CheckBox();
-            this.config_check = new System.Windows.Forms.CheckBox();
-            this.engFire_check = new System.Windows.Forms.CheckBox();
-            this.onground_check = new System.Windows.Forms.CheckBox();
-            this.equipHot_check = new System.Windows.Forms.CheckBox();
-            this.oxyBrow_check = new System.Windows.Forms.CheckBox();
-            this.tf_check = new System.Windows.Forms.CheckBox();
-            this.DED_Panel = new System.Windows.Forms.Panel();
-            this.DED_Line5_text = new System.Windows.Forms.Label();
-            this.DED_Line4_text = new System.Windows.Forms.Label();
-            this.DED_Line3_text = new System.Windows.Forms.Label();
-            this.DED_Line2_text = new System.Windows.Forms.Label();
-            this.DED_Line1_text = new System.Windows.Forms.Label();
-            this.FltControlSys_check = new System.Windows.Forms.CheckBox();
-            this.LEFlaps_check = new System.Windows.Forms.CheckBox();
-            this.EngineFault_check = new System.Windows.Forms.CheckBox();
-            this.Overheat_check = new System.Windows.Forms.CheckBox();
-            this.FuelLow_check = new System.Windows.Forms.CheckBox();
-            this.Avionics_check = new System.Windows.Forms.CheckBox();
-            this.RadarAlt_check = new System.Windows.Forms.CheckBox();
-            this.IFF_check = new System.Windows.Forms.CheckBox();
-            this.ECM_check = new System.Windows.Forms.CheckBox();
-            this.Hook_check = new System.Windows.Forms.CheckBox();
-            this.NWSFail_check = new System.Windows.Forms.CheckBox();
-            this.CabinPress_check = new System.Windows.Forms.CheckBox();
-            this.AutoPilotOn_check = new System.Windows.Forms.CheckBox();
-            this.TFR_STBY_check = new System.Windows.Forms.CheckBox();
-            this.falconDataTabs = new System.Windows.Forms.TabControl();
-            this.lightBits_Page = new System.Windows.Forms.TabPage();
-            this.lightBits2_Page = new System.Windows.Forms.TabPage();
-            this.ENGINE_check = new System.Windows.Forms.CheckBox();
-            this.GEARHANDLE_check = new System.Windows.Forms.CheckBox();
-            this.TFR_ENGAGED_check = new System.Windows.Forms.CheckBox();
-            this.ANTI_SKID_check = new System.Windows.Forms.CheckBox();
-            this.FUEL_OIL_HOT_check = new System.Windows.Forms.CheckBox();
-            this.BUC_check = new System.Windows.Forms.CheckBox();
-            this.SEAT_ARM_check = new System.Windows.Forms.CheckBox();
-            this.PROBEHEAT_check = new System.Windows.Forms.CheckBox();
-            this.OXY_LOW_check = new System.Windows.Forms.CheckBox();
-            this.SEC_check = new System.Windows.Forms.CheckBox();
-            this.JFSOn_check = new System.Windows.Forms.CheckBox();
-            this.EPUOn_check = new System.Windows.Forms.CheckBox();
-            this.AftFuelLow_check = new System.Windows.Forms.CheckBox();
-            this.FwdFuelLow_check = new System.Windows.Forms.CheckBox();
-            this.EcmFail_check = new System.Windows.Forms.CheckBox();
-            this.EcmPwr_check = new System.Windows.Forms.CheckBox();
-            this.AuxPwr_check = new System.Windows.Forms.CheckBox();
-            this.AuxLow_check = new System.Windows.Forms.CheckBox();
-            this.AuxAct_check = new System.Windows.Forms.CheckBox();
-            this.AuxSrch_check = new System.Windows.Forms.CheckBox();
-            this.FlareLo_check = new System.Windows.Forms.CheckBox();
-            this.ChaffLo_check = new System.Windows.Forms.CheckBox();
-            this.Rdy_check = new System.Windows.Forms.CheckBox();
-            this.Degr_check = new System.Windows.Forms.CheckBox();
-            this.NoGo_check = new System.Windows.Forms.CheckBox();
-            this.Go_check = new System.Windows.Forms.CheckBox();
-            this.TgtSep_check = new System.Windows.Forms.CheckBox();
-            this.Unk_check = new System.Windows.Forms.CheckBox();
-            this.Naval_Check = new System.Windows.Forms.CheckBox();
-            this.PriMode_check = new System.Windows.Forms.CheckBox();
-            this.Launch_check = new System.Windows.Forms.CheckBox();
-            this.HandOff_check = new System.Windows.Forms.CheckBox();
-            this.lightBits3_Page = new System.Windows.Forms.TabPage();
-            this.flightData_Page = new System.Windows.Forms.TabPage();
-            this.isntrLights_text = new System.Windows.Forms.Label();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.add_arduino_button = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabControl_Arduinos = new System.Windows.Forms.TabControl();
-            this.label2 = new System.Windows.Forms.Label();
-            this.ecmBits_1_text = new System.Windows.Forms.Label();
-            this.ecmBits_2_text = new System.Windows.Forms.Label();
-            this.ecmStatus_text = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.ecmBits_3_text = new System.Windows.Forms.Label();
-            this.ecmBits_4_text = new System.Windows.Forms.Label();
-            this.ecmBits_5_text = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.DED_Panel.SuspendLayout();
-            this.falconDataTabs.SuspendLayout();
-            this.lightBits_Page.SuspendLayout();
-            this.lightBits2_Page.SuspendLayout();
-            this.lightBits3_Page.SuspendLayout();
-            this.flightData_Page.SuspendLayout();
-            this.tabControl2.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.metroSidePanel = new MetroFramework.Controls.MetroPanel();
+            this.metroSettingsButton = new MetroFramework.Controls.MetroButton();
+            this.metroDataButton = new MetroFramework.Controls.MetroButton();
+            this.metroHomeButton = new MetroFramework.Controls.MetroButton();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroHomePanel = new MetroFramework.Controls.MetroPanel();
+            this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
+            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.metroAddArduinoButton = new MetroFramework.Controls.MetroButton();
+            this.metroVersionLabel = new MetroFramework.Controls.MetroLabel();
+            this.metroProcessLabel = new MetroFramework.Controls.MetroLabel();
+            this.metroSettingsPanel = new MetroFramework.Controls.MetroPanel();
+            this.metroDataPanel = new MetroFramework.Controls.MetroPanel();
+            this.metroTabControl2 = new MetroFramework.Controls.MetroTabControl();
+            this.metroLightsBits = new MetroFramework.Controls.MetroTabPage();
+            this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
+            this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
+            this.metroCheckBox25 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox24 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox23 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox22 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox21 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox20 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox19 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox18 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox17 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox16 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox15 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox14 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox13 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox12 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox11 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox10 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox9 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox8 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox7 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox6 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox5 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox4 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox3 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox2 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox1 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox26 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox27 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox28 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox29 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox30 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox31 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox32 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox33 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox34 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox35 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox36 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox37 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox38 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox39 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox40 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox41 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox42 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox43 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox44 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox45 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox46 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox47 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox48 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox49 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox50 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroDEDTabPage = new MetroFramework.Controls.MetroTabPage();
+            this.metroDEDPanel = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.metroSidePanel.SuspendLayout();
+            this.metroHomePanel.SuspendLayout();
+            this.metroPanel2.SuspendLayout();
+            this.metroDataPanel.SuspendLayout();
+            this.metroTabControl2.SuspendLayout();
+            this.metroLightsBits.SuspendLayout();
+            this.metroPanel4.SuspendLayout();
+            this.metroPanel3.SuspendLayout();
+            this.metroDEDTabPage.SuspendLayout();
+            this.metroDEDPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // falconRunning
-            // 
-            this.falconRunning.AutoSize = true;
-            this.falconRunning.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.falconRunning.Location = new System.Drawing.Point(6, 6);
-            this.falconRunning.Name = "falconRunning";
-            this.falconRunning.Size = new System.Drawing.Size(131, 17);
-            this.falconRunning.TabIndex = 0;
-            this.falconRunning.Text = "Falcon is Not Running";
-            this.falconRunning.UseVisualStyleBackColor = true;
-            // 
-            // masterCaution_check
-            // 
-            this.masterCaution_check.AutoSize = true;
-            this.masterCaution_check.Location = new System.Drawing.Point(6, 6);
-            this.masterCaution_check.Name = "masterCaution_check";
-            this.masterCaution_check.Size = new System.Drawing.Size(94, 17);
-            this.masterCaution_check.TabIndex = 1;
-            this.masterCaution_check.Text = "MasterCaution";
-            this.masterCaution_check.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.gearLightRight_check);
-            this.panel1.Controls.Add(this.gearLightLeft_check);
-            this.panel1.Controls.Add(this.gearLightFront_check);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(21, 21);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(91, 69);
-            this.panel1.TabIndex = 3;
-            // 
-            // gearLightRight_check
-            // 
-            this.gearLightRight_check.AutoSize = true;
-            this.gearLightRight_check.Location = new System.Drawing.Point(59, 44);
-            this.gearLightRight_check.Name = "gearLightRight_check";
-            this.gearLightRight_check.Size = new System.Drawing.Size(15, 14);
-            this.gearLightRight_check.TabIndex = 3;
-            this.gearLightRight_check.UseVisualStyleBackColor = true;
-            // 
-            // gearLightLeft_check
-            // 
-            this.gearLightLeft_check.AutoSize = true;
-            this.gearLightLeft_check.Location = new System.Drawing.Point(19, 44);
-            this.gearLightLeft_check.Name = "gearLightLeft_check";
-            this.gearLightLeft_check.Size = new System.Drawing.Size(15, 14);
-            this.gearLightLeft_check.TabIndex = 2;
-            this.gearLightLeft_check.UseVisualStyleBackColor = true;
-            // 
-            // gearLightFront_check
-            // 
-            this.gearLightFront_check.AutoSize = true;
-            this.gearLightFront_check.Location = new System.Drawing.Point(40, 20);
-            this.gearLightFront_check.Name = "gearLightFront_check";
-            this.gearLightFront_check.Size = new System.Drawing.Size(15, 14);
-            this.gearLightFront_check.TabIndex = 1;
-            this.gearLightFront_check.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Gear";
-            // 
-            // falconBuild_text
-            // 
-            this.falconBuild_text.AutoSize = true;
-            this.falconBuild_text.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.falconBuild_text.Location = new System.Drawing.Point(26, 26);
-            this.falconBuild_text.Name = "falconBuild_text";
-            this.falconBuild_text.Size = new System.Drawing.Size(16, 13);
-            this.falconBuild_text.TabIndex = 1;
-            this.falconBuild_text.Text = "v.";
-            // 
-            // refuelDSC_check
-            // 
-            this.refuelDSC_check.AutoSize = true;
-            this.refuelDSC_check.Location = new System.Drawing.Point(139, 121);
-            this.refuelDSC_check.Name = "refuelDSC_check";
-            this.refuelDSC_check.Size = new System.Drawing.Size(82, 17);
-            this.refuelDSC_check.TabIndex = 19;
-            this.refuelDSC_check.Text = "Refuel DSC";
-            this.refuelDSC_check.UseVisualStyleBackColor = true;
-            // 
-            // refuelAR_check
-            // 
-            this.refuelAR_check.AutoSize = true;
-            this.refuelAR_check.Location = new System.Drawing.Point(139, 98);
-            this.refuelAR_check.Name = "refuelAR_check";
-            this.refuelAR_check.Size = new System.Drawing.Size(75, 17);
-            this.refuelAR_check.TabIndex = 18;
-            this.refuelAR_check.Text = "Refuel AR";
-            this.refuelAR_check.UseVisualStyleBackColor = true;
-            // 
-            // refuelRDY_check
-            // 
-            this.refuelRDY_check.AutoSize = true;
-            this.refuelRDY_check.Location = new System.Drawing.Point(139, 75);
-            this.refuelRDY_check.Name = "refuelRDY_check";
-            this.refuelRDY_check.Size = new System.Drawing.Size(83, 17);
-            this.refuelRDY_check.TabIndex = 17;
-            this.refuelRDY_check.Text = "Refuel RDY";
-            this.refuelRDY_check.UseVisualStyleBackColor = true;
-            // 
-            // aoaBelow_check
-            // 
-            this.aoaBelow_check.AutoSize = true;
-            this.aoaBelow_check.Location = new System.Drawing.Point(139, 52);
-            this.aoaBelow_check.Name = "aoaBelow_check";
-            this.aoaBelow_check.Size = new System.Drawing.Size(80, 17);
-            this.aoaBelow_check.TabIndex = 16;
-            this.aoaBelow_check.Text = "AOA Below";
-            this.aoaBelow_check.UseVisualStyleBackColor = true;
-            // 
-            // aoaOn_check
-            // 
-            this.aoaOn_check.AutoSize = true;
-            this.aoaOn_check.Location = new System.Drawing.Point(139, 29);
-            this.aoaOn_check.Name = "aoaOn_check";
-            this.aoaOn_check.Size = new System.Drawing.Size(65, 17);
-            this.aoaOn_check.TabIndex = 15;
-            this.aoaOn_check.Text = "AOA On";
-            this.aoaOn_check.UseVisualStyleBackColor = true;
-            // 
-            // aoaAbove_check
-            // 
-            this.aoaAbove_check.AutoSize = true;
-            this.aoaAbove_check.Location = new System.Drawing.Point(139, 6);
-            this.aoaAbove_check.Name = "aoaAbove_check";
-            this.aoaAbove_check.Size = new System.Drawing.Size(82, 17);
-            this.aoaAbove_check.TabIndex = 14;
-            this.aoaAbove_check.Text = "AOA Above";
-            this.aoaAbove_check.UseVisualStyleBackColor = true;
-            // 
-            // tlCFG_check
-            // 
-            this.tlCFG_check.AutoSize = true;
-            this.tlCFG_check.Location = new System.Drawing.Point(6, 259);
-            this.tlCFG_check.Name = "tlCFG_check";
-            this.tlCFG_check.Size = new System.Drawing.Size(72, 17);
-            this.tlCFG_check.TabIndex = 13;
-            this.tlCFG_check.Text = "T_L_CFG";
-            this.tlCFG_check.UseVisualStyleBackColor = true;
-            // 
-            // CAN_check
-            // 
-            this.CAN_check.AutoSize = true;
-            this.CAN_check.Location = new System.Drawing.Point(6, 236);
-            this.CAN_check.Name = "CAN_check";
-            this.CAN_check.Size = new System.Drawing.Size(48, 17);
-            this.CAN_check.TabIndex = 12;
-            this.CAN_check.Text = "CAN";
-            this.CAN_check.UseVisualStyleBackColor = true;
-            // 
-            // flcs_check
-            // 
-            this.flcs_check.AutoSize = true;
-            this.flcs_check.Location = new System.Drawing.Point(6, 213);
-            this.flcs_check.Name = "flcs_check";
-            this.flcs_check.Size = new System.Drawing.Size(52, 17);
-            this.flcs_check.TabIndex = 11;
-            this.flcs_check.Text = "FLCS";
-            this.flcs_check.UseVisualStyleBackColor = true;
-            // 
-            // flcsABCD_check
-            // 
-            this.flcsABCD_check.AutoSize = true;
-            this.flcsABCD_check.Location = new System.Drawing.Point(6, 190);
-            this.flcsABCD_check.Name = "flcsABCD_check";
-            this.flcsABCD_check.Size = new System.Drawing.Size(80, 17);
-            this.flcsABCD_check.TabIndex = 10;
-            this.flcsABCD_check.Text = "Flcs_ABCD";
-            this.flcsABCD_check.UseVisualStyleBackColor = true;
-            // 
-            // hyd_check
-            // 
-            this.hyd_check.AutoSize = true;
-            this.hyd_check.Location = new System.Drawing.Point(6, 167);
-            this.hyd_check.Name = "hyd_check";
-            this.hyd_check.Size = new System.Drawing.Size(49, 17);
-            this.hyd_check.TabIndex = 9;
-            this.hyd_check.Text = "HYD";
-            this.hyd_check.UseVisualStyleBackColor = true;
-            // 
-            // config_check
-            // 
-            this.config_check.AutoSize = true;
-            this.config_check.Location = new System.Drawing.Point(6, 144);
-            this.config_check.Name = "config_check";
-            this.config_check.Size = new System.Drawing.Size(66, 17);
-            this.config_check.TabIndex = 8;
-            this.config_check.Text = "CONFIG";
-            this.config_check.UseVisualStyleBackColor = true;
-            // 
-            // engFire_check
-            // 
-            this.engFire_check.AutoSize = true;
-            this.engFire_check.Location = new System.Drawing.Point(6, 121);
-            this.engFire_check.Name = "engFire_check";
-            this.engFire_check.Size = new System.Drawing.Size(79, 17);
-            this.engFire_check.TabIndex = 7;
-            this.engFire_check.Text = "ENG_FIRE";
-            this.engFire_check.UseVisualStyleBackColor = true;
-            // 
-            // onground_check
-            // 
-            this.onground_check.AutoSize = true;
-            this.onground_check.Location = new System.Drawing.Point(6, 98);
-            this.onground_check.Name = "onground_check";
-            this.onground_check.Size = new System.Drawing.Size(90, 17);
-            this.onground_check.TabIndex = 6;
-            this.onground_check.Text = "ONGROUND";
-            this.onground_check.UseVisualStyleBackColor = true;
-            // 
-            // equipHot_check
-            // 
-            this.equipHot_check.AutoSize = true;
-            this.equipHot_check.Location = new System.Drawing.Point(6, 75);
-            this.equipHot_check.Name = "equipHot_check";
-            this.equipHot_check.Size = new System.Drawing.Size(88, 17);
-            this.equipHot_check.TabIndex = 5;
-            this.equipHot_check.Text = "EQUIP_HOT";
-            this.equipHot_check.UseVisualStyleBackColor = true;
-            // 
-            // oxyBrow_check
-            // 
-            this.oxyBrow_check.AutoSize = true;
-            this.oxyBrow_check.Location = new System.Drawing.Point(6, 52);
-            this.oxyBrow_check.Name = "oxyBrow_check";
-            this.oxyBrow_check.Size = new System.Drawing.Size(88, 17);
-            this.oxyBrow_check.TabIndex = 4;
-            this.oxyBrow_check.Text = "OXY_BROW";
-            this.oxyBrow_check.UseVisualStyleBackColor = true;
-            // 
-            // tf_check
-            // 
-            this.tf_check.AutoSize = true;
-            this.tf_check.Location = new System.Drawing.Point(6, 29);
-            this.tf_check.Name = "tf_check";
-            this.tf_check.Size = new System.Drawing.Size(39, 17);
-            this.tf_check.TabIndex = 2;
-            this.tf_check.Text = "TF";
-            this.tf_check.UseVisualStyleBackColor = true;
-            // 
-            // DED_Panel
-            // 
-            this.DED_Panel.BackColor = System.Drawing.SystemColors.InfoText;
-            this.DED_Panel.Controls.Add(this.DED_Line5_text);
-            this.DED_Panel.Controls.Add(this.DED_Line4_text);
-            this.DED_Panel.Controls.Add(this.DED_Line3_text);
-            this.DED_Panel.Controls.Add(this.DED_Line2_text);
-            this.DED_Panel.Controls.Add(this.DED_Line1_text);
-            this.DED_Panel.ForeColor = System.Drawing.Color.Lime;
-            this.DED_Panel.Location = new System.Drawing.Point(429, 311);
-            this.DED_Panel.Name = "DED_Panel";
-            this.DED_Panel.Size = new System.Drawing.Size(294, 125);
-            this.DED_Panel.TabIndex = 8;
-            // 
-            // DED_Line5_text
-            // 
-            this.DED_Line5_text.AutoSize = true;
-            this.DED_Line5_text.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DED_Line5_text.Location = new System.Drawing.Point(3, 100);
-            this.DED_Line5_text.Name = "DED_Line5_text";
-            this.DED_Line5_text.Size = new System.Drawing.Size(60, 13);
-            this.DED_Line5_text.TabIndex = 4;
-            this.DED_Line5_text.Text = "DED_Line5";
-            // 
-            // DED_Line4_text
-            // 
-            this.DED_Line4_text.AutoSize = true;
-            this.DED_Line4_text.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DED_Line4_text.Location = new System.Drawing.Point(3, 77);
-            this.DED_Line4_text.Name = "DED_Line4_text";
-            this.DED_Line4_text.Size = new System.Drawing.Size(60, 13);
-            this.DED_Line4_text.TabIndex = 3;
-            this.DED_Line4_text.Text = "DED_Line4";
-            // 
-            // DED_Line3_text
-            // 
-            this.DED_Line3_text.AutoSize = true;
-            this.DED_Line3_text.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DED_Line3_text.Location = new System.Drawing.Point(3, 54);
-            this.DED_Line3_text.Name = "DED_Line3_text";
-            this.DED_Line3_text.Size = new System.Drawing.Size(60, 13);
-            this.DED_Line3_text.TabIndex = 2;
-            this.DED_Line3_text.Text = "DED_Line3";
-            // 
-            // DED_Line2_text
-            // 
-            this.DED_Line2_text.AutoSize = true;
-            this.DED_Line2_text.Font = new System.Drawing.Font("FalconDED", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DED_Line2_text.Location = new System.Drawing.Point(3, 32);
-            this.DED_Line2_text.Name = "DED_Line2_text";
-            this.DED_Line2_text.Size = new System.Drawing.Size(106, 15);
-            this.DED_Line2_text.TabIndex = 1;
-            this.DED_Line2_text.Text = "DED_Line2";
-            // 
-            // DED_Line1_text
-            // 
-            this.DED_Line1_text.AutoSize = true;
-            this.DED_Line1_text.Font = new System.Drawing.Font("FalconDED", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DED_Line1_text.Location = new System.Drawing.Point(3, 10);
-            this.DED_Line1_text.Name = "DED_Line1_text";
-            this.DED_Line1_text.Size = new System.Drawing.Size(105, 15);
-            this.DED_Line1_text.TabIndex = 0;
-            this.DED_Line1_text.Text = "DED_Line1";
-            // 
-            // FltControlSys_check
-            // 
-            this.FltControlSys_check.AutoSize = true;
-            this.FltControlSys_check.Location = new System.Drawing.Point(139, 144);
-            this.FltControlSys_check.Name = "FltControlSys_check";
-            this.FltControlSys_check.Size = new System.Drawing.Size(87, 17);
-            this.FltControlSys_check.TabIndex = 20;
-            this.FltControlSys_check.Text = "FltControlSys";
-            this.FltControlSys_check.UseVisualStyleBackColor = true;
-            // 
-            // LEFlaps_check
-            // 
-            this.LEFlaps_check.AutoSize = true;
-            this.LEFlaps_check.Location = new System.Drawing.Point(139, 167);
-            this.LEFlaps_check.Name = "LEFlaps_check";
-            this.LEFlaps_check.Size = new System.Drawing.Size(64, 17);
-            this.LEFlaps_check.TabIndex = 21;
-            this.LEFlaps_check.Text = "LEFlaps";
-            this.LEFlaps_check.UseVisualStyleBackColor = true;
-            // 
-            // EngineFault_check
-            // 
-            this.EngineFault_check.AutoSize = true;
-            this.EngineFault_check.Location = new System.Drawing.Point(139, 190);
-            this.EngineFault_check.Name = "EngineFault_check";
-            this.EngineFault_check.Size = new System.Drawing.Size(82, 17);
-            this.EngineFault_check.TabIndex = 22;
-            this.EngineFault_check.Text = "EngineFault";
-            this.EngineFault_check.UseVisualStyleBackColor = true;
-            // 
-            // Overheat_check
-            // 
-            this.Overheat_check.AutoSize = true;
-            this.Overheat_check.Location = new System.Drawing.Point(139, 213);
-            this.Overheat_check.Name = "Overheat_check";
-            this.Overheat_check.Size = new System.Drawing.Size(70, 17);
-            this.Overheat_check.TabIndex = 23;
-            this.Overheat_check.Text = "Overheat";
-            this.Overheat_check.UseVisualStyleBackColor = true;
-            // 
-            // FuelLow_check
-            // 
-            this.FuelLow_check.AutoSize = true;
-            this.FuelLow_check.Location = new System.Drawing.Point(139, 236);
-            this.FuelLow_check.Name = "FuelLow_check";
-            this.FuelLow_check.Size = new System.Drawing.Size(66, 17);
-            this.FuelLow_check.TabIndex = 24;
-            this.FuelLow_check.Text = "FuelLow";
-            this.FuelLow_check.UseVisualStyleBackColor = true;
-            // 
-            // Avionics_check
-            // 
-            this.Avionics_check.AutoSize = true;
-            this.Avionics_check.Location = new System.Drawing.Point(139, 259);
-            this.Avionics_check.Name = "Avionics_check";
-            this.Avionics_check.Size = new System.Drawing.Size(66, 17);
-            this.Avionics_check.TabIndex = 25;
-            this.Avionics_check.Text = "Avionics";
-            this.Avionics_check.UseVisualStyleBackColor = true;
-            // 
-            // RadarAlt_check
-            // 
-            this.RadarAlt_check.AutoSize = true;
-            this.RadarAlt_check.Location = new System.Drawing.Point(281, 6);
-            this.RadarAlt_check.Name = "RadarAlt_check";
-            this.RadarAlt_check.Size = new System.Drawing.Size(67, 17);
-            this.RadarAlt_check.TabIndex = 26;
-            this.RadarAlt_check.Text = "RadarAlt";
-            this.RadarAlt_check.UseVisualStyleBackColor = true;
-            // 
-            // IFF_check
-            // 
-            this.IFF_check.AutoSize = true;
-            this.IFF_check.Location = new System.Drawing.Point(281, 29);
-            this.IFF_check.Name = "IFF_check";
-            this.IFF_check.Size = new System.Drawing.Size(41, 17);
-            this.IFF_check.TabIndex = 27;
-            this.IFF_check.Text = "IFF";
-            this.IFF_check.UseVisualStyleBackColor = true;
-            // 
-            // ECM_check
-            // 
-            this.ECM_check.AutoSize = true;
-            this.ECM_check.Location = new System.Drawing.Point(281, 52);
-            this.ECM_check.Name = "ECM_check";
-            this.ECM_check.Size = new System.Drawing.Size(49, 17);
-            this.ECM_check.TabIndex = 28;
-            this.ECM_check.Text = "ECM";
-            this.ECM_check.UseVisualStyleBackColor = true;
-            // 
-            // Hook_check
-            // 
-            this.Hook_check.AutoSize = true;
-            this.Hook_check.Location = new System.Drawing.Point(281, 75);
-            this.Hook_check.Name = "Hook_check";
-            this.Hook_check.Size = new System.Drawing.Size(52, 17);
-            this.Hook_check.TabIndex = 29;
-            this.Hook_check.Text = "Hook";
-            this.Hook_check.UseVisualStyleBackColor = true;
-            // 
-            // NWSFail_check
-            // 
-            this.NWSFail_check.AutoSize = true;
-            this.NWSFail_check.Location = new System.Drawing.Point(281, 98);
-            this.NWSFail_check.Name = "NWSFail_check";
-            this.NWSFail_check.Size = new System.Drawing.Size(68, 17);
-            this.NWSFail_check.TabIndex = 30;
-            this.NWSFail_check.Text = "NWSFail";
-            this.NWSFail_check.UseVisualStyleBackColor = true;
-            // 
-            // CabinPress_check
-            // 
-            this.CabinPress_check.AutoSize = true;
-            this.CabinPress_check.Location = new System.Drawing.Point(281, 121);
-            this.CabinPress_check.Name = "CabinPress_check";
-            this.CabinPress_check.Size = new System.Drawing.Size(79, 17);
-            this.CabinPress_check.TabIndex = 31;
-            this.CabinPress_check.Text = "CabinPress";
-            this.CabinPress_check.UseVisualStyleBackColor = true;
-            // 
-            // AutoPilotOn_check
-            // 
-            this.AutoPilotOn_check.AutoSize = true;
-            this.AutoPilotOn_check.Location = new System.Drawing.Point(281, 144);
-            this.AutoPilotOn_check.Name = "AutoPilotOn_check";
-            this.AutoPilotOn_check.Size = new System.Drawing.Size(82, 17);
-            this.AutoPilotOn_check.TabIndex = 32;
-            this.AutoPilotOn_check.Text = "AutoPilotOn";
-            this.AutoPilotOn_check.UseVisualStyleBackColor = true;
-            // 
-            // TFR_STBY_check
-            // 
-            this.TFR_STBY_check.AutoSize = true;
-            this.TFR_STBY_check.Location = new System.Drawing.Point(281, 167);
-            this.TFR_STBY_check.Name = "TFR_STBY_check";
-            this.TFR_STBY_check.Size = new System.Drawing.Size(81, 17);
-            this.TFR_STBY_check.TabIndex = 33;
-            this.TFR_STBY_check.Text = "TFR_STBY";
-            this.TFR_STBY_check.UseVisualStyleBackColor = true;
-            // 
-            // falconDataTabs
-            // 
-            this.falconDataTabs.Controls.Add(this.lightBits_Page);
-            this.falconDataTabs.Controls.Add(this.lightBits2_Page);
-            this.falconDataTabs.Controls.Add(this.lightBits3_Page);
-            this.falconDataTabs.Controls.Add(this.flightData_Page);
-            this.falconDataTabs.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.falconDataTabs.Dock = System.Windows.Forms.DockStyle.Left;
-            this.falconDataTabs.Location = new System.Drawing.Point(0, 0);
-            this.falconDataTabs.Name = "falconDataTabs";
-            this.falconDataTabs.SelectedIndex = 0;
-            this.falconDataTabs.Size = new System.Drawing.Size(425, 484);
-            this.falconDataTabs.TabIndex = 9;
-            // 
-            // lightBits_Page
-            // 
-            this.lightBits_Page.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.lightBits_Page.Controls.Add(this.TFR_STBY_check);
-            this.lightBits_Page.Controls.Add(this.AutoPilotOn_check);
-            this.lightBits_Page.Controls.Add(this.CabinPress_check);
-            this.lightBits_Page.Controls.Add(this.masterCaution_check);
-            this.lightBits_Page.Controls.Add(this.NWSFail_check);
-            this.lightBits_Page.Controls.Add(this.tf_check);
-            this.lightBits_Page.Controls.Add(this.Hook_check);
-            this.lightBits_Page.Controls.Add(this.oxyBrow_check);
-            this.lightBits_Page.Controls.Add(this.ECM_check);
-            this.lightBits_Page.Controls.Add(this.equipHot_check);
-            this.lightBits_Page.Controls.Add(this.IFF_check);
-            this.lightBits_Page.Controls.Add(this.onground_check);
-            this.lightBits_Page.Controls.Add(this.RadarAlt_check);
-            this.lightBits_Page.Controls.Add(this.engFire_check);
-            this.lightBits_Page.Controls.Add(this.Avionics_check);
-            this.lightBits_Page.Controls.Add(this.config_check);
-            this.lightBits_Page.Controls.Add(this.FuelLow_check);
-            this.lightBits_Page.Controls.Add(this.hyd_check);
-            this.lightBits_Page.Controls.Add(this.Overheat_check);
-            this.lightBits_Page.Controls.Add(this.flcsABCD_check);
-            this.lightBits_Page.Controls.Add(this.EngineFault_check);
-            this.lightBits_Page.Controls.Add(this.flcs_check);
-            this.lightBits_Page.Controls.Add(this.LEFlaps_check);
-            this.lightBits_Page.Controls.Add(this.CAN_check);
-            this.lightBits_Page.Controls.Add(this.FltControlSys_check);
-            this.lightBits_Page.Controls.Add(this.tlCFG_check);
-            this.lightBits_Page.Controls.Add(this.refuelDSC_check);
-            this.lightBits_Page.Controls.Add(this.aoaAbove_check);
-            this.lightBits_Page.Controls.Add(this.refuelAR_check);
-            this.lightBits_Page.Controls.Add(this.aoaOn_check);
-            this.lightBits_Page.Controls.Add(this.refuelRDY_check);
-            this.lightBits_Page.Controls.Add(this.aoaBelow_check);
-            this.lightBits_Page.Location = new System.Drawing.Point(4, 22);
-            this.lightBits_Page.Name = "lightBits_Page";
-            this.lightBits_Page.Padding = new System.Windows.Forms.Padding(3);
-            this.lightBits_Page.Size = new System.Drawing.Size(417, 458);
-            this.lightBits_Page.TabIndex = 0;
-            this.lightBits_Page.Text = "LightBits";
-            // 
-            // lightBits2_Page
-            // 
-            this.lightBits2_Page.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.lightBits2_Page.Controls.Add(this.ENGINE_check);
-            this.lightBits2_Page.Controls.Add(this.GEARHANDLE_check);
-            this.lightBits2_Page.Controls.Add(this.TFR_ENGAGED_check);
-            this.lightBits2_Page.Controls.Add(this.ANTI_SKID_check);
-            this.lightBits2_Page.Controls.Add(this.FUEL_OIL_HOT_check);
-            this.lightBits2_Page.Controls.Add(this.BUC_check);
-            this.lightBits2_Page.Controls.Add(this.SEAT_ARM_check);
-            this.lightBits2_Page.Controls.Add(this.PROBEHEAT_check);
-            this.lightBits2_Page.Controls.Add(this.OXY_LOW_check);
-            this.lightBits2_Page.Controls.Add(this.SEC_check);
-            this.lightBits2_Page.Controls.Add(this.JFSOn_check);
-            this.lightBits2_Page.Controls.Add(this.EPUOn_check);
-            this.lightBits2_Page.Controls.Add(this.AftFuelLow_check);
-            this.lightBits2_Page.Controls.Add(this.FwdFuelLow_check);
-            this.lightBits2_Page.Controls.Add(this.EcmFail_check);
-            this.lightBits2_Page.Controls.Add(this.EcmPwr_check);
-            this.lightBits2_Page.Controls.Add(this.AuxPwr_check);
-            this.lightBits2_Page.Controls.Add(this.AuxLow_check);
-            this.lightBits2_Page.Controls.Add(this.AuxAct_check);
-            this.lightBits2_Page.Controls.Add(this.AuxSrch_check);
-            this.lightBits2_Page.Controls.Add(this.FlareLo_check);
-            this.lightBits2_Page.Controls.Add(this.ChaffLo_check);
-            this.lightBits2_Page.Controls.Add(this.Rdy_check);
-            this.lightBits2_Page.Controls.Add(this.Degr_check);
-            this.lightBits2_Page.Controls.Add(this.NoGo_check);
-            this.lightBits2_Page.Controls.Add(this.Go_check);
-            this.lightBits2_Page.Controls.Add(this.TgtSep_check);
-            this.lightBits2_Page.Controls.Add(this.Unk_check);
-            this.lightBits2_Page.Controls.Add(this.Naval_Check);
-            this.lightBits2_Page.Controls.Add(this.PriMode_check);
-            this.lightBits2_Page.Controls.Add(this.Launch_check);
-            this.lightBits2_Page.Controls.Add(this.HandOff_check);
-            this.lightBits2_Page.Location = new System.Drawing.Point(4, 22);
-            this.lightBits2_Page.Name = "lightBits2_Page";
-            this.lightBits2_Page.Padding = new System.Windows.Forms.Padding(3);
-            this.lightBits2_Page.Size = new System.Drawing.Size(417, 458);
-            this.lightBits2_Page.TabIndex = 1;
-            this.lightBits2_Page.Text = "LightBits2";
-            // 
-            // ENGINE_check
-            // 
-            this.ENGINE_check.AutoSize = true;
-            this.ENGINE_check.Location = new System.Drawing.Point(204, 219);
-            this.ENGINE_check.Name = "ENGINE_check";
-            this.ENGINE_check.Size = new System.Drawing.Size(67, 17);
-            this.ENGINE_check.TabIndex = 34;
-            this.ENGINE_check.Text = "ENGINE";
-            this.ENGINE_check.UseVisualStyleBackColor = true;
-            // 
-            // GEARHANDLE_check
-            // 
-            this.GEARHANDLE_check.AutoSize = true;
-            this.GEARHANDLE_check.Location = new System.Drawing.Point(204, 196);
-            this.GEARHANDLE_check.Name = "GEARHANDLE_check";
-            this.GEARHANDLE_check.Size = new System.Drawing.Size(100, 17);
-            this.GEARHANDLE_check.TabIndex = 33;
-            this.GEARHANDLE_check.Text = "GEARHANDLE";
-            this.GEARHANDLE_check.UseVisualStyleBackColor = true;
-            // 
-            // TFR_ENGAGED_check
-            // 
-            this.TFR_ENGAGED_check.AutoSize = true;
-            this.TFR_ENGAGED_check.Location = new System.Drawing.Point(204, 173);
-            this.TFR_ENGAGED_check.Name = "TFR_ENGAGED_check";
-            this.TFR_ENGAGED_check.Size = new System.Drawing.Size(106, 17);
-            this.TFR_ENGAGED_check.TabIndex = 32;
-            this.TFR_ENGAGED_check.Text = "TFR_ENGAGED";
-            this.TFR_ENGAGED_check.UseVisualStyleBackColor = true;
-            // 
-            // ANTI_SKID_check
-            // 
-            this.ANTI_SKID_check.AutoSize = true;
-            this.ANTI_SKID_check.Location = new System.Drawing.Point(204, 150);
-            this.ANTI_SKID_check.Name = "ANTI_SKID_check";
-            this.ANTI_SKID_check.Size = new System.Drawing.Size(82, 17);
-            this.ANTI_SKID_check.TabIndex = 31;
-            this.ANTI_SKID_check.Text = "ANTI_SKID";
-            this.ANTI_SKID_check.UseVisualStyleBackColor = true;
-            // 
-            // FUEL_OIL_HOT_check
-            // 
-            this.FUEL_OIL_HOT_check.AutoSize = true;
-            this.FUEL_OIL_HOT_check.Location = new System.Drawing.Point(204, 127);
-            this.FUEL_OIL_HOT_check.Name = "FUEL_OIL_HOT_check";
-            this.FUEL_OIL_HOT_check.Size = new System.Drawing.Size(105, 17);
-            this.FUEL_OIL_HOT_check.TabIndex = 30;
-            this.FUEL_OIL_HOT_check.Text = "FUEL_OIL_HOT";
-            this.FUEL_OIL_HOT_check.UseVisualStyleBackColor = true;
-            // 
-            // BUC_check
-            // 
-            this.BUC_check.AutoSize = true;
-            this.BUC_check.Location = new System.Drawing.Point(204, 104);
-            this.BUC_check.Name = "BUC_check";
-            this.BUC_check.Size = new System.Drawing.Size(48, 17);
-            this.BUC_check.TabIndex = 29;
-            this.BUC_check.Text = "BUC";
-            this.BUC_check.UseVisualStyleBackColor = true;
-            // 
-            // SEAT_ARM_check
-            // 
-            this.SEAT_ARM_check.AutoSize = true;
-            this.SEAT_ARM_check.Location = new System.Drawing.Point(204, 81);
-            this.SEAT_ARM_check.Name = "SEAT_ARM_check";
-            this.SEAT_ARM_check.Size = new System.Drawing.Size(84, 17);
-            this.SEAT_ARM_check.TabIndex = 28;
-            this.SEAT_ARM_check.Text = "SEAT_ARM";
-            this.SEAT_ARM_check.UseVisualStyleBackColor = true;
-            // 
-            // PROBEHEAT_check
-            // 
-            this.PROBEHEAT_check.AutoSize = true;
-            this.PROBEHEAT_check.Location = new System.Drawing.Point(204, 58);
-            this.PROBEHEAT_check.Name = "PROBEHEAT_check";
-            this.PROBEHEAT_check.Size = new System.Drawing.Size(92, 17);
-            this.PROBEHEAT_check.TabIndex = 27;
-            this.PROBEHEAT_check.Text = "PROBEHEAT";
-            this.PROBEHEAT_check.UseVisualStyleBackColor = true;
-            // 
-            // OXY_LOW_check
-            // 
-            this.OXY_LOW_check.AutoSize = true;
-            this.OXY_LOW_check.Location = new System.Drawing.Point(204, 35);
-            this.OXY_LOW_check.Name = "OXY_LOW_check";
-            this.OXY_LOW_check.Size = new System.Drawing.Size(79, 17);
-            this.OXY_LOW_check.TabIndex = 26;
-            this.OXY_LOW_check.Text = "OXY_LOW";
-            this.OXY_LOW_check.UseVisualStyleBackColor = true;
-            // 
-            // SEC_check
-            // 
-            this.SEC_check.AutoSize = true;
-            this.SEC_check.Location = new System.Drawing.Point(204, 12);
-            this.SEC_check.Name = "SEC_check";
-            this.SEC_check.Size = new System.Drawing.Size(47, 17);
-            this.SEC_check.TabIndex = 25;
-            this.SEC_check.Text = "SEC";
-            this.SEC_check.UseVisualStyleBackColor = true;
-            // 
-            // JFSOn_check
-            // 
-            this.JFSOn_check.AutoSize = true;
-            this.JFSOn_check.Location = new System.Drawing.Point(104, 219);
-            this.JFSOn_check.Name = "JFSOn_check";
-            this.JFSOn_check.Size = new System.Drawing.Size(58, 17);
-            this.JFSOn_check.TabIndex = 24;
-            this.JFSOn_check.Text = "JFSOn";
-            this.JFSOn_check.UseVisualStyleBackColor = true;
-            // 
-            // EPUOn_check
-            // 
-            this.EPUOn_check.AutoSize = true;
-            this.EPUOn_check.Location = new System.Drawing.Point(104, 196);
-            this.EPUOn_check.Name = "EPUOn_check";
-            this.EPUOn_check.Size = new System.Drawing.Size(62, 17);
-            this.EPUOn_check.TabIndex = 23;
-            this.EPUOn_check.Text = "EPUOn";
-            this.EPUOn_check.UseVisualStyleBackColor = true;
-            // 
-            // AftFuelLow_check
-            // 
-            this.AftFuelLow_check.AutoSize = true;
-            this.AftFuelLow_check.Location = new System.Drawing.Point(104, 173);
-            this.AftFuelLow_check.Name = "AftFuelLow_check";
-            this.AftFuelLow_check.Size = new System.Drawing.Size(79, 17);
-            this.AftFuelLow_check.TabIndex = 22;
-            this.AftFuelLow_check.Text = "AftFuelLow";
-            this.AftFuelLow_check.UseVisualStyleBackColor = true;
-            // 
-            // FwdFuelLow_check
-            // 
-            this.FwdFuelLow_check.AutoSize = true;
-            this.FwdFuelLow_check.Location = new System.Drawing.Point(104, 150);
-            this.FwdFuelLow_check.Name = "FwdFuelLow_check";
-            this.FwdFuelLow_check.Size = new System.Drawing.Size(86, 17);
-            this.FwdFuelLow_check.TabIndex = 21;
-            this.FwdFuelLow_check.Text = "FwdFuelLow";
-            this.FwdFuelLow_check.UseVisualStyleBackColor = true;
-            // 
-            // EcmFail_check
-            // 
-            this.EcmFail_check.AutoSize = true;
-            this.EcmFail_check.Location = new System.Drawing.Point(104, 127);
-            this.EcmFail_check.Name = "EcmFail_check";
-            this.EcmFail_check.Size = new System.Drawing.Size(63, 17);
-            this.EcmFail_check.TabIndex = 20;
-            this.EcmFail_check.Text = "EcmFail";
-            this.EcmFail_check.UseVisualStyleBackColor = true;
-            // 
-            // EcmPwr_check
-            // 
-            this.EcmPwr_check.AutoSize = true;
-            this.EcmPwr_check.Location = new System.Drawing.Point(104, 104);
-            this.EcmPwr_check.Name = "EcmPwr_check";
-            this.EcmPwr_check.Size = new System.Drawing.Size(65, 17);
-            this.EcmPwr_check.TabIndex = 19;
-            this.EcmPwr_check.Text = "EcmPwr";
-            this.EcmPwr_check.UseVisualStyleBackColor = true;
-            // 
-            // AuxPwr_check
-            // 
-            this.AuxPwr_check.AutoSize = true;
-            this.AuxPwr_check.Location = new System.Drawing.Point(104, 81);
-            this.AuxPwr_check.Name = "AuxPwr_check";
-            this.AuxPwr_check.Size = new System.Drawing.Size(62, 17);
-            this.AuxPwr_check.TabIndex = 18;
-            this.AuxPwr_check.Text = "AuxPwr";
-            this.AuxPwr_check.UseVisualStyleBackColor = true;
-            // 
-            // AuxLow_check
-            // 
-            this.AuxLow_check.AutoSize = true;
-            this.AuxLow_check.Location = new System.Drawing.Point(104, 58);
-            this.AuxLow_check.Name = "AuxLow_check";
-            this.AuxLow_check.Size = new System.Drawing.Size(64, 17);
-            this.AuxLow_check.TabIndex = 17;
-            this.AuxLow_check.Text = "AuxLow";
-            this.AuxLow_check.UseVisualStyleBackColor = true;
-            // 
-            // AuxAct_check
-            // 
-            this.AuxAct_check.AutoSize = true;
-            this.AuxAct_check.Location = new System.Drawing.Point(104, 35);
-            this.AuxAct_check.Name = "AuxAct_check";
-            this.AuxAct_check.Size = new System.Drawing.Size(60, 17);
-            this.AuxAct_check.TabIndex = 16;
-            this.AuxAct_check.Text = "AuxAct";
-            this.AuxAct_check.UseVisualStyleBackColor = true;
-            // 
-            // AuxSrch_check
-            // 
-            this.AuxSrch_check.AutoSize = true;
-            this.AuxSrch_check.Location = new System.Drawing.Point(104, 12);
-            this.AuxSrch_check.Name = "AuxSrch_check";
-            this.AuxSrch_check.Size = new System.Drawing.Size(66, 17);
-            this.AuxSrch_check.TabIndex = 15;
-            this.AuxSrch_check.Text = "AuxSrch";
-            this.AuxSrch_check.UseVisualStyleBackColor = true;
-            // 
-            // FlareLo_check
-            // 
-            this.FlareLo_check.AutoSize = true;
-            this.FlareLo_check.Location = new System.Drawing.Point(6, 265);
-            this.FlareLo_check.Name = "FlareLo_check";
-            this.FlareLo_check.Size = new System.Drawing.Size(61, 17);
-            this.FlareLo_check.TabIndex = 14;
-            this.FlareLo_check.Text = "FlareLo";
-            this.FlareLo_check.UseVisualStyleBackColor = true;
-            // 
-            // ChaffLo_check
-            // 
-            this.ChaffLo_check.AutoSize = true;
-            this.ChaffLo_check.Location = new System.Drawing.Point(7, 242);
-            this.ChaffLo_check.Name = "ChaffLo_check";
-            this.ChaffLo_check.Size = new System.Drawing.Size(63, 17);
-            this.ChaffLo_check.TabIndex = 13;
-            this.ChaffLo_check.Text = "ChaffLo";
-            this.ChaffLo_check.UseVisualStyleBackColor = true;
-            // 
-            // Rdy_check
-            // 
-            this.Rdy_check.AutoSize = true;
-            this.Rdy_check.Location = new System.Drawing.Point(6, 219);
-            this.Rdy_check.Name = "Rdy_check";
-            this.Rdy_check.Size = new System.Drawing.Size(45, 17);
-            this.Rdy_check.TabIndex = 12;
-            this.Rdy_check.Text = "Rdy";
-            this.Rdy_check.UseVisualStyleBackColor = true;
-            // 
-            // Degr_check
-            // 
-            this.Degr_check.AutoSize = true;
-            this.Degr_check.Location = new System.Drawing.Point(6, 196);
-            this.Degr_check.Name = "Degr_check";
-            this.Degr_check.Size = new System.Drawing.Size(49, 17);
-            this.Degr_check.TabIndex = 11;
-            this.Degr_check.Text = "Degr";
-            this.Degr_check.UseVisualStyleBackColor = true;
-            // 
-            // NoGo_check
-            // 
-            this.NoGo_check.AutoSize = true;
-            this.NoGo_check.Location = new System.Drawing.Point(6, 173);
-            this.NoGo_check.Name = "NoGo_check";
-            this.NoGo_check.Size = new System.Drawing.Size(54, 17);
-            this.NoGo_check.TabIndex = 10;
-            this.NoGo_check.Text = "NoGo";
-            this.NoGo_check.UseVisualStyleBackColor = true;
-            // 
-            // Go_check
-            // 
-            this.Go_check.AutoSize = true;
-            this.Go_check.Location = new System.Drawing.Point(6, 150);
-            this.Go_check.Name = "Go_check";
-            this.Go_check.Size = new System.Drawing.Size(40, 17);
-            this.Go_check.TabIndex = 9;
-            this.Go_check.Text = "Go";
-            this.Go_check.UseVisualStyleBackColor = true;
-            // 
-            // TgtSep_check
-            // 
-            this.TgtSep_check.AutoSize = true;
-            this.TgtSep_check.Location = new System.Drawing.Point(6, 127);
-            this.TgtSep_check.Name = "TgtSep_check";
-            this.TgtSep_check.Size = new System.Drawing.Size(61, 17);
-            this.TgtSep_check.TabIndex = 8;
-            this.TgtSep_check.Text = "TgtSep";
-            this.TgtSep_check.UseVisualStyleBackColor = true;
-            // 
-            // Unk_check
-            // 
-            this.Unk_check.AutoSize = true;
-            this.Unk_check.Location = new System.Drawing.Point(6, 104);
-            this.Unk_check.Name = "Unk_check";
-            this.Unk_check.Size = new System.Drawing.Size(46, 17);
-            this.Unk_check.TabIndex = 7;
-            this.Unk_check.Text = "Unk";
-            this.Unk_check.UseVisualStyleBackColor = true;
-            // 
-            // Naval_Check
-            // 
-            this.Naval_Check.AutoSize = true;
-            this.Naval_Check.Location = new System.Drawing.Point(6, 81);
-            this.Naval_Check.Name = "Naval_Check";
-            this.Naval_Check.Size = new System.Drawing.Size(54, 17);
-            this.Naval_Check.TabIndex = 6;
-            this.Naval_Check.Text = "Naval";
-            this.Naval_Check.UseVisualStyleBackColor = true;
-            // 
-            // PriMode_check
-            // 
-            this.PriMode_check.AutoSize = true;
-            this.PriMode_check.Location = new System.Drawing.Point(6, 58);
-            this.PriMode_check.Name = "PriMode_check";
-            this.PriMode_check.Size = new System.Drawing.Size(65, 17);
-            this.PriMode_check.TabIndex = 5;
-            this.PriMode_check.Text = "PriMode";
-            this.PriMode_check.UseVisualStyleBackColor = true;
-            // 
-            // Launch_check
-            // 
-            this.Launch_check.AutoSize = true;
-            this.Launch_check.Location = new System.Drawing.Point(6, 35);
-            this.Launch_check.Name = "Launch_check";
-            this.Launch_check.Size = new System.Drawing.Size(62, 17);
-            this.Launch_check.TabIndex = 4;
-            this.Launch_check.Text = "Launch";
-            this.Launch_check.UseVisualStyleBackColor = true;
-            // 
-            // HandOff_check
-            // 
-            this.HandOff_check.AutoSize = true;
-            this.HandOff_check.Location = new System.Drawing.Point(6, 12);
-            this.HandOff_check.Name = "HandOff_check";
-            this.HandOff_check.Size = new System.Drawing.Size(66, 17);
-            this.HandOff_check.TabIndex = 3;
-            this.HandOff_check.Text = "HandOff";
-            this.HandOff_check.UseVisualStyleBackColor = true;
-            // 
-            // lightBits3_Page
-            // 
-            this.lightBits3_Page.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.lightBits3_Page.Controls.Add(this.panel1);
-            this.lightBits3_Page.Location = new System.Drawing.Point(4, 22);
-            this.lightBits3_Page.Name = "lightBits3_Page";
-            this.lightBits3_Page.Size = new System.Drawing.Size(417, 458);
-            this.lightBits3_Page.TabIndex = 2;
-            this.lightBits3_Page.Text = "LightBits3";
-            // 
-            // flightData_Page
-            // 
-            this.flightData_Page.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.flightData_Page.Controls.Add(this.ecmBits_5_text);
-            this.flightData_Page.Controls.Add(this.ecmBits_4_text);
-            this.flightData_Page.Controls.Add(this.ecmBits_3_text);
-            this.flightData_Page.Controls.Add(this.label7);
-            this.flightData_Page.Controls.Add(this.label6);
-            this.flightData_Page.Controls.Add(this.label5);
-            this.flightData_Page.Controls.Add(this.label4);
-            this.flightData_Page.Controls.Add(this.label3);
-            this.flightData_Page.Controls.Add(this.ecmStatus_text);
-            this.flightData_Page.Controls.Add(this.ecmBits_2_text);
-            this.flightData_Page.Controls.Add(this.ecmBits_1_text);
-            this.flightData_Page.Controls.Add(this.label2);
-            this.flightData_Page.Controls.Add(this.isntrLights_text);
-            this.flightData_Page.Location = new System.Drawing.Point(4, 22);
-            this.flightData_Page.Name = "flightData_Page";
-            this.flightData_Page.Size = new System.Drawing.Size(417, 458);
-            this.flightData_Page.TabIndex = 3;
-            this.flightData_Page.Text = "Flight Data";
-            // 
-            // isntrLights_text
-            // 
-            this.isntrLights_text.AutoSize = true;
-            this.isntrLights_text.Location = new System.Drawing.Point(3, 12);
-            this.isntrLights_text.Name = "isntrLights_text";
-            this.isntrLights_text.Size = new System.Drawing.Size(93, 13);
-            this.isntrLights_text.TabIndex = 0;
-            this.isntrLights_text.Text = "Instrument Lights: ";
-            // 
-            // tabControl2
-            // 
-            this.tabControl2.Controls.Add(this.tabPage1);
-            this.tabControl2.Controls.Add(this.tabPage2);
-            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControl2.Location = new System.Drawing.Point(425, 0);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(302, 161);
-            this.tabControl2.TabIndex = 4;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.tabPage1.Controls.Add(this.add_arduino_button);
-            this.tabPage1.Controls.Add(this.pictureBox1);
-            this.tabPage1.Controls.Add(this.falconRunning);
-            this.tabPage1.Controls.Add(this.falconBuild_text);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(294, 135);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Main Page";
-            // 
-            // add_arduino_button
-            // 
-            this.add_arduino_button.BackColor = System.Drawing.Color.CadetBlue;
-            this.add_arduino_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.add_arduino_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.add_arduino_button.Location = new System.Drawing.Point(26, 106);
-            this.add_arduino_button.Name = "add_arduino_button";
-            this.add_arduino_button.Size = new System.Drawing.Size(75, 23);
-            this.add_arduino_button.TabIndex = 6;
-            this.add_arduino_button.Text = "Add Arduino";
-            this.add_arduino_button.UseVisualStyleBackColor = false;
-            this.add_arduino_button.Click += new System.EventHandler(this.addArduinoButton_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::FalconBMSArduinoConnector.Properties.Resources.FBAC;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(187, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(82, 87);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(294, 135);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Info";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabControl_Arduinos
-            // 
-            this.tabControl_Arduinos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControl_Arduinos.Location = new System.Drawing.Point(425, 161);
-            this.tabControl_Arduinos.Name = "tabControl_Arduinos";
-            this.tabControl_Arduinos.SelectedIndex = 0;
-            this.tabControl_Arduinos.Size = new System.Drawing.Size(302, 144);
-            this.tabControl_Arduinos.TabIndex = 6;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "ECM Bits";
-            // 
-            // ecmBits_1_text
-            // 
-            this.ecmBits_1_text.AutoSize = true;
-            this.ecmBits_1_text.Location = new System.Drawing.Point(53, 97);
-            this.ecmBits_1_text.Name = "ecmBits_1_text";
-            this.ecmBits_1_text.Size = new System.Drawing.Size(56, 13);
-            this.ecmBits_1_text.TabIndex = 2;
-            this.ecmBits_1_text.Text = "ECMBits 1";
-            // 
-            // ecmBits_2_text
-            // 
-            this.ecmBits_2_text.AutoSize = true;
-            this.ecmBits_2_text.Location = new System.Drawing.Point(53, 122);
-            this.ecmBits_2_text.Name = "ecmBits_2_text";
-            this.ecmBits_2_text.Size = new System.Drawing.Size(56, 13);
-            this.ecmBits_2_text.TabIndex = 3;
-            this.ecmBits_2_text.Text = "ECMBits 2";
-            // 
-            // ecmStatus_text
-            // 
-            this.ecmStatus_text.AutoSize = true;
-            this.ecmStatus_text.Location = new System.Drawing.Point(76, 70);
-            this.ecmStatus_text.Name = "ecmStatus_text";
-            this.ecmStatus_text.Size = new System.Drawing.Size(37, 13);
-            this.ecmStatus_text.TabIndex = 4;
-            this.ecmStatus_text.Text = "Status";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 97);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "ECM 1";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 122);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "ECM 2";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 149);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "ECM 3";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 174);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "ECM 4";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 199);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 13);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "ECM 5";
-            // 
-            // ecmBits_3_text
-            // 
-            this.ecmBits_3_text.AutoSize = true;
-            this.ecmBits_3_text.Location = new System.Drawing.Point(53, 149);
-            this.ecmBits_3_text.Name = "ecmBits_3_text";
-            this.ecmBits_3_text.Size = new System.Drawing.Size(56, 13);
-            this.ecmBits_3_text.TabIndex = 10;
-            this.ecmBits_3_text.Text = "ECMBits 3";
-            // 
-            // ecmBits_4_text
-            // 
-            this.ecmBits_4_text.AutoSize = true;
-            this.ecmBits_4_text.Location = new System.Drawing.Point(53, 174);
-            this.ecmBits_4_text.Name = "ecmBits_4_text";
-            this.ecmBits_4_text.Size = new System.Drawing.Size(56, 13);
-            this.ecmBits_4_text.TabIndex = 11;
-            this.ecmBits_4_text.Text = "ECMBits 4";
-            // 
-            // ecmBits_5_text
-            // 
-            this.ecmBits_5_text.AutoSize = true;
-            this.ecmBits_5_text.Location = new System.Drawing.Point(53, 199);
-            this.ecmBits_5_text.Name = "ecmBits_5_text";
-            this.ecmBits_5_text.Size = new System.Drawing.Size(56, 13);
-            this.ecmBits_5_text.TabIndex = 12;
-            this.ecmBits_5_text.Text = "ECMBits 5";
+            // metroSidePanel
+            // 
+            this.metroSidePanel.Controls.Add(this.metroSettingsButton);
+            this.metroSidePanel.Controls.Add(this.metroDataButton);
+            this.metroSidePanel.Controls.Add(this.metroHomeButton);
+            this.metroSidePanel.Controls.Add(this.metroPanel1);
+            this.metroSidePanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.metroSidePanel.HorizontalScrollbarBarColor = true;
+            this.metroSidePanel.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroSidePanel.HorizontalScrollbarSize = 10;
+            this.metroSidePanel.Location = new System.Drawing.Point(20, 60);
+            this.metroSidePanel.Name = "metroSidePanel";
+            this.metroSidePanel.Size = new System.Drawing.Size(133, 420);
+            this.metroSidePanel.TabIndex = 0;
+            this.metroSidePanel.VerticalScrollbarBarColor = true;
+            this.metroSidePanel.VerticalScrollbarHighlightOnWheel = false;
+            this.metroSidePanel.VerticalScrollbarSize = 10;
+            // 
+            // metroSettingsButton
+            // 
+            this.metroSettingsButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroSettingsButton.Location = new System.Drawing.Point(0, 215);
+            this.metroSettingsButton.Name = "metroSettingsButton";
+            this.metroSettingsButton.Size = new System.Drawing.Size(133, 50);
+            this.metroSettingsButton.TabIndex = 4;
+            this.metroSettingsButton.Text = "Settings";
+            this.metroSettingsButton.UseSelectable = true;
+            this.metroSettingsButton.Click += new System.EventHandler(this.metroSettingsButton_Click);
+            // 
+            // metroDataButton
+            // 
+            this.metroDataButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroDataButton.Location = new System.Drawing.Point(0, 165);
+            this.metroDataButton.Name = "metroDataButton";
+            this.metroDataButton.Size = new System.Drawing.Size(133, 50);
+            this.metroDataButton.TabIndex = 5;
+            this.metroDataButton.Text = "Data";
+            this.metroDataButton.UseSelectable = true;
+            this.metroDataButton.Click += new System.EventHandler(this.metroDataButton_Click);
+            // 
+            // metroHomeButton
+            // 
+            this.metroHomeButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroHomeButton.Location = new System.Drawing.Point(0, 115);
+            this.metroHomeButton.Name = "metroHomeButton";
+            this.metroHomeButton.Size = new System.Drawing.Size(133, 50);
+            this.metroHomeButton.TabIndex = 3;
+            this.metroHomeButton.Text = "Home";
+            this.metroHomeButton.UseSelectable = true;
+            this.metroHomeButton.Click += new System.EventHandler(this.metroHomeButton_Click);
+            // 
+            // metroPanel1
+            // 
+            this.metroPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.metroPanel1.BackgroundImage = global::FalconBMSArduinoConnector.Properties.Resources.FBAC;
+            this.metroPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(0, 0);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(133, 115);
+            this.metroPanel1.TabIndex = 2;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // metroHomePanel
+            // 
+            this.metroHomePanel.Controls.Add(this.metroTabControl1);
+            this.metroHomePanel.Controls.Add(this.metroPanel2);
+            this.metroHomePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroHomePanel.HorizontalScrollbarBarColor = true;
+            this.metroHomePanel.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroHomePanel.HorizontalScrollbarSize = 10;
+            this.metroHomePanel.Location = new System.Drawing.Point(153, 60);
+            this.metroHomePanel.Name = "metroHomePanel";
+            this.metroHomePanel.Size = new System.Drawing.Size(552, 420);
+            this.metroHomePanel.TabIndex = 1;
+            this.metroHomePanel.VerticalScrollbarBarColor = true;
+            this.metroHomePanel.VerticalScrollbarHighlightOnWheel = false;
+            this.metroHomePanel.VerticalScrollbarSize = 10;
+            // 
+            // metroTabControl1
+            // 
+            this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroTabControl1.Location = new System.Drawing.Point(0, 115);
+            this.metroTabControl1.Name = "metroTabControl1";
+            this.metroTabControl1.Size = new System.Drawing.Size(552, 305);
+            this.metroTabControl1.TabIndex = 3;
+            this.metroTabControl1.UseSelectable = true;
+            // 
+            // metroPanel2
+            // 
+            this.metroPanel2.Controls.Add(this.metroAddArduinoButton);
+            this.metroPanel2.Controls.Add(this.metroVersionLabel);
+            this.metroPanel2.Controls.Add(this.metroProcessLabel);
+            this.metroPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            this.metroPanel2.Location = new System.Drawing.Point(0, 0);
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.Size = new System.Drawing.Size(552, 115);
+            this.metroPanel2.TabIndex = 2;
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // metroAddArduinoButton
+            // 
+            this.metroAddArduinoButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.metroAddArduinoButton.Location = new System.Drawing.Point(0, 92);
+            this.metroAddArduinoButton.Name = "metroAddArduinoButton";
+            this.metroAddArduinoButton.Size = new System.Drawing.Size(552, 23);
+            this.metroAddArduinoButton.TabIndex = 4;
+            this.metroAddArduinoButton.Text = "Add Arduino";
+            this.metroAddArduinoButton.UseSelectable = true;
+            this.metroAddArduinoButton.Click += new System.EventHandler(this.addArduinoButton_Click);
+            // 
+            // metroVersionLabel
+            // 
+            this.metroVersionLabel.AutoSize = true;
+            this.metroVersionLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroVersionLabel.Location = new System.Drawing.Point(0, 19);
+            this.metroVersionLabel.Name = "metroVersionLabel";
+            this.metroVersionLabel.Size = new System.Drawing.Size(51, 19);
+            this.metroVersionLabel.TabIndex = 3;
+            this.metroVersionLabel.Text = "Version";
+            // 
+            // metroProcessLabel
+            // 
+            this.metroProcessLabel.AutoSize = true;
+            this.metroProcessLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroProcessLabel.Location = new System.Drawing.Point(0, 0);
+            this.metroProcessLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.metroProcessLabel.Name = "metroProcessLabel";
+            this.metroProcessLabel.Size = new System.Drawing.Size(77, 19);
+            this.metroProcessLabel.TabIndex = 2;
+            this.metroProcessLabel.Text = "Falcon BMS";
+            // 
+            // metroSettingsPanel
+            // 
+            this.metroSettingsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroSettingsPanel.HorizontalScrollbarBarColor = true;
+            this.metroSettingsPanel.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroSettingsPanel.HorizontalScrollbarSize = 10;
+            this.metroSettingsPanel.Location = new System.Drawing.Point(153, 60);
+            this.metroSettingsPanel.Name = "metroSettingsPanel";
+            this.metroSettingsPanel.Size = new System.Drawing.Size(552, 420);
+            this.metroSettingsPanel.TabIndex = 2;
+            this.metroSettingsPanel.VerticalScrollbarBarColor = true;
+            this.metroSettingsPanel.VerticalScrollbarHighlightOnWheel = false;
+            this.metroSettingsPanel.VerticalScrollbarSize = 10;
+            this.metroSettingsPanel.Visible = false;
+            // 
+            // metroDataPanel
+            // 
+            this.metroDataPanel.Controls.Add(this.metroTabControl2);
+            this.metroDataPanel.HorizontalScrollbarBarColor = true;
+            this.metroDataPanel.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroDataPanel.HorizontalScrollbarSize = 10;
+            this.metroDataPanel.Location = new System.Drawing.Point(418, 23);
+            this.metroDataPanel.Name = "metroDataPanel";
+            this.metroDataPanel.Size = new System.Drawing.Size(552, 420);
+            this.metroDataPanel.TabIndex = 3;
+            this.metroDataPanel.VerticalScrollbarBarColor = true;
+            this.metroDataPanel.VerticalScrollbarHighlightOnWheel = false;
+            this.metroDataPanel.VerticalScrollbarSize = 10;
+            this.metroDataPanel.Visible = false;
+            // 
+            // metroTabControl2
+            // 
+            this.metroTabControl2.Controls.Add(this.metroLightsBits);
+            this.metroTabControl2.Controls.Add(this.metroDEDTabPage);
+            this.metroTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroTabControl2.Location = new System.Drawing.Point(0, 0);
+            this.metroTabControl2.Name = "metroTabControl2";
+            this.metroTabControl2.SelectedIndex = 1;
+            this.metroTabControl2.Size = new System.Drawing.Size(552, 420);
+            this.metroTabControl2.TabIndex = 2;
+            this.metroTabControl2.UseSelectable = true;
+            // 
+            // metroLightsBits
+            // 
+            this.metroLightsBits.Controls.Add(this.metroPanel4);
+            this.metroLightsBits.Controls.Add(this.metroPanel3);
+            this.metroLightsBits.HorizontalScrollbarBarColor = true;
+            this.metroLightsBits.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroLightsBits.HorizontalScrollbarSize = 10;
+            this.metroLightsBits.Location = new System.Drawing.Point(4, 38);
+            this.metroLightsBits.Name = "metroLightsBits";
+            this.metroLightsBits.Size = new System.Drawing.Size(544, 378);
+            this.metroLightsBits.TabIndex = 0;
+            this.metroLightsBits.Text = "Light Bits";
+            this.metroLightsBits.VerticalScrollbarBarColor = true;
+            this.metroLightsBits.VerticalScrollbarHighlightOnWheel = false;
+            this.metroLightsBits.VerticalScrollbarSize = 10;
+            // 
+            // metroPanel4
+            // 
+            this.metroPanel4.Controls.Add(this.metroCheckBox50);
+            this.metroPanel4.Controls.Add(this.metroCheckBox49);
+            this.metroPanel4.Controls.Add(this.metroCheckBox48);
+            this.metroPanel4.Controls.Add(this.metroCheckBox47);
+            this.metroPanel4.Controls.Add(this.metroCheckBox46);
+            this.metroPanel4.Controls.Add(this.metroCheckBox45);
+            this.metroPanel4.Controls.Add(this.metroCheckBox44);
+            this.metroPanel4.Controls.Add(this.metroCheckBox43);
+            this.metroPanel4.Controls.Add(this.metroCheckBox42);
+            this.metroPanel4.Controls.Add(this.metroCheckBox41);
+            this.metroPanel4.Controls.Add(this.metroCheckBox40);
+            this.metroPanel4.Controls.Add(this.metroCheckBox39);
+            this.metroPanel4.Controls.Add(this.metroCheckBox38);
+            this.metroPanel4.Controls.Add(this.metroCheckBox37);
+            this.metroPanel4.Controls.Add(this.metroCheckBox36);
+            this.metroPanel4.Controls.Add(this.metroCheckBox35);
+            this.metroPanel4.Controls.Add(this.metroCheckBox34);
+            this.metroPanel4.Controls.Add(this.metroCheckBox33);
+            this.metroPanel4.Controls.Add(this.metroCheckBox32);
+            this.metroPanel4.Controls.Add(this.metroCheckBox31);
+            this.metroPanel4.Controls.Add(this.metroCheckBox30);
+            this.metroPanel4.Controls.Add(this.metroCheckBox29);
+            this.metroPanel4.Controls.Add(this.metroCheckBox28);
+            this.metroPanel4.Controls.Add(this.metroCheckBox27);
+            this.metroPanel4.Controls.Add(this.metroCheckBox26);
+            this.metroPanel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.metroPanel4.HorizontalScrollbarBarColor = true;
+            this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel4.HorizontalScrollbarSize = 10;
+            this.metroPanel4.Location = new System.Drawing.Point(150, 0);
+            this.metroPanel4.Name = "metroPanel4";
+            this.metroPanel4.Size = new System.Drawing.Size(150, 378);
+            this.metroPanel4.TabIndex = 3;
+            this.metroPanel4.VerticalScrollbarBarColor = true;
+            this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel4.VerticalScrollbarSize = 10;
+            // 
+            // metroPanel3
+            // 
+            this.metroPanel3.Controls.Add(this.metroCheckBox25);
+            this.metroPanel3.Controls.Add(this.metroCheckBox24);
+            this.metroPanel3.Controls.Add(this.metroCheckBox23);
+            this.metroPanel3.Controls.Add(this.metroCheckBox22);
+            this.metroPanel3.Controls.Add(this.metroCheckBox21);
+            this.metroPanel3.Controls.Add(this.metroCheckBox20);
+            this.metroPanel3.Controls.Add(this.metroCheckBox19);
+            this.metroPanel3.Controls.Add(this.metroCheckBox18);
+            this.metroPanel3.Controls.Add(this.metroCheckBox17);
+            this.metroPanel3.Controls.Add(this.metroCheckBox16);
+            this.metroPanel3.Controls.Add(this.metroCheckBox15);
+            this.metroPanel3.Controls.Add(this.metroCheckBox14);
+            this.metroPanel3.Controls.Add(this.metroCheckBox13);
+            this.metroPanel3.Controls.Add(this.metroCheckBox12);
+            this.metroPanel3.Controls.Add(this.metroCheckBox11);
+            this.metroPanel3.Controls.Add(this.metroCheckBox10);
+            this.metroPanel3.Controls.Add(this.metroCheckBox9);
+            this.metroPanel3.Controls.Add(this.metroCheckBox8);
+            this.metroPanel3.Controls.Add(this.metroCheckBox7);
+            this.metroPanel3.Controls.Add(this.metroCheckBox6);
+            this.metroPanel3.Controls.Add(this.metroCheckBox5);
+            this.metroPanel3.Controls.Add(this.metroCheckBox4);
+            this.metroPanel3.Controls.Add(this.metroCheckBox3);
+            this.metroPanel3.Controls.Add(this.metroCheckBox2);
+            this.metroPanel3.Controls.Add(this.metroCheckBox1);
+            this.metroPanel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.metroPanel3.HorizontalScrollbarBarColor = true;
+            this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel3.HorizontalScrollbarSize = 10;
+            this.metroPanel3.Location = new System.Drawing.Point(0, 0);
+            this.metroPanel3.Name = "metroPanel3";
+            this.metroPanel3.Size = new System.Drawing.Size(150, 378);
+            this.metroPanel3.TabIndex = 2;
+            this.metroPanel3.VerticalScrollbarBarColor = true;
+            this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel3.VerticalScrollbarSize = 10;
+            // 
+            // metroCheckBox25
+            // 
+            this.metroCheckBox25.AutoSize = true;
+            this.metroCheckBox25.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox25.Location = new System.Drawing.Point(0, 360);
+            this.metroCheckBox25.Name = "metroCheckBox25";
+            this.metroCheckBox25.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox25.TabIndex = 26;
+            this.metroCheckBox25.Text = "metroCheckBox25";
+            this.metroCheckBox25.UseSelectable = true;
+            // 
+            // metroCheckBox24
+            // 
+            this.metroCheckBox24.AutoSize = true;
+            this.metroCheckBox24.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox24.Location = new System.Drawing.Point(0, 345);
+            this.metroCheckBox24.Name = "metroCheckBox24";
+            this.metroCheckBox24.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox24.TabIndex = 25;
+            this.metroCheckBox24.Text = "metroCheckBox24";
+            this.metroCheckBox24.UseSelectable = true;
+            // 
+            // metroCheckBox23
+            // 
+            this.metroCheckBox23.AutoSize = true;
+            this.metroCheckBox23.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox23.Location = new System.Drawing.Point(0, 330);
+            this.metroCheckBox23.Name = "metroCheckBox23";
+            this.metroCheckBox23.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox23.TabIndex = 24;
+            this.metroCheckBox23.Text = "metroCheckBox23";
+            this.metroCheckBox23.UseSelectable = true;
+            // 
+            // metroCheckBox22
+            // 
+            this.metroCheckBox22.AutoSize = true;
+            this.metroCheckBox22.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox22.Location = new System.Drawing.Point(0, 315);
+            this.metroCheckBox22.Name = "metroCheckBox22";
+            this.metroCheckBox22.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox22.TabIndex = 23;
+            this.metroCheckBox22.Text = "metroCheckBox22";
+            this.metroCheckBox22.UseSelectable = true;
+            // 
+            // metroCheckBox21
+            // 
+            this.metroCheckBox21.AutoSize = true;
+            this.metroCheckBox21.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox21.Location = new System.Drawing.Point(0, 300);
+            this.metroCheckBox21.Name = "metroCheckBox21";
+            this.metroCheckBox21.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox21.TabIndex = 22;
+            this.metroCheckBox21.Text = "metroCheckBox21";
+            this.metroCheckBox21.UseSelectable = true;
+            // 
+            // metroCheckBox20
+            // 
+            this.metroCheckBox20.AutoSize = true;
+            this.metroCheckBox20.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox20.Location = new System.Drawing.Point(0, 285);
+            this.metroCheckBox20.Name = "metroCheckBox20";
+            this.metroCheckBox20.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox20.TabIndex = 21;
+            this.metroCheckBox20.Text = "metroCheckBox20";
+            this.metroCheckBox20.UseSelectable = true;
+            // 
+            // metroCheckBox19
+            // 
+            this.metroCheckBox19.AutoSize = true;
+            this.metroCheckBox19.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox19.Location = new System.Drawing.Point(0, 270);
+            this.metroCheckBox19.Name = "metroCheckBox19";
+            this.metroCheckBox19.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox19.TabIndex = 20;
+            this.metroCheckBox19.Text = "metroCheckBox19";
+            this.metroCheckBox19.UseSelectable = true;
+            // 
+            // metroCheckBox18
+            // 
+            this.metroCheckBox18.AutoSize = true;
+            this.metroCheckBox18.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox18.Location = new System.Drawing.Point(0, 255);
+            this.metroCheckBox18.Name = "metroCheckBox18";
+            this.metroCheckBox18.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox18.TabIndex = 19;
+            this.metroCheckBox18.Text = "metroCheckBox18";
+            this.metroCheckBox18.UseSelectable = true;
+            // 
+            // metroCheckBox17
+            // 
+            this.metroCheckBox17.AutoSize = true;
+            this.metroCheckBox17.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox17.Location = new System.Drawing.Point(0, 240);
+            this.metroCheckBox17.Name = "metroCheckBox17";
+            this.metroCheckBox17.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox17.TabIndex = 18;
+            this.metroCheckBox17.Text = "metroCheckBox17";
+            this.metroCheckBox17.UseSelectable = true;
+            // 
+            // metroCheckBox16
+            // 
+            this.metroCheckBox16.AutoSize = true;
+            this.metroCheckBox16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox16.Location = new System.Drawing.Point(0, 225);
+            this.metroCheckBox16.Name = "metroCheckBox16";
+            this.metroCheckBox16.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox16.TabIndex = 17;
+            this.metroCheckBox16.Text = "metroCheckBox16";
+            this.metroCheckBox16.UseSelectable = true;
+            // 
+            // metroCheckBox15
+            // 
+            this.metroCheckBox15.AutoSize = true;
+            this.metroCheckBox15.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox15.Location = new System.Drawing.Point(0, 210);
+            this.metroCheckBox15.Name = "metroCheckBox15";
+            this.metroCheckBox15.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox15.TabIndex = 16;
+            this.metroCheckBox15.Text = "metroCheckBox15";
+            this.metroCheckBox15.UseSelectable = true;
+            // 
+            // metroCheckBox14
+            // 
+            this.metroCheckBox14.AutoSize = true;
+            this.metroCheckBox14.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox14.Location = new System.Drawing.Point(0, 195);
+            this.metroCheckBox14.Name = "metroCheckBox14";
+            this.metroCheckBox14.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox14.TabIndex = 15;
+            this.metroCheckBox14.Text = "metroCheckBox14";
+            this.metroCheckBox14.UseSelectable = true;
+            // 
+            // metroCheckBox13
+            // 
+            this.metroCheckBox13.AutoSize = true;
+            this.metroCheckBox13.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox13.Location = new System.Drawing.Point(0, 180);
+            this.metroCheckBox13.Name = "metroCheckBox13";
+            this.metroCheckBox13.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox13.TabIndex = 14;
+            this.metroCheckBox13.Text = "metroCheckBox13";
+            this.metroCheckBox13.UseSelectable = true;
+            // 
+            // metroCheckBox12
+            // 
+            this.metroCheckBox12.AutoSize = true;
+            this.metroCheckBox12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox12.Location = new System.Drawing.Point(0, 165);
+            this.metroCheckBox12.Name = "metroCheckBox12";
+            this.metroCheckBox12.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox12.TabIndex = 13;
+            this.metroCheckBox12.Text = "metroCheckBox12";
+            this.metroCheckBox12.UseSelectable = true;
+            // 
+            // metroCheckBox11
+            // 
+            this.metroCheckBox11.AutoSize = true;
+            this.metroCheckBox11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox11.Location = new System.Drawing.Point(0, 150);
+            this.metroCheckBox11.Name = "metroCheckBox11";
+            this.metroCheckBox11.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox11.TabIndex = 12;
+            this.metroCheckBox11.Text = "metroCheckBox11";
+            this.metroCheckBox11.UseSelectable = true;
+            // 
+            // metroCheckBox10
+            // 
+            this.metroCheckBox10.AutoSize = true;
+            this.metroCheckBox10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox10.Location = new System.Drawing.Point(0, 135);
+            this.metroCheckBox10.Name = "metroCheckBox10";
+            this.metroCheckBox10.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox10.TabIndex = 11;
+            this.metroCheckBox10.Text = "metroCheckBox10";
+            this.metroCheckBox10.UseSelectable = true;
+            // 
+            // metroCheckBox9
+            // 
+            this.metroCheckBox9.AutoSize = true;
+            this.metroCheckBox9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox9.Location = new System.Drawing.Point(0, 120);
+            this.metroCheckBox9.Name = "metroCheckBox9";
+            this.metroCheckBox9.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox9.TabIndex = 10;
+            this.metroCheckBox9.Text = "metroCheckBox9";
+            this.metroCheckBox9.UseSelectable = true;
+            // 
+            // metroCheckBox8
+            // 
+            this.metroCheckBox8.AutoSize = true;
+            this.metroCheckBox8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox8.Location = new System.Drawing.Point(0, 105);
+            this.metroCheckBox8.Name = "metroCheckBox8";
+            this.metroCheckBox8.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox8.TabIndex = 9;
+            this.metroCheckBox8.Text = "metroCheckBox8";
+            this.metroCheckBox8.UseSelectable = true;
+            // 
+            // metroCheckBox7
+            // 
+            this.metroCheckBox7.AutoSize = true;
+            this.metroCheckBox7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox7.Location = new System.Drawing.Point(0, 90);
+            this.metroCheckBox7.Name = "metroCheckBox7";
+            this.metroCheckBox7.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox7.TabIndex = 8;
+            this.metroCheckBox7.Text = "metroCheckBox7";
+            this.metroCheckBox7.UseSelectable = true;
+            // 
+            // metroCheckBox6
+            // 
+            this.metroCheckBox6.AutoSize = true;
+            this.metroCheckBox6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox6.Location = new System.Drawing.Point(0, 75);
+            this.metroCheckBox6.Name = "metroCheckBox6";
+            this.metroCheckBox6.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox6.TabIndex = 7;
+            this.metroCheckBox6.Text = "metroCheckBox6";
+            this.metroCheckBox6.UseSelectable = true;
+            // 
+            // metroCheckBox5
+            // 
+            this.metroCheckBox5.AutoSize = true;
+            this.metroCheckBox5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox5.Location = new System.Drawing.Point(0, 60);
+            this.metroCheckBox5.Name = "metroCheckBox5";
+            this.metroCheckBox5.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox5.TabIndex = 6;
+            this.metroCheckBox5.Text = "metroCheckBox5";
+            this.metroCheckBox5.UseSelectable = true;
+            // 
+            // metroCheckBox4
+            // 
+            this.metroCheckBox4.AutoSize = true;
+            this.metroCheckBox4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox4.Location = new System.Drawing.Point(0, 45);
+            this.metroCheckBox4.Name = "metroCheckBox4";
+            this.metroCheckBox4.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox4.TabIndex = 5;
+            this.metroCheckBox4.Text = "metroCheckBox4";
+            this.metroCheckBox4.UseSelectable = true;
+            // 
+            // metroCheckBox3
+            // 
+            this.metroCheckBox3.AutoSize = true;
+            this.metroCheckBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox3.Location = new System.Drawing.Point(0, 30);
+            this.metroCheckBox3.Name = "metroCheckBox3";
+            this.metroCheckBox3.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox3.TabIndex = 4;
+            this.metroCheckBox3.Text = "metroCheckBox3";
+            this.metroCheckBox3.UseSelectable = true;
+            // 
+            // metroCheckBox2
+            // 
+            this.metroCheckBox2.AutoSize = true;
+            this.metroCheckBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox2.Location = new System.Drawing.Point(0, 15);
+            this.metroCheckBox2.Name = "metroCheckBox2";
+            this.metroCheckBox2.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox2.TabIndex = 3;
+            this.metroCheckBox2.Text = "metroCheckBox2";
+            this.metroCheckBox2.UseSelectable = true;
+            // 
+            // metroCheckBox1
+            // 
+            this.metroCheckBox1.AutoSize = true;
+            this.metroCheckBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox1.Location = new System.Drawing.Point(0, 0);
+            this.metroCheckBox1.Name = "metroCheckBox1";
+            this.metroCheckBox1.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox1.TabIndex = 2;
+            this.metroCheckBox1.Text = "metroCheckBox1";
+            this.metroCheckBox1.UseSelectable = true;
+            // 
+            // metroCheckBox26
+            // 
+            this.metroCheckBox26.AutoSize = true;
+            this.metroCheckBox26.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox26.Location = new System.Drawing.Point(0, 0);
+            this.metroCheckBox26.Name = "metroCheckBox26";
+            this.metroCheckBox26.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox26.TabIndex = 3;
+            this.metroCheckBox26.Text = "metroCheckBox26";
+            this.metroCheckBox26.UseSelectable = true;
+            // 
+            // metroCheckBox27
+            // 
+            this.metroCheckBox27.AutoSize = true;
+            this.metroCheckBox27.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox27.Location = new System.Drawing.Point(0, 15);
+            this.metroCheckBox27.Name = "metroCheckBox27";
+            this.metroCheckBox27.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox27.TabIndex = 4;
+            this.metroCheckBox27.Text = "metroCheckBox27";
+            this.metroCheckBox27.UseSelectable = true;
+            // 
+            // metroCheckBox28
+            // 
+            this.metroCheckBox28.AutoSize = true;
+            this.metroCheckBox28.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox28.Location = new System.Drawing.Point(0, 30);
+            this.metroCheckBox28.Name = "metroCheckBox28";
+            this.metroCheckBox28.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox28.TabIndex = 5;
+            this.metroCheckBox28.Text = "metroCheckBox28";
+            this.metroCheckBox28.UseSelectable = true;
+            // 
+            // metroCheckBox29
+            // 
+            this.metroCheckBox29.AutoSize = true;
+            this.metroCheckBox29.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox29.Location = new System.Drawing.Point(0, 45);
+            this.metroCheckBox29.Name = "metroCheckBox29";
+            this.metroCheckBox29.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox29.TabIndex = 6;
+            this.metroCheckBox29.Text = "metroCheckBox29";
+            this.metroCheckBox29.UseSelectable = true;
+            // 
+            // metroCheckBox30
+            // 
+            this.metroCheckBox30.AutoSize = true;
+            this.metroCheckBox30.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox30.Location = new System.Drawing.Point(0, 60);
+            this.metroCheckBox30.Name = "metroCheckBox30";
+            this.metroCheckBox30.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox30.TabIndex = 7;
+            this.metroCheckBox30.Text = "metroCheckBox30";
+            this.metroCheckBox30.UseSelectable = true;
+            // 
+            // metroCheckBox31
+            // 
+            this.metroCheckBox31.AutoSize = true;
+            this.metroCheckBox31.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox31.Location = new System.Drawing.Point(0, 75);
+            this.metroCheckBox31.Name = "metroCheckBox31";
+            this.metroCheckBox31.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox31.TabIndex = 8;
+            this.metroCheckBox31.Text = "metroCheckBox31";
+            this.metroCheckBox31.UseSelectable = true;
+            // 
+            // metroCheckBox32
+            // 
+            this.metroCheckBox32.AutoSize = true;
+            this.metroCheckBox32.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox32.Location = new System.Drawing.Point(0, 90);
+            this.metroCheckBox32.Name = "metroCheckBox32";
+            this.metroCheckBox32.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox32.TabIndex = 9;
+            this.metroCheckBox32.Text = "metroCheckBox32";
+            this.metroCheckBox32.UseSelectable = true;
+            // 
+            // metroCheckBox33
+            // 
+            this.metroCheckBox33.AutoSize = true;
+            this.metroCheckBox33.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox33.Location = new System.Drawing.Point(0, 105);
+            this.metroCheckBox33.Name = "metroCheckBox33";
+            this.metroCheckBox33.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox33.TabIndex = 10;
+            this.metroCheckBox33.Text = "metroCheckBox33";
+            this.metroCheckBox33.UseSelectable = true;
+            // 
+            // metroCheckBox34
+            // 
+            this.metroCheckBox34.AutoSize = true;
+            this.metroCheckBox34.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox34.Location = new System.Drawing.Point(0, 120);
+            this.metroCheckBox34.Name = "metroCheckBox34";
+            this.metroCheckBox34.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox34.TabIndex = 11;
+            this.metroCheckBox34.Text = "metroCheckBox34";
+            this.metroCheckBox34.UseSelectable = true;
+            // 
+            // metroCheckBox35
+            // 
+            this.metroCheckBox35.AutoSize = true;
+            this.metroCheckBox35.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox35.Location = new System.Drawing.Point(0, 135);
+            this.metroCheckBox35.Name = "metroCheckBox35";
+            this.metroCheckBox35.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox35.TabIndex = 12;
+            this.metroCheckBox35.Text = "metroCheckBox35";
+            this.metroCheckBox35.UseSelectable = true;
+            // 
+            // metroCheckBox36
+            // 
+            this.metroCheckBox36.AutoSize = true;
+            this.metroCheckBox36.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox36.Location = new System.Drawing.Point(0, 150);
+            this.metroCheckBox36.Name = "metroCheckBox36";
+            this.metroCheckBox36.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox36.TabIndex = 13;
+            this.metroCheckBox36.Text = "metroCheckBox36";
+            this.metroCheckBox36.UseSelectable = true;
+            // 
+            // metroCheckBox37
+            // 
+            this.metroCheckBox37.AutoSize = true;
+            this.metroCheckBox37.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox37.Location = new System.Drawing.Point(0, 165);
+            this.metroCheckBox37.Name = "metroCheckBox37";
+            this.metroCheckBox37.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox37.TabIndex = 14;
+            this.metroCheckBox37.Text = "metroCheckBox37";
+            this.metroCheckBox37.UseSelectable = true;
+            // 
+            // metroCheckBox38
+            // 
+            this.metroCheckBox38.AutoSize = true;
+            this.metroCheckBox38.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox38.Location = new System.Drawing.Point(0, 180);
+            this.metroCheckBox38.Name = "metroCheckBox38";
+            this.metroCheckBox38.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox38.TabIndex = 15;
+            this.metroCheckBox38.Text = "metroCheckBox38";
+            this.metroCheckBox38.UseSelectable = true;
+            // 
+            // metroCheckBox39
+            // 
+            this.metroCheckBox39.AutoSize = true;
+            this.metroCheckBox39.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox39.Location = new System.Drawing.Point(0, 195);
+            this.metroCheckBox39.Name = "metroCheckBox39";
+            this.metroCheckBox39.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox39.TabIndex = 16;
+            this.metroCheckBox39.Text = "metroCheckBox39";
+            this.metroCheckBox39.UseSelectable = true;
+            // 
+            // metroCheckBox40
+            // 
+            this.metroCheckBox40.AutoSize = true;
+            this.metroCheckBox40.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox40.Location = new System.Drawing.Point(0, 210);
+            this.metroCheckBox40.Name = "metroCheckBox40";
+            this.metroCheckBox40.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox40.TabIndex = 17;
+            this.metroCheckBox40.Text = "metroCheckBox40";
+            this.metroCheckBox40.UseSelectable = true;
+            // 
+            // metroCheckBox41
+            // 
+            this.metroCheckBox41.AutoSize = true;
+            this.metroCheckBox41.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox41.Location = new System.Drawing.Point(0, 225);
+            this.metroCheckBox41.Name = "metroCheckBox41";
+            this.metroCheckBox41.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox41.TabIndex = 18;
+            this.metroCheckBox41.Text = "metroCheckBox41";
+            this.metroCheckBox41.UseSelectable = true;
+            // 
+            // metroCheckBox42
+            // 
+            this.metroCheckBox42.AutoSize = true;
+            this.metroCheckBox42.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox42.Location = new System.Drawing.Point(0, 240);
+            this.metroCheckBox42.Name = "metroCheckBox42";
+            this.metroCheckBox42.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox42.TabIndex = 19;
+            this.metroCheckBox42.Text = "metroCheckBox42";
+            this.metroCheckBox42.UseSelectable = true;
+            // 
+            // metroCheckBox43
+            // 
+            this.metroCheckBox43.AutoSize = true;
+            this.metroCheckBox43.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox43.Location = new System.Drawing.Point(0, 255);
+            this.metroCheckBox43.Name = "metroCheckBox43";
+            this.metroCheckBox43.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox43.TabIndex = 20;
+            this.metroCheckBox43.Text = "metroCheckBox43";
+            this.metroCheckBox43.UseSelectable = true;
+            // 
+            // metroCheckBox44
+            // 
+            this.metroCheckBox44.AutoSize = true;
+            this.metroCheckBox44.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox44.Location = new System.Drawing.Point(0, 270);
+            this.metroCheckBox44.Name = "metroCheckBox44";
+            this.metroCheckBox44.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox44.TabIndex = 21;
+            this.metroCheckBox44.Text = "metroCheckBox44";
+            this.metroCheckBox44.UseSelectable = true;
+            // 
+            // metroCheckBox45
+            // 
+            this.metroCheckBox45.AutoSize = true;
+            this.metroCheckBox45.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox45.Location = new System.Drawing.Point(0, 285);
+            this.metroCheckBox45.Name = "metroCheckBox45";
+            this.metroCheckBox45.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox45.TabIndex = 22;
+            this.metroCheckBox45.Text = "metroCheckBox45";
+            this.metroCheckBox45.UseSelectable = true;
+            // 
+            // metroCheckBox46
+            // 
+            this.metroCheckBox46.AutoSize = true;
+            this.metroCheckBox46.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox46.Location = new System.Drawing.Point(0, 300);
+            this.metroCheckBox46.Name = "metroCheckBox46";
+            this.metroCheckBox46.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox46.TabIndex = 23;
+            this.metroCheckBox46.Text = "metroCheckBox46";
+            this.metroCheckBox46.UseSelectable = true;
+            // 
+            // metroCheckBox47
+            // 
+            this.metroCheckBox47.AutoSize = true;
+            this.metroCheckBox47.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox47.Location = new System.Drawing.Point(0, 315);
+            this.metroCheckBox47.Name = "metroCheckBox47";
+            this.metroCheckBox47.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox47.TabIndex = 24;
+            this.metroCheckBox47.Text = "metroCheckBox47";
+            this.metroCheckBox47.UseSelectable = true;
+            // 
+            // metroCheckBox48
+            // 
+            this.metroCheckBox48.AutoSize = true;
+            this.metroCheckBox48.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox48.Location = new System.Drawing.Point(0, 330);
+            this.metroCheckBox48.Name = "metroCheckBox48";
+            this.metroCheckBox48.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox48.TabIndex = 25;
+            this.metroCheckBox48.Text = "metroCheckBox48";
+            this.metroCheckBox48.UseSelectable = true;
+            // 
+            // metroCheckBox49
+            // 
+            this.metroCheckBox49.AutoSize = true;
+            this.metroCheckBox49.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox49.Location = new System.Drawing.Point(0, 345);
+            this.metroCheckBox49.Name = "metroCheckBox49";
+            this.metroCheckBox49.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox49.TabIndex = 26;
+            this.metroCheckBox49.Text = "metroCheckBox49";
+            this.metroCheckBox49.UseSelectable = true;
+            // 
+            // metroCheckBox50
+            // 
+            this.metroCheckBox50.AutoSize = true;
+            this.metroCheckBox50.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroCheckBox50.Location = new System.Drawing.Point(0, 360);
+            this.metroCheckBox50.Name = "metroCheckBox50";
+            this.metroCheckBox50.Size = new System.Drawing.Size(150, 15);
+            this.metroCheckBox50.TabIndex = 27;
+            this.metroCheckBox50.Text = "metroCheckBox50";
+            this.metroCheckBox50.UseSelectable = true;
+            // 
+            // metroDEDTabPage
+            // 
+            this.metroDEDTabPage.Controls.Add(this.metroDEDPanel);
+            this.metroDEDTabPage.HorizontalScrollbarBarColor = true;
+            this.metroDEDTabPage.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroDEDTabPage.HorizontalScrollbarSize = 10;
+            this.metroDEDTabPage.Location = new System.Drawing.Point(4, 38);
+            this.metroDEDTabPage.Name = "metroDEDTabPage";
+            this.metroDEDTabPage.Size = new System.Drawing.Size(544, 378);
+            this.metroDEDTabPage.TabIndex = 1;
+            this.metroDEDTabPage.Text = "DED/PFL";
+            this.metroDEDTabPage.VerticalScrollbarBarColor = true;
+            this.metroDEDTabPage.VerticalScrollbarHighlightOnWheel = false;
+            this.metroDEDTabPage.VerticalScrollbarSize = 10;
+            // 
+            // metroDEDPanel
+            // 
+            this.metroDEDPanel.BackColor = System.Drawing.SystemColors.WindowText;
+            this.metroDEDPanel.Controls.Add(this.metroLabel5);
+            this.metroDEDPanel.Controls.Add(this.metroLabel4);
+            this.metroDEDPanel.Controls.Add(this.metroLabel2);
+            this.metroDEDPanel.Controls.Add(this.metroLabel3);
+            this.metroDEDPanel.Controls.Add(this.metroLabel1);
+            this.metroDEDPanel.HorizontalScrollbarBarColor = true;
+            this.metroDEDPanel.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroDEDPanel.HorizontalScrollbarSize = 10;
+            this.metroDEDPanel.Location = new System.Drawing.Point(3, 3);
+            this.metroDEDPanel.Name = "metroDEDPanel";
+            this.metroDEDPanel.Size = new System.Drawing.Size(341, 158);
+            this.metroDEDPanel.TabIndex = 2;
+            this.metroDEDPanel.VerticalScrollbarBarColor = true;
+            this.metroDEDPanel.VerticalScrollbarHighlightOnWheel = false;
+            this.metroDEDPanel.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(3, 11);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(81, 19);
+            this.metroLabel1.TabIndex = 2;
+            this.metroLabel1.Text = "metroLabel1";
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(3, 40);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(83, 19);
+            this.metroLabel3.TabIndex = 3;
+            this.metroLabel3.Text = "metroLabel2";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(3, 103);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(83, 19);
+            this.metroLabel2.TabIndex = 4;
+            this.metroLabel2.Text = "metroLabel2";
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(3, 72);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(83, 19);
+            this.metroLabel4.TabIndex = 4;
+            this.metroLabel4.Text = "metroLabel2";
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(5, 129);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(83, 19);
+            this.metroLabel5.TabIndex = 5;
+            this.metroLabel5.Text = "metroLabel5";
             // 
             // FalconBMSArduinoConnector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(727, 484);
-            this.Controls.Add(this.tabControl_Arduinos);
-            this.Controls.Add(this.tabControl2);
-            this.Controls.Add(this.falconDataTabs);
-            this.Controls.Add(this.DED_Panel);
+            this.ClientSize = new System.Drawing.Size(725, 500);
+            this.Controls.Add(this.metroDataPanel);
+            this.Controls.Add(this.metroHomePanel);
+            this.Controls.Add(this.metroSettingsPanel);
+            this.Controls.Add(this.metroSidePanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(725, 500);
             this.Name = "FalconBMSArduinoConnector";
             this.Text = "Falcon BMS Arduino Connector";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Closing);
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.DED_Panel.ResumeLayout(false);
-            this.DED_Panel.PerformLayout();
-            this.falconDataTabs.ResumeLayout(false);
-            this.lightBits_Page.ResumeLayout(false);
-            this.lightBits_Page.PerformLayout();
-            this.lightBits2_Page.ResumeLayout(false);
-            this.lightBits2_Page.PerformLayout();
-            this.lightBits3_Page.ResumeLayout(false);
-            this.flightData_Page.ResumeLayout(false);
-            this.flightData_Page.PerformLayout();
-            this.tabControl2.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.metroSidePanel.ResumeLayout(false);
+            this.metroHomePanel.ResumeLayout(false);
+            this.metroPanel2.ResumeLayout(false);
+            this.metroPanel2.PerformLayout();
+            this.metroDataPanel.ResumeLayout(false);
+            this.metroTabControl2.ResumeLayout(false);
+            this.metroLightsBits.ResumeLayout(false);
+            this.metroPanel4.ResumeLayout(false);
+            this.metroPanel4.PerformLayout();
+            this.metroPanel3.ResumeLayout(false);
+            this.metroPanel3.PerformLayout();
+            this.metroDEDTabPage.ResumeLayout(false);
+            this.metroDEDPanel.ResumeLayout(false);
+            this.metroDEDPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.CheckBox falconRunning;
-        private System.Windows.Forms.CheckBox masterCaution_check;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.CheckBox gearLightRight_check;
-        private System.Windows.Forms.CheckBox gearLightLeft_check;
-        private System.Windows.Forms.CheckBox gearLightFront_check;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label falconBuild_text;
-        private System.Windows.Forms.CheckBox tf_check;
-        private System.Windows.Forms.Panel DED_Panel;
-        private System.Windows.Forms.Label DED_Line4_text;
-        private System.Windows.Forms.Label DED_Line3_text;
-        private System.Windows.Forms.Label DED_Line2_text;
-        private System.Windows.Forms.Label DED_Line1_text;
-        private System.Windows.Forms.Label DED_Line5_text;
-        private System.Windows.Forms.CheckBox oxyBrow_check;
-        private System.Windows.Forms.CheckBox equipHot_check;
-        private System.Windows.Forms.CheckBox CAN_check;
-        private System.Windows.Forms.CheckBox flcs_check;
-        private System.Windows.Forms.CheckBox flcsABCD_check;
-        private System.Windows.Forms.CheckBox hyd_check;
-        private System.Windows.Forms.CheckBox config_check;
-        private System.Windows.Forms.CheckBox engFire_check;
-        private System.Windows.Forms.CheckBox onground_check;
-        private System.Windows.Forms.CheckBox aoaBelow_check;
-        private System.Windows.Forms.CheckBox aoaOn_check;
-        private System.Windows.Forms.CheckBox aoaAbove_check;
-        private System.Windows.Forms.CheckBox tlCFG_check;
-        private System.Windows.Forms.CheckBox refuelDSC_check;
-        private System.Windows.Forms.CheckBox refuelAR_check;
-        private System.Windows.Forms.CheckBox refuelRDY_check;
-        private System.Windows.Forms.CheckBox IFF_check;
-        private System.Windows.Forms.CheckBox RadarAlt_check;
-        private System.Windows.Forms.CheckBox Avionics_check;
-        private System.Windows.Forms.CheckBox FuelLow_check;
-        private System.Windows.Forms.CheckBox Overheat_check;
-        private System.Windows.Forms.CheckBox EngineFault_check;
-        private System.Windows.Forms.CheckBox LEFlaps_check;
-        private System.Windows.Forms.CheckBox FltControlSys_check;
-        private System.Windows.Forms.CheckBox TFR_STBY_check;
-        private System.Windows.Forms.CheckBox AutoPilotOn_check;
-        private System.Windows.Forms.CheckBox CabinPress_check;
-        private System.Windows.Forms.CheckBox NWSFail_check;
-        private System.Windows.Forms.CheckBox Hook_check;
-        private System.Windows.Forms.CheckBox ECM_check;
-        private System.Windows.Forms.TabControl falconDataTabs;
-        private System.Windows.Forms.TabPage lightBits_Page;
-        private System.Windows.Forms.TabPage lightBits2_Page;
-        private System.Windows.Forms.TabPage lightBits3_Page;
-        private System.Windows.Forms.TabControl tabControl2;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.CheckBox FlareLo_check;
-        private System.Windows.Forms.CheckBox ChaffLo_check;
-        private System.Windows.Forms.CheckBox Rdy_check;
-        private System.Windows.Forms.CheckBox Degr_check;
-        private System.Windows.Forms.CheckBox NoGo_check;
-        private System.Windows.Forms.CheckBox Go_check;
-        private System.Windows.Forms.CheckBox TgtSep_check;
-        private System.Windows.Forms.CheckBox Unk_check;
-        private System.Windows.Forms.CheckBox Naval_Check;
-        private System.Windows.Forms.CheckBox PriMode_check;
-        private System.Windows.Forms.CheckBox Launch_check;
-        private System.Windows.Forms.CheckBox HandOff_check;
-        private System.Windows.Forms.CheckBox JFSOn_check;
-        private System.Windows.Forms.CheckBox EPUOn_check;
-        private System.Windows.Forms.CheckBox AftFuelLow_check;
-        private System.Windows.Forms.CheckBox FwdFuelLow_check;
-        private System.Windows.Forms.CheckBox EcmFail_check;
-        private System.Windows.Forms.CheckBox EcmPwr_check;
-        private System.Windows.Forms.CheckBox AuxPwr_check;
-        private System.Windows.Forms.CheckBox AuxLow_check;
-        private System.Windows.Forms.CheckBox AuxAct_check;
-        private System.Windows.Forms.CheckBox AuxSrch_check;
-        private System.Windows.Forms.CheckBox ENGINE_check;
-        private System.Windows.Forms.CheckBox GEARHANDLE_check;
-        private System.Windows.Forms.CheckBox TFR_ENGAGED_check;
-        private System.Windows.Forms.CheckBox ANTI_SKID_check;
-        private System.Windows.Forms.CheckBox FUEL_OIL_HOT_check;
-        private System.Windows.Forms.CheckBox BUC_check;
-        private System.Windows.Forms.CheckBox SEAT_ARM_check;
-        private System.Windows.Forms.CheckBox PROBEHEAT_check;
-        private System.Windows.Forms.CheckBox OXY_LOW_check;
-        private System.Windows.Forms.CheckBox SEC_check;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TabPage flightData_Page;
-        private System.Windows.Forms.Label isntrLights_text;
-        private System.Windows.Forms.TabControl tabControl_Arduinos;
-        private System.Windows.Forms.Button add_arduino_button;
-        private System.Windows.Forms.Label ecmBits_2_text;
-        private System.Windows.Forms.Label ecmBits_1_text;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label ecmStatus_text;
-        private System.Windows.Forms.Label ecmBits_5_text;
-        private System.Windows.Forms.Label ecmBits_4_text;
-        private System.Windows.Forms.Label ecmBits_3_text;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private MetroFramework.Controls.MetroPanel metroSidePanel;
+        private MetroFramework.Controls.MetroButton metroDataButton;
+        private MetroFramework.Controls.MetroButton metroHomeButton;
+        private MetroFramework.Controls.MetroPanel metroPanel1;
+        private MetroFramework.Controls.MetroPanel metroHomePanel;
+        private MetroFramework.Controls.MetroTabControl metroTabControl1;
+        private MetroFramework.Controls.MetroPanel metroPanel2;
+        private MetroFramework.Controls.MetroPanel metroSettingsPanel;
+        private MetroFramework.Controls.MetroButton metroAddArduinoButton;
+        private MetroFramework.Controls.MetroLabel metroVersionLabel;
+        private MetroFramework.Controls.MetroLabel metroProcessLabel;
+        private MetroFramework.Controls.MetroButton metroSettingsButton;
+        private MetroFramework.Controls.MetroPanel metroDataPanel;
+        private MetroFramework.Controls.MetroTabControl metroTabControl2;
+        private MetroFramework.Controls.MetroTabPage metroLightsBits;
+        private MetroFramework.Controls.MetroPanel metroPanel4;
+        private MetroFramework.Controls.MetroPanel metroPanel3;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox25;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox24;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox23;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox22;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox21;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox20;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox19;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox18;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox17;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox16;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox15;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox14;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox13;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox12;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox11;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox10;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox9;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox8;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox7;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox6;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox5;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox4;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox3;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox2;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox1;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox50;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox49;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox48;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox47;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox46;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox45;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox44;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox43;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox42;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox41;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox40;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox39;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox38;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox37;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox36;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox35;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox34;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox33;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox32;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox31;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox30;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox29;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox28;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox27;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox26;
+        private MetroFramework.Controls.MetroTabPage metroDEDTabPage;
+        private MetroFramework.Controls.MetroPanel metroDEDPanel;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
     }
 }
 
