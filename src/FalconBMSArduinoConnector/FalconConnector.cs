@@ -106,6 +106,37 @@ namespace FalconBMSArduinoConnector
             }
         }
 
+        public String GetFlyingState()
+        {
+            IntellivibeData iv = _reader.GetCurrentData().IntellivibeData;
+
+            if (iv.IsExitGame)
+                return "Exited Game";
+
+            if (iv.IsEndFlight)
+                return "End of Flight";
+
+            if (iv.IsEjecting)
+                return "Ejecting";
+
+            if (iv.IsPaused)
+                return "Paused";
+
+            if (iv.IsFrozen)
+                return "Frozen";
+
+            if (!iv.In3D)
+                return "In 3D World";
+
+            if (iv.IsOverG)
+                return "Over-G";
+
+            if (iv.IsOnGround)
+                return "On Ground";
+
+            return "Flying";
+
+        }
         public FlyStates GetFalconState()
         {
             FlightData data = _reader.GetCurrentData();

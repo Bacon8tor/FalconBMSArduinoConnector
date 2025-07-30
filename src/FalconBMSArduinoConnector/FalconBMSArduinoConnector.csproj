@@ -104,6 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FBAC.ico" />
+    <EmbeddedResource Include="Resources\falconded.ttf" />
+    <None Include="Resources\FalconDEDFont.bmp" />
     <None Include="Resources\FBAC_SSD1322_OLED.png" />
     <None Include="Resources\FBAC.png" />
   </ItemGroup>

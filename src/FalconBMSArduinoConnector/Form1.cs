@@ -4,16 +4,18 @@ using MetroFramework;
 using MetroFramework.Components;
 using MetroFramework.Controls;
 using MetroFramework.Forms;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-using Microsoft.VisualBasic;
 
 namespace FalconBMSArduinoConnector
 {
@@ -23,7 +25,8 @@ namespace FalconBMSArduinoConnector
         List<ArduinoConnector> arduinoConnections = new List<ArduinoConnector>();
         private Timer falconCheckTimer;
         private MetroStyleManager metroStyleManager;
-
+        private PrivateFontCollection privateFonts = new PrivateFontCollection();
+        private Font DEDFont = null;
         private MetroFramework.MetroThemeStyle currentTheme;
         private MetroFramework.MetroColorStyle currentStyle;
         private const string SettingsFile = "user_settings.xml";
@@ -39,7 +42,45 @@ namespace FalconBMSArduinoConnector
             public MetroThemeStyle Theme { get; set; }
             public MetroColorStyle Style { get; set; }
         }
+        public void LoadCustomFont()
+        {
 
+            try
+            {
+                var fontStream = Assembly.GetExecutingAssembly()
+                    .GetManifestResourceStream("FalconBMSArduinoConnector.Resources.falconded.ttf");
+
+                if (fontStream != null)
+                {
+                    byte[] fontData = new byte[fontStream.Length];
+                    fontStream.Read(fontData, 0, (int)fontStream.Length);
+                    fontStream.Close();
+
+                    IntPtr fontPtr = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData.Length);
+                    System.Runtime.InteropServices.Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
+
+                    privateFonts.AddMemoryFont(fontPtr, fontData.Length);
+                    System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
+
+                    Font customFont = new Font(privateFonts.Families[0], 12f);
+                    DEDFont = customFont;
+                    metroDEDLabel_1.Font = DEDFont;
+                    metroDEDLabel_2.Font = DEDFont;
+                    metroDEDLabel_3.Font = DEDFont;
+                    metroDEDLabel_4.Font = DEDFont;
+                    metroDEDLabel_5.Font = DEDFont;
+                }
+                else
+                {
+                    Console.WriteLine("Failed to load font stream: resource not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading custom font: {ex.Message}");
+            }
+
+        }
 
         public FalconBMSArduinoConnector()
         {
@@ -54,16 +95,140 @@ namespace FalconBMSArduinoConnector
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            var resourceNames = Assembly.GetExecutingAssembly().GetManifestResourceNames();
+            foreach (var res in resourceNames)
+            {
+                Console.WriteLine("Embedded resource: " + res);
+            }
+
             LoadSettings();
 
+            LoadCheckBoxes();
             CheckFalconStatus();
             LoadArduinoTabs();
+            LoadCustomFont();
+            
+            
+           
 
             falconCheckTimer = new Timer();
             falconCheckTimer.Interval = 50;
             falconCheckTimer.Tick += (s, args) => CheckFalconStatus();
             falconCheckTimer.Start();
              metroDataPanel.Dock = DockStyle.Fill;
+            
+        }
+
+        private void LoadCheckBoxes()
+        {
+            // metroCheckBox1 to metroCheckBox29
+            metroCheckBox1.Text = "Master Caution";       // LightBits.MasterCaution
+            metroCheckBox2.Text = "TF";                   // LightBits.TF
+            metroCheckBox3.Text = "OXY BROW";             // LightBits.OXY_BROW
+            metroCheckBox4.Text = "EQUIP HOT";            // LightBits.EQUIP_HOT
+            metroCheckBox5.Text = "ENG FIRE";             // LightBits.ENG_FIRE
+            metroCheckBox6.Text = "CONFIG";               // LightBits.CONFIG
+            metroCheckBox7.Text = "HYD";                  // LightBits.HYD
+            metroCheckBox8.Text = "FLCS ABCD";            // LightBits.Flcs_ABCD
+            metroCheckBox9.Text = "FLCS";                 // LightBits.FLCS
+            metroCheckBox10.Text = "CAN";                 // LightBits.CAN
+            metroCheckBox11.Text = "T-L CFG";             // LightBits.T_L_CFG
+            metroCheckBox12.Text = "AOA Above";           // LightBits.AOAAbove
+            metroCheckBox13.Text = "AOA On";              // LightBits.AOAOn
+            metroCheckBox14.Text = "AOA Below";           // LightBits.AOABelow
+            metroCheckBox15.Text = "Refuel RDY";          // LightBits.RefuelRDY
+            metroCheckBox16.Text = "Refuel AR";           // LightBits.RefuelAR
+            metroCheckBox17.Text = "Refuel DSC";          // LightBits.RefuelDSC
+            metroCheckBox18.Text = "Flight Control Sys";  // LightBits.FltControlSys
+            metroCheckBox19.Text = "LE Flaps";            // LightBits.LEFlaps
+            metroCheckBox20.Text = "Engine Fault";        // LightBits.EngineFault
+            metroCheckBox21.Text = "Overheat";            // LightBits.Overheat
+            metroCheckBox22.Text = "Fuel Low";            // LightBits.FuelLow
+            metroCheckBox23.Text = "Avionics";            // LightBits.Avionics
+            metroCheckBox24.Text = "Radar Alt";           // LightBits.RadarAlt
+            metroCheckBox25.Text = "IFF";                 // LightBits.IFF
+            metroCheckBox26.Text = "ECM";                 // LightBits.ECM
+            metroCheckBox27.Text = "Hook";                // LightBits.Hook
+            metroCheckBox28.Text = "NWS Fail";            // LightBits.NWSFail
+            metroCheckBox29.Text = "Cabin Press";         // LightBits.CabinPress
+            // From LightBits2 enum
+            metroCheckBox30.Text = "HandOff";          // Threat Warning Prime
+            metroCheckBox31.Text = "Launch";
+            metroCheckBox32.Text = "PriMode";
+            metroCheckBox33.Text = "Naval";
+            metroCheckBox34.Text = "Unk";
+            metroCheckBox35.Text = "TgtSep";
+
+            metroCheckBox36.Text = "GO";               // EWS
+            metroCheckBox37.Text = "NO GO";
+            metroCheckBox38.Text = "DEGR";
+            metroCheckBox39.Text = "RDY";
+            metroCheckBox40.Text = "Chaff Low";
+            metroCheckBox41.Text = "Flare Low";
+
+            metroCheckBox42.Text = "Aux Search";       // Aux Threat Warning
+            metroCheckBox43.Text = "Aux Active";
+            metroCheckBox44.Text = "Aux Low";
+            metroCheckBox45.Text = "Aux Power";
+
+            metroCheckBox46.Text = "ECM Power";        // ECM and Caution
+            metroCheckBox47.Text = "ECM Fail";
+            metroCheckBox48.Text = "FWD Fuel Low";
+            metroCheckBox49.Text = "AFT Fuel Low";
+            metroCheckBox50.Text = "EPU On";
+            metroCheckBox51.Text = "JFS On";
+            metroCheckBox52.Text = "SEC";
+            metroCheckBox53.Text = "OXY LOW";
+            metroCheckBox54.Text = "PROBE HEAT";
+            metroCheckBox55.Text = "SEAT ARM";
+            metroCheckBox56.Text = "BUC";
+            metroCheckBox57.Text = "FUEL/OIL HOT";
+            metroCheckBox58.Text = "ANTI SKID";
+            metroCheckBox59.Text = "TFR ENGAGED";
+            metroCheckBox60.Text = "GEAR HANDLE";
+            metroCheckBox61.Text = "ENGINE";
+
+            //lightbits3
+            metroCheckBox62.Text = "Flcs PMG";
+            metroCheckBox63.Text = "Main Gen";
+            metroCheckBox64.Text = "Stby Gen";
+            metroCheckBox65.Text = "EPU Gen";
+            metroCheckBox66.Text = "EPU PMG";
+            metroCheckBox67.Text = "To FLCS";
+            metroCheckBox68.Text = "FLCS Relay";
+            metroCheckBox69.Text = "Battery Fail";
+
+            metroCheckBox70.Text = "Hydrazine";
+            metroCheckBox71.Text = "Air";
+
+            metroCheckBox72.Text = "Elec Fault";
+            metroCheckBox73.Text = "LEF Fault";
+
+            metroCheckBox74.Text = "On Ground";
+            metroCheckBox75.Text = "FLCS BIT Run";
+            metroCheckBox76.Text = "FLCS BIT Fail";
+            metroCheckBox77.Text = "DBU Warn";
+            metroCheckBox78.Text = "Nose Gear Down";
+            metroCheckBox79.Text = "Left Gear Down";
+            metroCheckBox80.Text = "Right Gear Down";
+            metroCheckBox81.Text = "Park Brake On";
+            metroCheckBox82.Text = "Power Off";
+
+            metroCheckBox83.Text = "CADC";
+            metroCheckBox84.Text = "Speed Brake";
+
+            metroCheckBox85.Text = "System Test";
+            metroCheckBox86.Text = "MC Announced";
+
+            metroCheckBox87.Text = "MLG WOW";
+            metroCheckBox88.Text = "NLG WOW";
+
+            metroCheckBox89.Text = "ATF Not Engaged";
+            metroCheckBox90.Text = "Inlet Icing";
+
+
+
 
         }
 
@@ -102,13 +267,132 @@ namespace FalconBMSArduinoConnector
                 // Implementation of light bit checks and UI updates omitted for brevity
                 metroProcessLabel.Text = falcon.GetFalconProcessName();
                 metroVersionLabel.Text = falcon.GetFalconVersion();
+                metroStatusLabel.Text = falcon.GetFlyingState();
+                UpdateCheckBoxes();
+                UpdateScreens();
+
             }
             else
             {
                 // Handle Falcon not running state
             }
         }
+        private void UpdateScreens()
+        {
+            metroDEDLabel_1.Text = falcon.GetFlightData().DEDLines[0];
+            metroDEDLabel_2.Text = falcon.GetFlightData().DEDLines[1];
+            metroDEDLabel_3.Text = falcon.GetFlightData().DEDLines[2];
+            metroDEDLabel_4.Text = falcon.GetFlightData().DEDLines[3];
+            metroDEDLabel_5.Text = falcon.GetFlightData().DEDLines[4];
+        }
+        private void UpdateCheckBoxes()
+        {
 
+            metroCheckBox1.Checked = falcon.IsLightOn(LightBits.MasterCaution);
+            metroCheckBox2.Checked = falcon.IsLightOn(LightBits.TF);
+            metroCheckBox3.Checked = falcon.IsLightOn(LightBits.OXY_BROW);
+            metroCheckBox4.Checked = falcon.IsLightOn(LightBits.EQUIP_HOT);
+            metroCheckBox5.Checked = falcon.IsLightOn(LightBits.ENG_FIRE);
+            metroCheckBox6.Checked = falcon.IsLightOn(LightBits.CONFIG);
+            metroCheckBox7.Checked = falcon.IsLightOn(LightBits.HYD);
+            metroCheckBox8.Checked = falcon.IsLightOn(LightBits.Flcs_ABCD);
+            metroCheckBox9.Checked = falcon.IsLightOn(LightBits.FLCS);
+            metroCheckBox10.Checked = falcon.IsLightOn(LightBits.CAN);
+            metroCheckBox11.Checked = falcon.IsLightOn(LightBits.T_L_CFG);
+            metroCheckBox12.Checked = falcon.IsLightOn(LightBits.AOAAbove);
+            metroCheckBox13.Checked = falcon.IsLightOn(LightBits.AOAOn);
+            metroCheckBox14.Checked = falcon.IsLightOn(LightBits.AOABelow);
+            metroCheckBox15.Checked = falcon.IsLightOn(LightBits.RefuelRDY);
+            metroCheckBox16.Checked = falcon.IsLightOn(LightBits.RefuelAR);
+            metroCheckBox17.Checked = falcon.IsLightOn(LightBits.RefuelDSC);
+            metroCheckBox18.Checked = falcon.IsLightOn(LightBits.FltControlSys);
+            metroCheckBox19.Checked = falcon.IsLightOn(LightBits.LEFlaps);
+            metroCheckBox20.Checked = falcon.IsLightOn(LightBits.EngineFault);
+            metroCheckBox21.Checked = falcon.IsLightOn(LightBits.Overheat);
+            metroCheckBox22.Checked = falcon.IsLightOn(LightBits.FuelLow);
+            metroCheckBox23.Checked = falcon.IsLightOn(LightBits.Avionics);
+            metroCheckBox24.Checked = falcon.IsLightOn(LightBits.RadarAlt);
+            metroCheckBox25.Checked = falcon.IsLightOn(LightBits.IFF);
+            metroCheckBox26.Checked = falcon.IsLightOn(LightBits.ECM);
+            metroCheckBox27.Checked = falcon.IsLightOn(LightBits.Hook);
+            metroCheckBox28.Checked = falcon.IsLightOn(LightBits.NWSFail);
+            metroCheckBox29.Checked = falcon.IsLightOn(LightBits.CabinPress);
+
+            metroCheckBox30.Checked = falcon.IsLightOn(LightBits2.HandOff);
+            metroCheckBox31.Checked = falcon.IsLightOn(LightBits2.Launch);
+            metroCheckBox32.Checked = falcon.IsLightOn(LightBits2.PriMode);
+            metroCheckBox33.Checked = falcon.IsLightOn(LightBits2.Naval);
+            metroCheckBox34.Checked = falcon.IsLightOn(LightBits2.Unk);
+            metroCheckBox35.Checked = falcon.IsLightOn(LightBits2.TgtSep);
+            metroCheckBox36.Checked = falcon.IsLightOn(LightBits2.Go);
+            metroCheckBox37.Checked = falcon.IsLightOn(LightBits2.NoGo);
+            metroCheckBox38.Checked = falcon.IsLightOn(LightBits2.Degr);
+            metroCheckBox39.Checked = falcon.IsLightOn(LightBits2.Rdy);
+            metroCheckBox40.Checked = falcon.IsLightOn(LightBits2.ChaffLo);
+            metroCheckBox41.Checked = falcon.IsLightOn(LightBits2.FlareLo);
+            metroCheckBox42.Checked = falcon.IsLightOn(LightBits2.AuxSrch);
+            metroCheckBox43.Checked = falcon.IsLightOn(LightBits2.AuxAct);
+            metroCheckBox44.Checked = falcon.IsLightOn(LightBits2.AuxLow);
+            metroCheckBox45.Checked = falcon.IsLightOn(LightBits2.AuxPwr);
+            metroCheckBox46.Checked = falcon.IsLightOn(LightBits2.EcmPwr);
+            metroCheckBox47.Checked = falcon.IsLightOn(LightBits2.EcmFail);
+            metroCheckBox48.Checked = falcon.IsLightOn(LightBits2.FwdFuelLow);
+            metroCheckBox49.Checked = falcon.IsLightOn(LightBits2.AftFuelLow);
+            metroCheckBox50.Checked = falcon.IsLightOn(LightBits2.EPUOn);
+            metroCheckBox51.Checked = falcon.IsLightOn(LightBits2.JFSOn);
+            metroCheckBox52.Checked = falcon.IsLightOn(LightBits2.SEC);
+            metroCheckBox53.Checked = falcon.IsLightOn(LightBits2.OXY_LOW);
+            metroCheckBox54.Checked = falcon.IsLightOn(LightBits2.PROBEHEAT);
+            metroCheckBox55.Checked = falcon.IsLightOn(LightBits2.SEAT_ARM);
+            metroCheckBox56.Checked = falcon.IsLightOn(LightBits2.BUC);
+            metroCheckBox57.Checked = falcon.IsLightOn(LightBits2.FUEL_OIL_HOT);
+            metroCheckBox58.Checked = falcon.IsLightOn(LightBits2.ANTI_SKID);
+            metroCheckBox59.Checked = falcon.IsLightOn(LightBits2.TFR_ENGAGED);
+            metroCheckBox60.Checked = falcon.IsLightOn(LightBits2.GEARHANDLE);
+            metroCheckBox61.Checked = falcon.IsLightOn(LightBits2.ENGINE);
+
+            //LightBits3
+            metroCheckBox62.Checked = falcon.IsLightOn(LightBits3.FlcsPmg);
+            metroCheckBox63.Checked = falcon.IsLightOn(LightBits3.MainGen);
+            metroCheckBox64.Checked = falcon.IsLightOn(LightBits3.StbyGen);
+            metroCheckBox65.Checked = falcon.IsLightOn(LightBits3.EpuGen);
+            metroCheckBox66.Checked = falcon.IsLightOn(LightBits3.EpuPmg);
+            metroCheckBox67.Checked = falcon.IsLightOn(LightBits3.ToFlcs);
+            metroCheckBox68.Checked = falcon.IsLightOn(LightBits3.FlcsRly);
+            metroCheckBox69.Checked = falcon.IsLightOn(LightBits3.BatFail);
+
+            metroCheckBox70.Checked = falcon.IsLightOn(LightBits3.Hydrazine);
+            metroCheckBox71.Checked = falcon.IsLightOn(LightBits3.Air);
+
+            metroCheckBox72.Checked = falcon.IsLightOn(LightBits3.Elec_Fault);
+            metroCheckBox73.Checked = falcon.IsLightOn(LightBits3.Lef_Fault);
+
+            metroCheckBox74.Checked = falcon.IsLightOn(LightBits3.OnGround);
+            metroCheckBox75.Checked = falcon.IsLightOn(LightBits3.FlcsBitRun);
+            metroCheckBox76.Checked = falcon.IsLightOn(LightBits3.FlcsBitFail);
+            metroCheckBox77.Checked = falcon.IsLightOn(LightBits3.DbuWarn);
+            metroCheckBox78.Checked = falcon.IsLightOn(LightBits3.NoseGearDown);
+            metroCheckBox79.Checked = falcon.IsLightOn(LightBits3.LeftGearDown);
+            metroCheckBox80.Checked = falcon.IsLightOn(LightBits3.RightGearDown);
+            metroCheckBox81.Checked = falcon.IsLightOn(LightBits3.ParkBrakeOn);
+            metroCheckBox82.Checked = falcon.IsLightOn(LightBits3.Power_Off);
+
+            metroCheckBox83.Checked = falcon.IsLightOn(LightBits3.cadc);
+            metroCheckBox84.Checked = falcon.IsLightOn(LightBits3.SpeedBrake);
+
+            metroCheckBox85.Checked = falcon.IsLightOn(LightBits3.SysTest);
+            metroCheckBox86.Checked = falcon.IsLightOn(LightBits3.MCAnnounced);
+
+            metroCheckBox87.Checked = falcon.IsLightOn(LightBits3.MLGWOW);
+            metroCheckBox88.Checked = falcon.IsLightOn(LightBits3.NLGWOW);
+
+            metroCheckBox89.Checked = falcon.IsLightOn(LightBits3.ATF_Not_Engaged);
+            metroCheckBox90.Checked = falcon.IsLightOn(LightBits3.Inlet_Icing);
+
+            
+
+
+        }
         private void SaveArduinoTabs()
         {
             var data = new List<ArduinoTabInfo>();
@@ -154,8 +438,9 @@ namespace FalconBMSArduinoConnector
 
             var comboBox = new MetroComboBox() { Left = 5, Top = 15, Width = 121 ,Theme = this.Theme };
             var button = new MetroButton() { Text = "Connect", Left = 150, Top = 20, Theme = this.Theme };
-            var removeButton = new MetroButton() { Text = "Remove", Left = 5, Top = 200, Theme = this.Theme  };
-            var DTRcheckbox = new MetroCheckBox() { Width = 220, Left = 130, Top = 55, Text = "Micro/ProMicro/Leonardo_Device" , Theme = this.Theme };
+            var removeButton = new MetroButton() { Text = "Remove", Left = 5, Top = 150, Theme = this.Theme  };
+            var DTRcheckbox = new MetroCheckBox() { Width = 220, Left = 150, Top = 55, Text = "Micro/ProMicro/Leonardo_Device" , Theme = this.Theme };
+            var renameButton = new MetroButton() { Text = "Rename", Left = 100, Top = 150, Theme = this.Theme };
 
             var ports = SerialPort.GetPortNames().Distinct().ToArray();
             comboBox.DataSource = ports;
@@ -224,17 +509,17 @@ namespace FalconBMSArduinoConnector
                 }
             };
 
-            var renameButton = new MetroButton() { Text = "Rename", Left = 100, Top = 200, Theme = this.Theme };
-    renameButton.Click += (s, e) =>
-    {
-        string input = Interaction.InputBox("Enter new tab name:", "Rename Tab", tabPage.Text);
+            
+            renameButton.Click += (s, e) =>
+            {
+                string input = Interaction.InputBox("Enter new tab name:", "Rename Tab", tabPage.Text);
 
-        if (!string.IsNullOrEmpty(input))
-        {
-            tabPage.Text = input;
-            SaveArduinoTabs(); // Save new name
-        }
-    };
+                if (!string.IsNullOrEmpty(input))
+                {
+                    tabPage.Text = input;
+                    SaveArduinoTabs(); // Save new name
+                }
+            };
 
             tabPage.Controls.Add(removeButton);
             tabPage.Controls.Add(DTRcheckbox);
