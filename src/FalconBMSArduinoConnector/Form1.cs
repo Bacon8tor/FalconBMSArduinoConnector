@@ -389,8 +389,9 @@ namespace FalconBMSArduinoConnector
             metroCheckBox89.Checked = falcon.IsLightOn(LightBits3.ATF_Not_Engaged);
             metroCheckBox90.Checked = falcon.IsLightOn(LightBits3.Inlet_Icing);
 
-            
 
+            metro_uhf_preset_label.Text = falcon.GetFlightData().BupUhfPreset.ToString();
+            metro_uhf_freq_label.Text = falcon.GetFlightData().BupUhfFreq.ToString();
 
         }
         private void SaveArduinoTabs()
