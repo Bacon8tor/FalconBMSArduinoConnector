@@ -152,8 +152,8 @@
             this.metroDEDLabel_2 = new System.Windows.Forms.Label();
             this.metroDEDLabel_1 = new System.Windows.Forms.Label();
             this.metroInfoPage = new MetroFramework.Controls.MetroTabPage();
-            this.metro_uhf_preset_label = new MetroFramework.Controls.MetroLabel();
             this.metro_uhf_freq_label = new MetroFramework.Controls.MetroLabel();
+            this.metro_uhf_preset_label = new MetroFramework.Controls.MetroLabel();
             this.metroSidePanel.SuspendLayout();
             this.metroHomePanel.SuspendLayout();
             this.metroPanel2.SuspendLayout();
@@ -1720,15 +1720,6 @@
             this.metroInfoPage.VerticalScrollbarHighlightOnWheel = false;
             this.metroInfoPage.VerticalScrollbarSize = 10;
             // 
-            // metro_uhf_preset_label
-            // 
-            this.metro_uhf_preset_label.AutoSize = true;
-            this.metro_uhf_preset_label.Location = new System.Drawing.Point(3, 14);
-            this.metro_uhf_preset_label.Name = "metro_uhf_preset_label";
-            this.metro_uhf_preset_label.Size = new System.Drawing.Size(81, 19);
-            this.metro_uhf_preset_label.TabIndex = 2;
-            this.metro_uhf_preset_label.Text = "UHF Preset: ";
-            // 
             // metro_uhf_freq_label
             // 
             this.metro_uhf_freq_label.AutoSize = true;
@@ -1737,6 +1728,15 @@
             this.metro_uhf_freq_label.Size = new System.Drawing.Size(68, 19);
             this.metro_uhf_freq_label.TabIndex = 3;
             this.metro_uhf_freq_label.Text = "UHF Freq:";
+            // 
+            // metro_uhf_preset_label
+            // 
+            this.metro_uhf_preset_label.AutoSize = true;
+            this.metro_uhf_preset_label.Location = new System.Drawing.Point(3, 14);
+            this.metro_uhf_preset_label.Name = "metro_uhf_preset_label";
+            this.metro_uhf_preset_label.Size = new System.Drawing.Size(81, 19);
+            this.metro_uhf_preset_label.TabIndex = 2;
+            this.metro_uhf_preset_label.Text = "UHF Preset: ";
             // 
             // FalconBMSArduinoConnector
             // 
