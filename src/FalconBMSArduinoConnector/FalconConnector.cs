@@ -108,34 +108,41 @@ namespace FalconBMSArduinoConnector
 
         public String GetFlyingState()
         {
-            IntellivibeData iv = _reader.GetCurrentData().IntellivibeData;
+            try
+            {
+                IntellivibeData iv = _reader.GetCurrentData().IntellivibeData;
 
-            if (iv.IsExitGame)
-                return "Exited Game";
+                if (iv.IsExitGame)
+                    return "Exited Game";
 
-            if (iv.IsEndFlight)
-                return "End of Flight";
+                if (iv.IsEndFlight)
+                    return "End of Flight";
 
-            if (iv.IsEjecting)
-                return "Ejecting";
+                if (iv.IsEjecting)
+                    return "Ejecting";
 
-            if (iv.IsPaused)
-                return "Paused";
+                if (iv.IsPaused)
+                    return "Paused";
 
-            if (iv.IsFrozen)
-                return "Frozen";
+                if (iv.IsFrozen)
+                    return "Frozen";
 
-            if (!iv.In3D)
-                return "In 3D World";
+                if (!iv.In3D)
+                    return "In 3D World";
 
-            if (iv.IsOverG)
-                return "Over-G";
+                if (iv.IsOverG)
+                    return "Over-G";
 
-            if (iv.IsOnGround)
-                return "On Ground";
+                if (iv.IsOnGround)
+                    return "On Ground";
 
-            return "Flying";
-
+                return "Flying";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error getting Falcon version: " + ex.Message);
+                return "";
+            }
         }
         public FlyStates GetFalconState()
         {
