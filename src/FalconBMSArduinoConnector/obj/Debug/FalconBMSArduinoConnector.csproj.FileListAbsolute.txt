@@ -63,3 +63,9 @@ D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\D
 D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBM.F562539A.Up2Date
 D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.exe
 D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.pdb
+C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\MetroFramework.Design.dll
+C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\MetroFramework.dll
+C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\MetroFramework.Fonts.dll
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\MetroFramework.Design.dll
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\MetroFramework.dll
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\MetroFramework.Fonts.dll

@@ -310,6 +310,14 @@ namespace FalconBMSArduinoConnector
                                     byte[] cmdsMode = BitConverter.GetBytes(fData.cmdsMode);
                                     SendResponse(0x27, cmdsMode);
                                     break;
+                                case 0x28:
+                                    byte[] uhfpreset = BitConverter.GetBytes(fData.BupUhfPreset);
+                                    SendResponse(0x28, uhfpreset);
+                                    break;
+                                case 0x29:
+                                    byte[] uhfradio = BitConverter.GetBytes(fData.BupUhfFreq);
+                                    SendResponse(0x29, uhfradio);
+                                    break;
                                 case 0x0F:
                                     SendResponse(0x0F, new byte[] { 0xAB });
                                     break;

@@ -22,3 +22,6 @@ D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\R
 D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.exe
 D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.pdb
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.exe.config
+C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\MetroFramework.Design.dll
+C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\MetroFramework.dll
+C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\MetroFramework.Fonts.dll
