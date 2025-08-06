@@ -105,12 +105,12 @@ namespace FalconBMSArduinoConnector
             LoadSettings();
 
             LoadCheckBoxes();
-            CheckFalconStatus();
+            
             LoadArduinoTabs();
             LoadCustomFont();
-            
-            
-           
+
+           // CheckFalconStatus();
+
 
             falconCheckTimer = new Timer();
             falconCheckTimer.Interval = 50;
@@ -226,9 +226,6 @@ namespace FalconBMSArduinoConnector
 
             metroCheckBox89.Text = "ATF Not Engaged";
             metroCheckBox90.Text = "Inlet Icing";
-
-
-
 
         }
 
@@ -392,9 +389,14 @@ namespace FalconBMSArduinoConnector
             metroCheckBox89.Checked = falcon.IsLightOn(LightBits3.ATF_Not_Engaged);
             metroCheckBox90.Checked = falcon.IsLightOn(LightBits3.Inlet_Icing);
 
-            
-                metro_uhf_preset_label.Text = "UHF Preset: " + falcon.GetFlightData().BupUhfPreset.ToString();
-                metro_uhf_freq_label.Text = "UHF Freq: " + falcon.GetFlightData().BupUhfFreq.ToString().Substring(0, 3) + "." + falcon.GetFlightData().BupUhfFreq.ToString().Substring(3, 3);
+            var preset = falcon.GetFlightData().BupUhfPreset.ToString();
+            var freq = "000000";
+            if (falcon.GetFlightData().BupUhfFreq >= 6)
+            {
+                freq = falcon.GetFlightData().BupUhfFreq.ToString().Substring(0, 3) + "." + falcon.GetFlightData().BupUhfFreq.ToString().Substring(3, 3);
+            }
+            metro_uhf_preset_label.Text = "UHF Preset: " + preset;// falcon.GetFlightData().BupUhfPreset.ToString();
+            metro_uhf_freq_label.Text = "UHF Freq: " + freq;// falcon.GetFlightData().BupUhfFreq.ToString().Substring(0, 3) + "." + falcon.GetFlightData().BupUhfFreq.ToString().Substring(3, 3);
             
 
         }
