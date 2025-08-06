@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <ArrayOfArduinoTabInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArduinoTabInfo>
-    <PortName>COM4</PortName>
+    <PortName>COM1</PortName>
     <TabName>DED</TabName>
   </ArduinoTabInfo>
 </ArrayOfArduinoTabInfo>

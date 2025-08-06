@@ -320,10 +320,10 @@ namespace FalconBMSArduinoConnector
                                     break;
                                 case 0x30:
                                     byte[] speedBrake = BitConverter.GetBytes(fData.speedBrake);
-                                    SendResponse(0x29, speedBrake);
+                                    SendResponse(0x30, speedBrake);
                                     break;
                                 case 0x31:
-                                    
+
                                     break;
                                 case 0x99:
                                     Console.WriteLine(" Packet Failed CheckSum");

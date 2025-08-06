@@ -106,11 +106,19 @@ namespace FalconBMSArduinoConnector
             }
         }
 
-        public String GetFlyingState()
+        public string GetFlyingState()
         {
             try
             {
-                IntellivibeData iv = _reader.GetCurrentData().IntellivibeData;
+                var data = _reader?.GetCurrentData();
+
+                if (data == null)
+                {
+                    return "No data available";
+                }
+
+                var iv = data.IntellivibeData;
+
 
                 if (iv.IsExitGame)
                     return "Exited Game";
@@ -140,10 +148,11 @@ namespace FalconBMSArduinoConnector
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error getting Falcon version: " + ex.Message);
-                return "";
+                Console.WriteLine("Error getting flying state: " + ex.Message);
+                return "Error";
             }
         }
+
         public FlyStates GetFalconState()
         {
             FlightData data = _reader.GetCurrentData();
