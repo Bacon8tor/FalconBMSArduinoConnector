@@ -264,12 +264,15 @@ namespace FalconBMSArduinoConnector
         {
             if (falcon.isFalconRunning())
             {
-                // Implementation of light bit checks and UI updates omitted for brevity
-                metroProcessLabel.Text = falcon.GetFalconProcessName();
-                metroVersionLabel.Text = falcon.GetFalconVersion();
-                metroStatusLabel.Text = falcon.GetFlyingState();
-                UpdateCheckBoxes();
-                UpdateScreens();
+                if (falcon.GetFlightData() != null)
+                {
+                    // Implementation of light bit checks and UI updates omitted for brevity
+                    metroProcessLabel.Text = falcon.GetFalconProcessName();
+                    metroVersionLabel.Text = falcon.GetFalconVersion();
+                    metroStatusLabel.Text = falcon.GetFlyingState();
+                    UpdateCheckBoxes();
+                    UpdateScreens();
+                }
 
             }
             else
@@ -389,9 +392,10 @@ namespace FalconBMSArduinoConnector
             metroCheckBox89.Checked = falcon.IsLightOn(LightBits3.ATF_Not_Engaged);
             metroCheckBox90.Checked = falcon.IsLightOn(LightBits3.Inlet_Icing);
 
-
-            metro_uhf_preset_label.Text = "UHF Preset: " + falcon.GetFlightData().BupUhfPreset.ToString();
-            metro_uhf_freq_label.Text = "UHF Freq: " + falcon.GetFlightData().BupUhfFreq.ToString().Substring(0,3) + "." + falcon.GetFlightData().BupUhfFreq.ToString().Substring(3, 3);
+            
+                metro_uhf_preset_label.Text = "UHF Preset: " + falcon.GetFlightData().BupUhfPreset.ToString();
+                metro_uhf_freq_label.Text = "UHF Freq: " + falcon.GetFlightData().BupUhfFreq.ToString().Substring(0, 3) + "." + falcon.GetFlightData().BupUhfFreq.ToString().Substring(3, 3);
+            
 
         }
         private void SaveArduinoTabs()

@@ -233,7 +233,7 @@ namespace FalconBMSArduinoConnector
                                     SendResponse(0x10, flareCount);
                                     break;
                                 case 0x11:
-                                    //byte[] floodConsole = BitConverter.GetBytes(fData.floodConsole); //1-6
+                                    byte[] floodConsole = BitConverter.GetBytes((byte)fData.floodConsole); //1-6
                                     SendResponse(0x11, new byte[] { 0x00 }); //floodConsole);
                                     break;
                                 case 0x12:
@@ -318,9 +318,20 @@ namespace FalconBMSArduinoConnector
                                     byte[] uhfradio = BitConverter.GetBytes(fData.BupUhfFreq);
                                     SendResponse(0x29, uhfradio);
                                     break;
+                                case 0x30:
+                                    byte[] speedBrake = BitConverter.GetBytes(fData.speedBrake);
+                                    SendResponse(0x30, speedBrake);
+                                    break;
+                                case 0x31:
+
+                                    break;
+                                case 0x99:
+                                    Console.WriteLine(" Packet Failed CheckSum");
+                                    break;
                                 case 0x0F:
                                     SendResponse(0x0F, new byte[] { 0xAB });
                                     break;
+
                                 case 0x5A:
                                     SendResponse(0xA5, new byte[] { 0x5A });
                                     break;
