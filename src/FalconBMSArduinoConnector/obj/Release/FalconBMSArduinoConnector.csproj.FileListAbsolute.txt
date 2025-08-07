@@ -25,3 +25,4 @@ C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoCon
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\MetroFramework.Design.dll
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\MetroFramework.dll
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\MetroFramework.Fonts.dll
+C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\Resources\FBAC_ICON.ico
