@@ -104,6 +104,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FBAC.ico" />
+    <None Include="Resources\Icon1.ico" />
+    <Content Include="Resources\FBAC_ICON.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Resources\falconded.ttf" />
     <None Include="Resources\FalconDEDFont.bmp" />
     <None Include="Resources\FBAC_SSD1322_OLED.png" />
