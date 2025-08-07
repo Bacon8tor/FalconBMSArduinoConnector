@@ -1,15 +1,11 @@
 <?xml version="1.0"?>
 <ArrayOfArduinoTabInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArduinoTabInfo>
-    <PortName>COM1</PortName>
+    <PortName>COM4</PortName>
     <TabName>DED</TabName>
   </ArduinoTabInfo>
   <ArduinoTabInfo>
-    <PortName>COM1</PortName>
-    <TabName>Caution Panel</TabName>
-  </ArduinoTabInfo>
-  <ArduinoTabInfo>
-    <PortName>COM1</PortName>
-    <TabName>CMDS</TabName>
+    <PortName>COM9</PortName>
+    <TabName>Arduino 2</TabName>
   </ArduinoTabInfo>
 </ArrayOfArduinoTabInfo>

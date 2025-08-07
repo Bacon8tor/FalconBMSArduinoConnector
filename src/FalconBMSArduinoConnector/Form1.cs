@@ -451,8 +451,15 @@ namespace FalconBMSArduinoConnector
 
             var ports = SerialPort.GetPortNames().Distinct().ToArray();
             comboBox.DataSource = ports;
+            int index2 = Array.IndexOf(ports, selectedPort);
+           // Console.WriteLine("Port: " + selectedPort + "; index: " + index2);
             if (!string.IsNullOrEmpty(selectedPort) && comboBox.Items.Contains(selectedPort))
+            {
                 comboBox.SelectedItem = selectedPort;
+                
+              //  Console.WriteLine("Port Loaded");
+            }
+            
 
             comboBox.DropDown += (s, e) =>
             {
@@ -460,9 +467,12 @@ namespace FalconBMSArduinoConnector
                 var refreshedPorts = SerialPort.GetPortNames().Distinct().ToArray();
                 comboBox.DataSource = null;
                 comboBox.DataSource = refreshedPorts;
-                if (refreshedPorts.Contains(currentSelection))
-                    comboBox.SelectedItem = currentSelection;
+                if (refreshedPorts.Contains(selectedPort))
+                    comboBox.SelectedItem = selectedPort;
+                
             };
+
+           
 
             button.Click += (s, args) =>
             {
@@ -538,6 +548,11 @@ namespace FalconBMSArduinoConnector
 
             tabPage.Theme = this.Theme;
             metroTabControl1.TabPages.Add(tabPage);
+            //update combobox with saved com port
+            if (index2 >= 0)
+            {
+                comboBox.SelectedIndex = index2;
+            }
         }
 
 
@@ -738,6 +753,83 @@ namespace FalconBMSArduinoConnector
         private void metroDataButton_Click(object sender, EventArgs e)
         {
             ShowPanel(metroDataPanel);
+        }
+
+        private int connectButtonState = 0;
+        private void ConnectAllArduinos()
+        {
+            if (connectButtonState == 0)
+            {
+                for (int i = 0; i < metroTabControl1.TabPages.Count; i++)
+                {
+                    var tabPage = metroTabControl1.TabPages[i];
+                    var comboBox = tabPage.Controls.OfType<MetroComboBox>().FirstOrDefault();
+                    var button = tabPage.Controls.OfType<MetroButton>().FirstOrDefault(b => b.Text == "Connect");
+                    var dtrCheckbox = tabPage.Controls.OfType<MetroCheckBox>().FirstOrDefault();
+
+                    if (comboBox != null && button != null)
+                    {
+                        string selectedPort = comboBox.Text;
+                        bool useDtr = dtrCheckbox != null && dtrCheckbox.Checked;
+
+                        // If button says Connect, it means it's not connected yet
+                        if (button.Text == "Connect")
+                        {
+                            var connector = arduinoConnections[i];
+                            if (connector.ConnectSerial(selectedPort, useDtr))
+                            {
+                                button.Text = "Disconnect";
+                                Console.WriteLine($"Auto-connected to {selectedPort}");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Failed to connect to {selectedPort}");
+                            }
+                        }
+                    }
+                }
+                metroConnect_All.Text = "Disconnect All Arduinos";
+                connectButtonState = 1;
+            }else
+            {
+                for (int i = 0; i < metroTabControl1.TabPages.Count; i++)
+                {
+                    var tabPage = metroTabControl1.TabPages[i];
+                    var comboBox = tabPage.Controls.OfType<MetroComboBox>().FirstOrDefault();
+                    var button = tabPage.Controls.OfType<MetroButton>().FirstOrDefault(b => b.Text == "Disconnect");
+                    var dtrCheckbox = tabPage.Controls.OfType<MetroCheckBox>().FirstOrDefault();
+
+                    if (comboBox != null && button != null)
+                    {
+                        string selectedPort = comboBox.Text;
+                        bool useDtr = dtrCheckbox != null && dtrCheckbox.Checked;
+
+                        // If button says Connect, it means it's not connected yet
+                        if (button.Text == "Disconnect")
+                        {
+                            var connector = arduinoConnections[i];
+                            connector.Disconnect();
+                            if (!connector.IsConnected)
+                            {
+                                button.Text = "Connect";
+                                Console.WriteLine($"Disconnected to {selectedPort}");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Failed to disconnect to {selectedPort}");
+                            }
+                        }
+                    }
+                }
+                metroConnect_All.Text = "Connect All Arduinos";
+                connectButtonState = 0;
+            }
+        }
+
+
+        private void metroConnect_All_Click(object sender, EventArgs e)
+        {
+            ConnectAllArduinos();
         }
     }
 }
