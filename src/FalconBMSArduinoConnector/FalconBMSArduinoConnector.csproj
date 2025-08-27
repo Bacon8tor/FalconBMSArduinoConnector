@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArduinoConnector.cs" />
+    <Compile Include="DCSConnector.cs" />
     <Compile Include="FalconConnector.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

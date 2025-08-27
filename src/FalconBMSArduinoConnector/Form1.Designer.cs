@@ -37,13 +37,11 @@
             this.metroHomePanel = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
-            this.metroPanel10 = new MetroFramework.Controls.MetroPanel();
-            this.metroConnect_All = new MetroFramework.Controls.MetroButton();
-            this.metroAddArduinoButton = new MetroFramework.Controls.MetroButton();
             this.metroPanel5 = new MetroFramework.Controls.MetroPanel();
             this.metroStatusLabel = new MetroFramework.Controls.MetroLabel();
             this.metroVersionLabel = new MetroFramework.Controls.MetroLabel();
             this.metroProcessLabel = new MetroFramework.Controls.MetroLabel();
+            this.metroAddArduinoButton = new MetroFramework.Controls.MetroButton();
             this.metroSettingsPanel = new MetroFramework.Controls.MetroPanel();
             this.metroDataPanel = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl2 = new MetroFramework.Controls.MetroTabControl();
@@ -154,12 +152,12 @@
             this.metroDEDLabel_2 = new System.Windows.Forms.Label();
             this.metroDEDLabel_1 = new System.Windows.Forms.Label();
             this.metroInfoPage = new MetroFramework.Controls.MetroTabPage();
+            this.iffmode_label = new MetroFramework.Controls.MetroLabel();
             this.metro_uhf_freq_label = new MetroFramework.Controls.MetroLabel();
             this.metro_uhf_preset_label = new MetroFramework.Controls.MetroLabel();
             this.metroSidePanel.SuspendLayout();
             this.metroHomePanel.SuspendLayout();
             this.metroPanel2.SuspendLayout();
-            this.metroPanel10.SuspendLayout();
             this.metroPanel5.SuspendLayout();
             this.metroDataPanel.SuspendLayout();
             this.metroTabControl2.SuspendLayout();
@@ -272,8 +270,8 @@
             // 
             // metroPanel2
             // 
-            this.metroPanel2.Controls.Add(this.metroPanel10);
             this.metroPanel2.Controls.Add(this.metroPanel5);
+            this.metroPanel2.Controls.Add(this.metroAddArduinoButton);
             this.metroPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
@@ -286,56 +284,18 @@
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
             // 
-            // metroPanel10
-            // 
-            this.metroPanel10.Controls.Add(this.metroConnect_All);
-            this.metroPanel10.Controls.Add(this.metroAddArduinoButton);
-            this.metroPanel10.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.metroPanel10.HorizontalScrollbarBarColor = true;
-            this.metroPanel10.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel10.HorizontalScrollbarSize = 10;
-            this.metroPanel10.Location = new System.Drawing.Point(0, 64);
-            this.metroPanel10.Name = "metroPanel10";
-            this.metroPanel10.Size = new System.Drawing.Size(402, 51);
-            this.metroPanel10.TabIndex = 7;
-            this.metroPanel10.VerticalScrollbarBarColor = true;
-            this.metroPanel10.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel10.VerticalScrollbarSize = 10;
-            // 
-            // metroConnect_All
-            // 
-            this.metroConnect_All.Dock = System.Windows.Forms.DockStyle.Left;
-            this.metroConnect_All.Location = new System.Drawing.Point(176, 0);
-            this.metroConnect_All.Name = "metroConnect_All";
-            this.metroConnect_All.Size = new System.Drawing.Size(223, 51);
-            this.metroConnect_All.TabIndex = 5;
-            this.metroConnect_All.Text = "Connect All Devices";
-            this.metroConnect_All.UseSelectable = true;
-            this.metroConnect_All.Click += new System.EventHandler(this.metroConnect_All_Click);
-            // 
-            // metroAddArduinoButton
-            // 
-            this.metroAddArduinoButton.Dock = System.Windows.Forms.DockStyle.Left;
-            this.metroAddArduinoButton.Location = new System.Drawing.Point(0, 0);
-            this.metroAddArduinoButton.Name = "metroAddArduinoButton";
-            this.metroAddArduinoButton.Size = new System.Drawing.Size(176, 51);
-            this.metroAddArduinoButton.TabIndex = 4;
-            this.metroAddArduinoButton.Text = "Add Arduino";
-            this.metroAddArduinoButton.UseSelectable = true;
-            this.metroAddArduinoButton.Click += new System.EventHandler(this.addArduinoButton_Click);
-            // 
             // metroPanel5
             // 
             this.metroPanel5.Controls.Add(this.metroStatusLabel);
             this.metroPanel5.Controls.Add(this.metroVersionLabel);
             this.metroPanel5.Controls.Add(this.metroProcessLabel);
-            this.metroPanel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroPanel5.Dock = System.Windows.Forms.DockStyle.Left;
             this.metroPanel5.HorizontalScrollbarBarColor = true;
             this.metroPanel5.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel5.HorizontalScrollbarSize = 10;
             this.metroPanel5.Location = new System.Drawing.Point(0, 0);
             this.metroPanel5.Name = "metroPanel5";
-            this.metroPanel5.Size = new System.Drawing.Size(402, 76);
+            this.metroPanel5.Size = new System.Drawing.Size(178, 92);
             this.metroPanel5.TabIndex = 6;
             this.metroPanel5.VerticalScrollbarBarColor = true;
             this.metroPanel5.VerticalScrollbarHighlightOnWheel = false;
@@ -372,6 +332,17 @@
             this.metroProcessLabel.TabIndex = 2;
             this.metroProcessLabel.Text = "Falcon BMS";
             // 
+            // metroAddArduinoButton
+            // 
+            this.metroAddArduinoButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.metroAddArduinoButton.Location = new System.Drawing.Point(0, 92);
+            this.metroAddArduinoButton.Name = "metroAddArduinoButton";
+            this.metroAddArduinoButton.Size = new System.Drawing.Size(402, 23);
+            this.metroAddArduinoButton.TabIndex = 4;
+            this.metroAddArduinoButton.Text = "Add Arduino";
+            this.metroAddArduinoButton.UseSelectable = true;
+            this.metroAddArduinoButton.Click += new System.EventHandler(this.addArduinoButton_Click);
+            // 
             // metroSettingsPanel
             // 
             this.metroSettingsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -393,7 +364,7 @@
             this.metroDataPanel.HorizontalScrollbarBarColor = true;
             this.metroDataPanel.HorizontalScrollbarHighlightOnWheel = false;
             this.metroDataPanel.HorizontalScrollbarSize = 10;
-            this.metroDataPanel.Location = new System.Drawing.Point(452, 29);
+            this.metroDataPanel.Location = new System.Drawing.Point(156, 25);
             this.metroDataPanel.Name = "metroDataPanel";
             this.metroDataPanel.Padding = new System.Windows.Forms.Padding(2);
             this.metroDataPanel.Size = new System.Drawing.Size(402, 458);
@@ -413,7 +384,7 @@
             this.metroTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl2.Location = new System.Drawing.Point(2, 2);
             this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 0;
+            this.metroTabControl2.SelectedIndex = 4;
             this.metroTabControl2.Size = new System.Drawing.Size(398, 454);
             this.metroTabControl2.TabIndex = 2;
             this.metroTabControl2.UseSelectable = true;
@@ -1736,6 +1707,7 @@
             // 
             // metroInfoPage
             // 
+            this.metroInfoPage.Controls.Add(this.iffmode_label);
             this.metroInfoPage.Controls.Add(this.metro_uhf_freq_label);
             this.metroInfoPage.Controls.Add(this.metro_uhf_preset_label);
             this.metroInfoPage.HorizontalScrollbarBarColor = true;
@@ -1749,6 +1721,15 @@
             this.metroInfoPage.VerticalScrollbarBarColor = true;
             this.metroInfoPage.VerticalScrollbarHighlightOnWheel = false;
             this.metroInfoPage.VerticalScrollbarSize = 10;
+            // 
+            // iffmode_label
+            // 
+            this.iffmode_label.AutoSize = true;
+            this.iffmode_label.Location = new System.Drawing.Point(3, 54);
+            this.iffmode_label.Name = "iffmode_label";
+            this.iffmode_label.Size = new System.Drawing.Size(104, 19);
+            this.iffmode_label.TabIndex = 4;
+            this.iffmode_label.Text = "IFFMode Digits: ";
             // 
             // metro_uhf_freq_label
             // 
@@ -1781,13 +1762,12 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(575, 500);
             this.Name = "FalconBMSArduinoConnector";
-            this.Text = "Falcon BMS Arduino Connector";
+            this.Text = "Falcon BMS Arduino Connector v0.3.9";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Closing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.metroSidePanel.ResumeLayout(false);
             this.metroHomePanel.ResumeLayout(false);
             this.metroPanel2.ResumeLayout(false);
-            this.metroPanel10.ResumeLayout(false);
             this.metroPanel5.ResumeLayout(false);
             this.metroPanel5.PerformLayout();
             this.metroDataPanel.ResumeLayout(false);
@@ -1943,8 +1923,7 @@
         private MetroFramework.Controls.MetroTabPage metroInfoPage;
         private MetroFramework.Controls.MetroLabel metro_uhf_freq_label;
         private MetroFramework.Controls.MetroLabel metro_uhf_preset_label;
-        private MetroFramework.Controls.MetroPanel metroPanel10;
-        private MetroFramework.Controls.MetroButton metroConnect_All;
+        private MetroFramework.Controls.MetroLabel iffmode_label;
     }
 }
 
