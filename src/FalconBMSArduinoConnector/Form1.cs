@@ -727,11 +727,7 @@ namespace FalconBMSArduinoConnector
 
             metro_uhf_preset_label.Text = "UHF Preset: " + falcon.GetFlightData().BupUhfPreset.ToString();
             metro_uhf_freq_label.Text = "UHF Freq: " + falcon.GetFlightData().BupUhfFreq.ToString().Substring(0, 3) + "." + falcon.GetFlightData().BupUhfFreq.ToString().Substring(3, 3);
-
-
+            iffmode_label.Text = "IFF Mode: " + falcon.GetFlightData().iffBackupMode1Digit1 + " " + falcon.GetFlightData().iffBackupMode1Digit2 + " " + falcon.GetFlightData().iffBackupMode3ADigit1 + " " + falcon.GetFlightData().iffBackupMode3ADigit2;
         }
-
-
-
     }
 }

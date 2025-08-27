@@ -326,8 +326,21 @@ namespace FalconBMSArduinoConnector
                                     byte[] iifBM1D1 = BitConverter.GetBytes(fData.iffBackupMode1Digit1);
                                     SendResponse(0x31, iifBM1D1);
                                     break;
+                                case 0x32:
+                                    byte[] iifBM1D2 = BitConverter.GetBytes(fData.iffBackupMode1Digit2);
+                                    SendResponse(0x32, iifBM1D2);
+                                    break;
+                                case 0x33:
+                                    byte[] iifBM3D1 = BitConverter.GetBytes(fData.iffBackupMode3ADigit1);
+                                    SendResponse(0x33, iifBM3D1);
+                                    break;
+                                case 0x34:
+                                    byte[] iifBM3D2 = BitConverter.GetBytes(fData.iffBackupMode3ADigit2);
+                                    SendResponse(0x34, iifBM3D2);
+                                    break;
                                 case 0x99:
                                     Console.WriteLine(" Packet Failed CheckSum");
+                                    Disconnect();
                                     break;
                                 case 0x0F:
                                     SendResponse(0x0F, new byte[] { 0xAB });

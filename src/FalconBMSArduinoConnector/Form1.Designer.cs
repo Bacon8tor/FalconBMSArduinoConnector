@@ -152,6 +152,7 @@
             this.metroDEDLabel_2 = new System.Windows.Forms.Label();
             this.metroDEDLabel_1 = new System.Windows.Forms.Label();
             this.metroInfoPage = new MetroFramework.Controls.MetroTabPage();
+            this.iffmode_label = new MetroFramework.Controls.MetroLabel();
             this.metro_uhf_freq_label = new MetroFramework.Controls.MetroLabel();
             this.metro_uhf_preset_label = new MetroFramework.Controls.MetroLabel();
             this.metroSidePanel.SuspendLayout();
@@ -1706,6 +1707,7 @@
             // 
             // metroInfoPage
             // 
+            this.metroInfoPage.Controls.Add(this.iffmode_label);
             this.metroInfoPage.Controls.Add(this.metro_uhf_freq_label);
             this.metroInfoPage.Controls.Add(this.metro_uhf_preset_label);
             this.metroInfoPage.HorizontalScrollbarBarColor = true;
@@ -1719,6 +1721,15 @@
             this.metroInfoPage.VerticalScrollbarBarColor = true;
             this.metroInfoPage.VerticalScrollbarHighlightOnWheel = false;
             this.metroInfoPage.VerticalScrollbarSize = 10;
+            // 
+            // iffmode_label
+            // 
+            this.iffmode_label.AutoSize = true;
+            this.iffmode_label.Location = new System.Drawing.Point(3, 54);
+            this.iffmode_label.Name = "iffmode_label";
+            this.iffmode_label.Size = new System.Drawing.Size(104, 19);
+            this.iffmode_label.TabIndex = 4;
+            this.iffmode_label.Text = "IFFMode Digits: ";
             // 
             // metro_uhf_freq_label
             // 
@@ -1751,7 +1762,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(575, 500);
             this.Name = "FalconBMSArduinoConnector";
-            this.Text = "Falcon BMS Arduino Connector";
+            this.Text = "Falcon BMS Arduino Connector v0.3.9";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Closing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.metroSidePanel.ResumeLayout(false);
@@ -1912,6 +1923,7 @@
         private MetroFramework.Controls.MetroTabPage metroInfoPage;
         private MetroFramework.Controls.MetroLabel metro_uhf_freq_label;
         private MetroFramework.Controls.MetroLabel metro_uhf_preset_label;
+        private MetroFramework.Controls.MetroLabel iffmode_label;
     }
 }
 
