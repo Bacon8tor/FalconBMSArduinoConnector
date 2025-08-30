@@ -32,7 +32,7 @@ namespace FalconBMSArduinoConnector
         private MetroFramework.MetroColorStyle currentStyle;
         private const string SettingsFile = "user_settings.xml";
         private const string SaveFile = "arduino_tabs.xml";
-
+        private ToolStripMenuItem falconConnectionMenuStatus;
         public class ArduinoTabInfo
         {
             public string PortName { get; set; }
@@ -47,7 +47,7 @@ namespace FalconBMSArduinoConnector
         public FalconBMSArduinoConnector()
         {
             InitializeComponent();
-
+            SetupNotifyIcon();
             metroStyleManager = new MetroStyleManager();
             metroStyleManager.Owner = this;
             metroStyleManager.Theme = MetroThemeStyle.Dark;
@@ -81,7 +81,45 @@ namespace FalconBMSArduinoConnector
              metroDataPanel.Dock = DockStyle.Fill;
             
         }
+        //SYSTEM TRAY ICON
+        private NotifyIcon notifyIcon;
+        private void SetupNotifyIcon()
+        {
+            notifyIcon = new NotifyIcon();
+            notifyIcon.Icon = new Icon("Resources/FBAC_ICON.ico");
+            notifyIcon.Text = "FBAC";
+            notifyIcon.Visible = true;
 
+            // Optional context menu
+            var contextMenu = new ContextMenuStrip();
+            falconConnectionMenuStatus = new ToolStripMenuItem("FalconBMS: Not Running", null, ToggleArduinos);
+            contextMenu.Items.Add(falconConnectionMenuStatus);
+            contextMenu.Items.Add("Connect All Arduinos", null, (s, e) => this.ConnectAllArduinos());
+            contextMenu.Items.Add("Disconnect All Arduinos", null, (s, e) => this.DisconnectAllArduinos());
+            contextMenu.Items.Add("Exit", null, (s, e) => Application.Exit());
+
+            notifyIcon.ContextMenuStrip = contextMenu;
+
+            // Optional: Double-click restores the window
+            notifyIcon.DoubleClick += (s, e) =>
+            {
+                this.Show();
+                this.WindowState = FormWindowState.Normal;
+            };
+        }
+
+        private void ToggleArduinos(object sender, EventArgs e)
+        {
+            if (falcon.isFalconRunning())
+            {
+                falconConnectionMenuStatus.Text = "FalconBMS: Running";
+            }
+            else
+            {
+                falconConnectionMenuStatus.Text = "FalconBMS: Not Running";
+            }
+
+        }
         //FORM LOADING & SAVING
         public void LoadCustomFont()
         {
@@ -731,6 +769,89 @@ namespace FalconBMSArduinoConnector
                 metro_uhf_freq_label.Text = "UHF Freq: " + falcon.GetFlightData().BupUhfFreq.ToString().Substring(0, 3) + "." + falcon.GetFlightData().BupUhfFreq.ToString().Substring(3, 3);
             }
             iffmode_label.Text = "IFF Mode: " + falcon.GetFlightData().iffBackupMode1Digit1 + " " + falcon.GetFlightData().iffBackupMode1Digit2 + " " + falcon.GetFlightData().iffBackupMode3ADigit1 + " " + falcon.GetFlightData().iffBackupMode3ADigit2;
+        }
+
+        private void ConnectAllArduinos()
+        {
+            for (int i = 0; i < metroTabControl1.TabPages.Count; i++)
+            {
+                var tabPage = metroTabControl1.TabPages[i];
+                var comboBox = tabPage.Controls.OfType<MetroComboBox>().FirstOrDefault();
+                var button = tabPage.Controls.OfType<MetroButton>().FirstOrDefault(b => b.Text == "Connect");
+                var dtrCheckbox = tabPage.Controls.OfType<MetroCheckBox>().FirstOrDefault();
+
+                if (comboBox != null && button != null)
+                {
+                    string selectedPort = comboBox.Text;
+                    bool useDtr = dtrCheckbox != null && dtrCheckbox.Checked;
+
+                    // If button says Connect, it means it's not connected yet
+                    if (button.Text == "Connect")
+                    {
+                        var connector = arduinoConnections[i];
+                        if (connector.ConnectSerial(selectedPort, useDtr))
+                        {
+                            button.Text = "Disconnect";
+                            Console.WriteLine($"Auto-connected to {selectedPort}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Failed to connect to {selectedPort}");
+                        }
+                    }
+                }
+            }
+            metroConnect_All.Text = "Disconnect All Arduinos";
+            connectButtonState = 1;
+
+        }
+
+        private void DisconnectAllArduinos()
+        {
+            for (int i = 0; i < metroTabControl1.TabPages.Count; i++)
+            {
+                var tabPage = metroTabControl1.TabPages[i];
+                var comboBox = tabPage.Controls.OfType<MetroComboBox>().FirstOrDefault();
+                var button = tabPage.Controls.OfType<MetroButton>().FirstOrDefault(b => b.Text == "Disconnect");
+                var dtrCheckbox = tabPage.Controls.OfType<MetroCheckBox>().FirstOrDefault();
+
+                if (comboBox != null && button != null)
+                {
+                    string selectedPort = comboBox.Text;
+                    bool useDtr = dtrCheckbox != null && dtrCheckbox.Checked;
+
+                    // If button says Connect, it means it's not connected yet
+                    if (button.Text == "Disconnect")
+                    {
+                        var connector = arduinoConnections[i];
+                        connector.Disconnect();
+                        if (!connector.IsConnected)
+                        {
+                            button.Text = "Connect";
+                            Console.WriteLine($"Disconnected to {selectedPort}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Failed to disconnect to {selectedPort}");
+                        }
+                    }
+                }
+            }
+            metroConnect_All.Text = "Connect All Arduinos";
+            connectButtonState = 0;
+        }
+
+        private int connectButtonState = 0;
+        private void metroConnect_All_Click(object sender, EventArgs e)
+        {
+            if (connectButtonState == 0)
+            {
+                ConnectAllArduinos();
+            }
+            else
+            {
+                DisconnectAllArduinos();
+            }
         }
     }
 }
