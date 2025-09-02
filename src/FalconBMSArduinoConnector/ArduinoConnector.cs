@@ -338,6 +338,34 @@ namespace FalconBMSArduinoConnector
                                     byte[] iifBM3D2 = BitConverter.GetBytes(fData.iffBackupMode3ADigit2);
                                     SendResponse(0x34, iifBM3D2);
                                     break;
+                                case 0x35:
+                                    byte[] fwd = BitConverter.GetBytes(fData.fwd);
+                                    SendResponse(0x35, fwd);
+                                    break;
+                                case 0x36:
+                                    byte[] aft = BitConverter.GetBytes(fData.aft);
+                                    SendResponse(0x36, aft);
+                                    break;
+                                case 0x37:
+                                    byte[] total = BitConverter.GetBytes(fData.total);
+                                    SendResponse(0x37, total);
+                                    break;
+                                case 0x38:
+                                    byte[] desiredCourse = BitConverter.GetBytes(fData.desiredCourse);
+                                    SendResponse(0x38, desiredCourse);
+                                    break;
+                                case 0x39:
+                                    byte[] courseDeviation = BitConverter.GetBytes(fData.courseDeviation);
+                                    SendResponse(0x39, courseDeviation);
+                                    break;
+                                case 0x40:
+                                    byte[] distanceToBeacon = BitConverter.GetBytes(fData.distanceToBeacon);
+                                    SendResponse(0x40, distanceToBeacon);
+                                    break;
+                                case 0x41:
+                                    byte[] bearingToBeacon = BitConverter.GetBytes(fData.bearingToBeacon);
+                                    SendResponse(0x40, bearingToBeacon);
+                                    break;
                                 //PACKET FAILED
                                 case 0x99:
                                     Console.WriteLine(" Packet Failed CheckSum");

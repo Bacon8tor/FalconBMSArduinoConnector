@@ -21,8 +21,9 @@ namespace FalconBMSArduinoConnector
 {
     public partial class FalconBMSArduinoConnector : MetroForm
     {
+        #region Variables 
         FalconConnector falcon = new FalconConnector();
-        DCSConnector dcs = new DCSConnector();
+       // DCSConnector dcs = new DCSConnector();
         List<ArduinoConnector> arduinoConnections = new List<ArduinoConnector>();
         private Timer falconCheckTimer;
         private MetroStyleManager metroStyleManager;
@@ -30,8 +31,6 @@ namespace FalconBMSArduinoConnector
         private Font DEDFont = null;
         private MetroFramework.MetroThemeStyle currentTheme;
         private MetroFramework.MetroColorStyle currentStyle;
-        private const string SettingsFile = "user_settings.xml";
-        private const string SaveFile = "arduino_tabs.xml";
         private ToolStripMenuItem falconConnectionMenuStatus;
         public class ArduinoTabInfo
         {
@@ -43,7 +42,8 @@ namespace FalconBMSArduinoConnector
             public MetroThemeStyle Theme { get; set; }
             public MetroColorStyle Style { get; set; }
         }
-        
+        #endregion
+       
         public FalconBMSArduinoConnector()
         {
             InitializeComponent();
@@ -55,6 +55,7 @@ namespace FalconBMSArduinoConnector
             this.StyleManager = metroStyleManager;
         }
 
+        #region Form
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -70,16 +71,16 @@ namespace FalconBMSArduinoConnector
             CheckFalconStatus();
             LoadArduinoTabs();
             LoadCustomFont();
-            
-            
-           
+
+
+
 
             falconCheckTimer = new Timer();
             falconCheckTimer.Interval = 50;
             falconCheckTimer.Tick += (s, args) => CheckFalconStatus();
             falconCheckTimer.Start();
-             metroDataPanel.Dock = DockStyle.Fill;
-            
+            metroDataPanel.Dock = DockStyle.Fill;
+
         }
         //SYSTEM TRAY ICON
         private NotifyIcon notifyIcon;
@@ -107,20 +108,6 @@ namespace FalconBMSArduinoConnector
                 this.WindowState = FormWindowState.Normal;
             };
         }
-
-        private void ToggleArduinos(object sender, EventArgs e)
-        {
-            if (falcon.isFalconRunning())
-            {
-                falconConnectionMenuStatus.Text = "FalconBMS: Running";
-            }
-            else
-            {
-                falconConnectionMenuStatus.Text = "FalconBMS: Not Running";
-            }
-
-        }
-        //FORM LOADING & SAVING
         public void LoadCustomFont()
         {
 
@@ -159,54 +146,6 @@ namespace FalconBMSArduinoConnector
                 Console.WriteLine($"Error loading custom font: {ex.Message}");
             }
 
-        }
-        private void SaveSettings()
-        {
-            try
-            {
-                var settings = new UserSettings
-                {
-                    Theme = metroStyleManager.Theme,
-                    Style = metroStyleManager.Style
-                };
-
-                var serializer = new XmlSerializer(typeof(UserSettings));
-                using (var stream = File.Create(SettingsFile))
-                {
-                    serializer.Serialize(stream, settings);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Failed to save settings: {ex.Message}");
-            }
-        }
-        private void LoadSettings()
-        {
-            if (!File.Exists(SettingsFile))
-                return;
-
-            try
-            {
-                var serializer = new XmlSerializer(typeof(UserSettings));
-                using (var stream = File.OpenRead(SettingsFile))
-                {
-                    var settings = (UserSettings)serializer.Deserialize(stream);
-                    metroStyleManager.Theme = settings.Theme;
-                    metroStyleManager.Style = settings.Style;
-
-                    // Apply loaded settings to form and controls
-                    this.Theme = metroStyleManager.Theme;
-                    this.Style = metroStyleManager.Style;
-                    this.StyleManager = metroStyleManager;
-                    ApplyThemeToControls(this.Controls);
-                    this.Refresh();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Failed to load settings: {ex.Message}");
-            }
         }
         private void LoadSettingsPanel()
         {
@@ -377,62 +316,7 @@ namespace FalconBMSArduinoConnector
 
 
         }
-        private void LoadArduinoTabs()
-        {
-            if (File.Exists(SaveFile))
-            {
-                try
-                {
-                    var serializer = new XmlSerializer(typeof(List<ArduinoTabInfo>));
-                    using (var stream = File.OpenRead(SaveFile))
-                    {
-                        var tabs = (List<ArduinoTabInfo>)serializer.Deserialize(stream);
-                        foreach (var tab in tabs)
-                        {
-                            AddArduinoConnectionTab(tab.PortName, tab.TabName);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Failed to load saved tabs: {ex.Message}");
-                }
-            }
-            else
-            {
-                AddArduinoConnectionTab();
-            }
-        }
-        private void SaveArduinoTabs()
-        {
-            var data = new List<ArduinoTabInfo>();
 
-            foreach (MetroTabPage page in metroTabControl1.TabPages)
-            {
-                var combo = page.Controls.OfType<MetroComboBox>().FirstOrDefault();
-                if (combo != null)
-                {
-                    data.Add(new ArduinoTabInfo
-                    {
-                        PortName = combo.Text,
-                        TabName = page.Text
-                    });
-                }
-            }
-
-            try
-            {
-                var serializer = new XmlSerializer(typeof(List<ArduinoTabInfo>));
-                using (var stream = File.Create(SaveFile))
-                {
-                    serializer.Serialize(stream, data);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Failed to save tabs: {ex.Message}");
-            }
-        }
         private void AddArduinoConnectionTab(string selectedPort = null, string tabName = null)
         {
             var connector = new ArduinoConnector();
@@ -540,6 +424,8 @@ namespace FalconBMSArduinoConnector
             tabPage.Theme = this.Theme;
             metroTabControl1.TabPages.Add(tabPage);
         }
+
+
         private void Form_Closing(object sender, FormClosingEventArgs e)
         {
             foreach (var connector in arduinoConnections)
@@ -550,8 +436,117 @@ namespace FalconBMSArduinoConnector
             SaveArduinoTabs();
             SaveSettings(); // Save theme/style on exit
         }
+        #endregion
 
+        #region Arduino Connect/Disconnect
+        private void ConnectAllArduinos()
+        {
+            for (int i = 0; i < metroTabControl1.TabPages.Count; i++)
+            {
+                var tabPage = metroTabControl1.TabPages[i];
+                var comboBox = tabPage.Controls.OfType<MetroComboBox>().FirstOrDefault();
+                var button = tabPage.Controls.OfType<MetroButton>().FirstOrDefault(b => b.Text == "Connect");
+                var dtrCheckbox = tabPage.Controls.OfType<MetroCheckBox>().FirstOrDefault();
 
+                if (comboBox != null && button != null)
+                {
+                    string selectedPort = comboBox.Text;
+                    bool useDtr = dtrCheckbox != null && dtrCheckbox.Checked;
+
+                    // If button says Connect, it means it's not connected yet
+                    if (button.Text == "Connect")
+                    {
+                        var connector = arduinoConnections[i];
+                        if (connector.ConnectSerial(selectedPort, useDtr))
+                        {
+                            button.Text = "Disconnect";
+                            Console.WriteLine($"Auto-connected to {selectedPort}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Failed to connect to {selectedPort}");
+                        }
+                    }
+                }
+            }
+            metroConnect_All.Text = "Disconnect All Arduinos";
+            connectButtonState = 1;
+
+        }
+
+        private void DisconnectAllArduinos()
+        {
+            for (int i = 0; i < metroTabControl1.TabPages.Count; i++)
+            {
+                var tabPage = metroTabControl1.TabPages[i];
+                var comboBox = tabPage.Controls.OfType<MetroComboBox>().FirstOrDefault();
+                var button = tabPage.Controls.OfType<MetroButton>().FirstOrDefault(b => b.Text == "Disconnect");
+                var dtrCheckbox = tabPage.Controls.OfType<MetroCheckBox>().FirstOrDefault();
+
+                if (comboBox != null && button != null)
+                {
+                    string selectedPort = comboBox.Text;
+                    bool useDtr = dtrCheckbox != null && dtrCheckbox.Checked;
+
+                    // If button says Connect, it means it's not connected yet
+                    if (button.Text == "Disconnect")
+                    {
+                        var connector = arduinoConnections[i];
+                        connector.Disconnect();
+                        if (!connector.IsConnected)
+                        {
+                            button.Text = "Connect";
+                            Console.WriteLine($"Disconnected to {selectedPort}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Failed to disconnect to {selectedPort}");
+                        }
+                    }
+                }
+            }
+            metroConnect_All.Text = "Connect All Arduinos";
+            connectButtonState = 0;
+        }
+        #endregion
+
+        #region Falcon
+        private void ToggleArduinos(object sender, EventArgs e)
+        {
+            if (falcon.isFalconRunning())
+            {
+                falconConnectionMenuStatus.Text = "FalconBMS: Running";
+            }
+            else
+            {
+                falconConnectionMenuStatus.Text = "FalconBMS: Not Running";
+            }
+
+        }
+
+        private void CheckFalconStatus()
+        {
+            if (falcon.isFalconRunning())
+            {
+                if (falcon.GetFlightData() != null)
+                {
+                    // Implementation of light bit checks and UI updates omitted for brevity
+                    metroProcessLabel.Text = falcon.GetFalconProcessName();
+                    metroVersionLabel.Text = falcon.GetFalconVersion();
+                    metroStatusLabel.Text = falcon.GetFlyingState();
+                    UpdateCheckBoxes();
+                    UpdateScreens();
+                }
+
+            }
+            else
+            {
+                // Handle Falcon not running state
+            }
+        }
+        #endregion
+        
+        #region Theming
         //THEMING
         private void ApplyThemeToControls(Control.ControlCollection controls)
         {
@@ -608,6 +603,21 @@ namespace FalconBMSArduinoConnector
         }
 
 
+        #endregion
+
+        #region Click Events
+        private int connectButtonState = 0;
+        private void metroConnect_All_Click(object sender, EventArgs e)
+        {
+            if (connectButtonState == 0)
+            {
+                ConnectAllArduinos();
+            }
+            else
+            {
+                DisconnectAllArduinos();
+            }
+        }
         // CLICK EVENTS 
         private void metroSettingsButton_Click(object sender, EventArgs e)
         {
@@ -628,28 +638,9 @@ namespace FalconBMSArduinoConnector
             SaveArduinoTabs();
         }
 
-        
-        //UPDATING ONSCREEN DATA
-        private void CheckFalconStatus()
-        {
-            if (falcon.isFalconRunning())
-            {
-                if (falcon.GetFlightData() != null)
-                {
-                    // Implementation of light bit checks and UI updates omitted for brevity
-                    metroProcessLabel.Text = falcon.GetFalconProcessName();
-                    metroVersionLabel.Text = falcon.GetFalconVersion();
-                    metroStatusLabel.Text = falcon.GetFlyingState();
-                    UpdateCheckBoxes();
-                    UpdateScreens();
-                }
+        #endregion
 
-            }
-            else
-            {
-                // Handle Falcon not running state
-            }
-        }
+        #region Onscreen Data Fucntions
         private void UpdateScreens()
         {
             metroDEDLabel_1.Text = falcon.GetFlightData().DEDLines[0];
@@ -771,87 +762,134 @@ namespace FalconBMSArduinoConnector
             iffmode_label.Text = "IFF Mode: " + falcon.GetFlightData().iffBackupMode1Digit1 + " " + falcon.GetFlightData().iffBackupMode1Digit2 + " " + falcon.GetFlightData().iffBackupMode3ADigit1 + " " + falcon.GetFlightData().iffBackupMode3ADigit2;
         }
 
-        private void ConnectAllArduinos()
+        #endregion
+
+        #region Save/Load 
+        // Get path to Saved Games
+        private static readonly string SavedGamesFolder =
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games", "FBAC");
+
+        // File paths inside Saved Games
+        private readonly string SettingsFilePath = Path.Combine(SavedGamesFolder, "user_settings.xml");
+        private readonly string SaveFilePath = Path.Combine(SavedGamesFolder, "arduino_tabs.xml");
+
+        // Ensure folder exists before saving
+        private void EnsureSaveFolder()
         {
-            for (int i = 0; i < metroTabControl1.TabPages.Count; i++)
+            if (!Directory.Exists(SavedGamesFolder))
             {
-                var tabPage = metroTabControl1.TabPages[i];
-                var comboBox = tabPage.Controls.OfType<MetroComboBox>().FirstOrDefault();
-                var button = tabPage.Controls.OfType<MetroButton>().FirstOrDefault(b => b.Text == "Connect");
-                var dtrCheckbox = tabPage.Controls.OfType<MetroCheckBox>().FirstOrDefault();
-
-                if (comboBox != null && button != null)
+                Directory.CreateDirectory(SavedGamesFolder);
+            }
+        }
+        private void SaveSettings()
+        {
+            try
+            {
+                EnsureSaveFolder();
+                var settings = new UserSettings
                 {
-                    string selectedPort = comboBox.Text;
-                    bool useDtr = dtrCheckbox != null && dtrCheckbox.Checked;
+                    Theme = metroStyleManager.Theme,
+                    Style = metroStyleManager.Style
+                };
 
-                    // If button says Connect, it means it's not connected yet
-                    if (button.Text == "Connect")
+                var serializer = new XmlSerializer(typeof(UserSettings));
+                using (var stream = File.Create(SettingsFilePath))
+                {
+                    serializer.Serialize(stream, settings);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to save settings: {ex.Message}");
+            }
+        }
+
+        private void LoadSettings()
+        {
+            if (!File.Exists(SettingsFilePath))
+                return;
+
+            try
+            {
+                var serializer = new XmlSerializer(typeof(UserSettings));
+                using (var stream = File.OpenRead(SettingsFilePath))
+                {
+                    var settings = (UserSettings)serializer.Deserialize(stream);
+                    metroStyleManager.Theme = settings.Theme;
+                    metroStyleManager.Style = settings.Style;
+
+                    this.Theme = metroStyleManager.Theme;
+                    this.Style = metroStyleManager.Style;
+                    this.StyleManager = metroStyleManager;
+                    ApplyThemeToControls(this.Controls);
+                    this.Refresh();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to load settings: {ex.Message}");
+            }
+        }
+
+        private void SaveArduinoTabs()
+        {
+            var data = new List<ArduinoTabInfo>();
+
+            foreach (MetroTabPage page in metroTabControl1.TabPages)
+            {
+                var combo = page.Controls.OfType<MetroComboBox>().FirstOrDefault();
+                if (combo != null)
+                {
+                    data.Add(new ArduinoTabInfo
                     {
-                        var connector = arduinoConnections[i];
-                        if (connector.ConnectSerial(selectedPort, useDtr))
+                        PortName = combo.Text,
+                        TabName = page.Text
+                    });
+                }
+            }
+
+            try
+            {
+                EnsureSaveFolder();
+                var serializer = new XmlSerializer(typeof(List<ArduinoTabInfo>));
+                using (var stream = File.Create(SaveFilePath))
+                {
+                    serializer.Serialize(stream, data);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to save tabs: {ex.Message}");
+            }
+        }
+
+        private void LoadArduinoTabs()
+        {
+            if (File.Exists(SaveFilePath))
+            {
+                try
+                {
+                    var serializer = new XmlSerializer(typeof(List<ArduinoTabInfo>));
+                    using (var stream = File.OpenRead(SaveFilePath))
+                    {
+                        var tabs = (List<ArduinoTabInfo>)serializer.Deserialize(stream);
+                        foreach (var tab in tabs)
                         {
-                            button.Text = "Disconnect";
-                            Console.WriteLine($"Auto-connected to {selectedPort}");
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Failed to connect to {selectedPort}");
+                            AddArduinoConnectionTab(tab.PortName, tab.TabName);
                         }
                     }
                 }
-            }
-            metroConnect_All.Text = "Disconnect All Arduinos";
-            connectButtonState = 1;
-
-        }
-
-        private void DisconnectAllArduinos()
-        {
-            for (int i = 0; i < metroTabControl1.TabPages.Count; i++)
-            {
-                var tabPage = metroTabControl1.TabPages[i];
-                var comboBox = tabPage.Controls.OfType<MetroComboBox>().FirstOrDefault();
-                var button = tabPage.Controls.OfType<MetroButton>().FirstOrDefault(b => b.Text == "Disconnect");
-                var dtrCheckbox = tabPage.Controls.OfType<MetroCheckBox>().FirstOrDefault();
-
-                if (comboBox != null && button != null)
+                catch (Exception ex)
                 {
-                    string selectedPort = comboBox.Text;
-                    bool useDtr = dtrCheckbox != null && dtrCheckbox.Checked;
-
-                    // If button says Connect, it means it's not connected yet
-                    if (button.Text == "Disconnect")
-                    {
-                        var connector = arduinoConnections[i];
-                        connector.Disconnect();
-                        if (!connector.IsConnected)
-                        {
-                            button.Text = "Connect";
-                            Console.WriteLine($"Disconnected to {selectedPort}");
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Failed to disconnect to {selectedPort}");
-                        }
-                    }
+                    MessageBox.Show($"Failed to load saved tabs: {ex.Message}");
                 }
-            }
-            metroConnect_All.Text = "Connect All Arduinos";
-            connectButtonState = 0;
-        }
-
-        private int connectButtonState = 0;
-        private void metroConnect_All_Click(object sender, EventArgs e)
-        {
-            if (connectButtonState == 0)
-            {
-                ConnectAllArduinos();
             }
             else
             {
-                DisconnectAllArduinos();
+                AddArduinoConnectionTab();
             }
         }
+
+        #endregion
     }
 }
