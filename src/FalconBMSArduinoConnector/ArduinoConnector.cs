@@ -219,10 +219,11 @@ namespace FalconBMSArduinoConnector
                                     byte[] mergedPFL = new byte[120];
                                     for (int i = 0; i < 5; i++)
                                     {
+                                        
                                         byte[] norm = NormalizeLine(fData.PFLLines[i], fData.PFLInvert[i]);
                                         Array.Copy(norm, 0, mergedPFL, i * 24, 24);
                                     }
-                                    SendResponse(0x05, mergedPFL);
+                                    SendResponse(0x08, mergedPFL);
                                     break;
                                 case 0x09:
                                     byte[] chaffCount = BitConverter.GetBytes(fData.ChaffCount);
@@ -498,7 +499,76 @@ namespace FalconBMSArduinoConnector
                 return Encoding.GetEncoding(1252).GetBytes(NormLine, 0, 24);
             
         }
-        
+
+        private byte[] NormalizeLine_PFL(string Disp, string Inv)
+        /*
+         * This function takes two strings LINE and INV and mashes them into a string that conforms with the font on the Arduino Display
+         * This works for DED and PFL
+         */
+        {
+            char[] NormLine = new char[26]; // Create the result buffer
+            for (short j = 0; j < Disp.Length; j++) // run the length of the Display string
+            {
+                if (Inv[j] == 2) // check if the corresponding position in the INV line is "lit" - indicated by char(2)
+                { // if inverted
+                    if (char.IsLetter(Disp[j])) // if char is letter (always uppercase)
+                    {
+                        NormLine[j] = char.ToLower((Disp[j])); // lowercase it - which is the inverted in the custom font
+                    }
+                    else if (Disp[j] == 1) // if it's the selection arrows
+                    {
+                        NormLine[j] = (char)192; // that is the selection arrow stuff
+                    }
+                    else if (Disp[j] == 2) // if it's a DED "*"
+                    {
+                        NormLine[j] = (char)170;
+                    }
+                    else if (Disp[j] == 3) // // if it's a DED "_"
+                    {
+                        NormLine[j] = (char)223;
+                    }
+                    else if (Disp[j] == '~') // Arrow down (PFD)
+                    {
+                        NormLine[j] = (char)252;
+                    }
+                    else if (Disp[j] == '^') // degree simbol (doesn't work with +128 from some reason so manualy do it
+                    {
+                        NormLine[j] = (char)222;
+                    }
+                    else // for everything else - just add 128 to the ASCII value (i.e numbers and so on)
+                    {
+                        NormLine[j] = (char)(Disp[j] + 128);
+                    }
+                }
+                else // if it's non inverted
+                {
+                    if (Disp[j] == 1) // Selector double arrow
+                    {
+                        NormLine[j] = '@';
+                    }
+                    else if (Disp[j] == 2) // if it's a DED "*"
+                    {
+                        NormLine[j] = '*';
+                    }
+                    else if (Disp[j] == 3) // if it's a DED "_"
+                    {
+                        NormLine[j] = '_';
+                    }
+                    else if (Disp[j] == '~') // Arrow down (PFD)
+                    {
+                        NormLine[j] = '|';
+                    }
+                    else
+                    {
+                        NormLine[j] = Disp[j];
+                    }
+                }
+
+            }
+
+            return Encoding.UTF8.GetBytes(NormLine, 0, 24);
+
+        }
         private void SendResponse(byte type, byte[] data)
         {
             List<byte> packet = new List<byte>();

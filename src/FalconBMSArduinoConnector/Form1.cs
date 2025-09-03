@@ -319,6 +319,7 @@ namespace FalconBMSArduinoConnector
 
         private void AddArduinoConnectionTab(string selectedPort = null, string tabName = null)
         {
+           // Console.WriteLine(selectedPort);
             var connector = new ArduinoConnector();
             arduinoConnections.Add(connector);
 
@@ -336,17 +337,24 @@ namespace FalconBMSArduinoConnector
 
             var ports = SerialPort.GetPortNames().Distinct().ToArray();
             comboBox.DataSource = ports;
-            if (!string.IsNullOrEmpty(selectedPort) && comboBox.Items.Contains(selectedPort))
-                comboBox.SelectedItem = selectedPort;
-
+            //if (!string.IsNullOrEmpty(selectedPort) && comboBox.Items.Contains(selectedPort))
+            //    comboBox.SelectedItem = selectedPort;
+            if (!string.IsNullOrEmpty(selectedPort))
+            {
+                this.BeginInvoke(new Action(() =>
+                {
+                    if (ports.Contains(selectedPort))
+                        comboBox.SelectedItem = selectedPort;
+                }));
+            }
             comboBox.DropDown += (s, e) =>
             {
                 string currentSelection = comboBox.Text;
                 var refreshedPorts = SerialPort.GetPortNames().Distinct().ToArray();
                 comboBox.DataSource = null;
                 comboBox.DataSource = refreshedPorts;
-                if (refreshedPorts.Contains(currentSelection))
-                    comboBox.SelectedItem = currentSelection;
+               if (refreshedPorts.Contains(selectedPort))
+                    comboBox.SelectedItem = selectedPort; 
             };
 
             button.Click += (s, args) =>
@@ -412,7 +420,7 @@ namespace FalconBMSArduinoConnector
                     SaveArduinoTabs(); // Save new name
                 }
             };
-
+            
             tabPage.Controls.Add(removeButton);
             tabPage.Controls.Add(DTRcheckbox);
 
@@ -420,7 +428,7 @@ namespace FalconBMSArduinoConnector
             tabPage.Controls.Add(comboBox);
             tabPage.Controls.Add(renameButton);
 
-
+            
             tabPage.Theme = this.Theme;
             metroTabControl1.TabPages.Add(tabPage);
         }
@@ -875,6 +883,7 @@ namespace FalconBMSArduinoConnector
                         var tabs = (List<ArduinoTabInfo>)serializer.Deserialize(stream);
                         foreach (var tab in tabs)
                         {
+                            //Console.WriteLine("Port :" + tab.PortName + " Name: " + tab.TabName);
                             AddArduinoConnectionTab(tab.PortName, tab.TabName);
                         }
                     }
@@ -886,7 +895,7 @@ namespace FalconBMSArduinoConnector
             }
             else
             {
-                AddArduinoConnectionTab();
+                AddArduinoConnectionTab("arduino");
             }
         }
 
