@@ -69,3 +69,25 @@ C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoCon
 D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\MetroFramework.Design.dll
 D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\MetroFramework.dll
 D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\MetroFramework.Fonts.dll
+<<<<<<< Updated upstream
+=======
+C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\Resources\FBAC_ICON.ico
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\Resources\FBAC_ICON.ico
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\Resources\FBAC_ICON.ico
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\FalconBMSArduinoConnector.exe.config
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\FalconBMSArduinoConnector.exe
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\FalconBMSArduinoConnector.pdb
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\MetroFramework.Design.dll
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\MetroFramework.dll
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Debug\F4SharedMem.pdb
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.csproj.AssemblyReference.cache
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.exe.config
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.FalconBMSArduinoConnector.resources
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.Properties.Resources.resources
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.csproj.GenerateResource.cache
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBM.F562539A.Up2Date
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.exe
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Debug\FalconBMSArduinoConnector.pdb
+>>>>>>> Stashed changes

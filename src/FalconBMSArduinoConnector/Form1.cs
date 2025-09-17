@@ -21,8 +21,15 @@ namespace FalconBMSArduinoConnector
 {
     public partial class FalconBMSArduinoConnector : MetroForm
     {
+<<<<<<< Updated upstream
         FalconConnector falcon = new FalconConnector();
         DCSConnector dcs = new DCSConnector();
+=======
+        #region Variables
+        FalconConnector falcon = new FalconConnector();
+        DCSConnector dcs = new DCSConnector();
+        DCSBIOSConnector dcsBios = new DCSBIOSConnector();
+>>>>>>> Stashed changes
         List<ArduinoConnector> arduinoConnections = new List<ArduinoConnector>();
         private Timer falconCheckTimer;
         private MetroStyleManager metroStyleManager;
@@ -70,19 +77,46 @@ namespace FalconBMSArduinoConnector
             CheckFalconStatus();
             LoadArduinoTabs();
             LoadCustomFont();
+<<<<<<< Updated upstream
             
             
            
+=======
+
+            // Start DCS listeners
+            dcs.StartDCSListener();
+            dcsBios.StartDCSBIOSListener();
+>>>>>>> Stashed changes
 
             falconCheckTimer = new Timer();
             falconCheckTimer.Interval = 50;
-            falconCheckTimer.Tick += (s, args) => CheckFalconStatus();
+            falconCheckTimer.Tick += (s, args) => CheckSimulatorStatus();
             falconCheckTimer.Start();
              metroDataPanel.Dock = DockStyle.Fill;
             
         }
 
+<<<<<<< Updated upstream
         //FORM LOADING & SAVING
+=======
+            // Optional context menu
+            var contextMenu = new ContextMenuStrip();
+            falconConnectionMenuStatus = new ToolStripMenuItem("Simulator: Not Connected", null, ToggleArduinos);
+            contextMenu.Items.Add(falconConnectionMenuStatus);
+            contextMenu.Items.Add("Connect All Arduinos", null, (s, e) => this.ConnectAllArduinos());
+            contextMenu.Items.Add("Disconnect All Arduinos", null, (s, e) => this.DisconnectAllArduinos());
+            contextMenu.Items.Add("Exit", null, (s, e) => Application.Exit());
+
+            notifyIcon.ContextMenuStrip = contextMenu;
+
+            // Optional: Double-click restores the window
+            notifyIcon.DoubleClick += (s, e) =>
+            {
+                this.Show();
+                this.WindowState = FormWindowState.Normal;
+            };
+        }
+>>>>>>> Stashed changes
         public void LoadCustomFont()
         {
 
@@ -398,6 +432,7 @@ namespace FalconBMSArduinoConnector
         private void AddArduinoConnectionTab(string selectedPort = null, string tabName = null)
         {
             var connector = new ArduinoConnector();
+            connector.SetSimulatorConnectors(falcon, dcs, dcsBios);
             arduinoConnections.Add(connector);
 
             var tabPage = new MetroTabPage
@@ -509,11 +544,154 @@ namespace FalconBMSArduinoConnector
                 connector.Disconnect();
             }
             Console.WriteLine("All Arduino connections closed.");
+
+            // Stop DCS listeners
+            dcs.StopDCSListener();
+            dcsBios.StopDCSBIOSListener();
+            Console.WriteLine("DCS listeners stopped.");
+
             SaveArduinoTabs();
             SaveSettings(); // Save theme/style on exit
         }
 
 
+<<<<<<< Updated upstream
+=======
+                if (comboBox != null && button != null)
+                {
+                    string selectedPort = comboBox.Text;
+                    bool useDtr = dtrCheckbox != null && dtrCheckbox.Checked;
+
+                    // If button says Connect, it means it's not connected yet
+                    if (button.Text == "Connect")
+                    {
+                        var connector = arduinoConnections[i];
+                        if (connector.ConnectSerial(selectedPort, useDtr))
+                        {
+                            button.Text = "Disconnect";
+                            Console.WriteLine($"Auto-connected to {selectedPort}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Failed to connect to {selectedPort}");
+                        }
+                    }
+                }
+            }
+            metroConnect_All.Text = "Disconnect All Arduinos";
+            connectButtonState = 1;
+
+        }
+
+        private void DisconnectAllArduinos()
+        {
+            for (int i = 0; i < metroTabControl1.TabPages.Count; i++)
+            {
+                var tabPage = metroTabControl1.TabPages[i];
+                var comboBox = tabPage.Controls.OfType<MetroComboBox>().FirstOrDefault();
+                var button = tabPage.Controls.OfType<MetroButton>().FirstOrDefault(b => b.Text == "Disconnect");
+                var dtrCheckbox = tabPage.Controls.OfType<MetroCheckBox>().FirstOrDefault();
+
+                if (comboBox != null && button != null)
+                {
+                    string selectedPort = comboBox.Text;
+                    bool useDtr = dtrCheckbox != null && dtrCheckbox.Checked;
+
+                    // If button says Connect, it means it's not connected yet
+                    if (button.Text == "Disconnect")
+                    {
+                        var connector = arduinoConnections[i];
+                        connector.Disconnect();
+                        if (!connector.IsConnected)
+                        {
+                            button.Text = "Connect";
+                            Console.WriteLine($"Disconnected to {selectedPort}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Failed to disconnect to {selectedPort}");
+                        }
+                    }
+                }
+            }
+            metroConnect_All.Text = "Connect All Arduinos";
+            connectButtonState = 0;
+        }
+        #endregion
+
+        #region Falcon
+        private void ToggleArduinos(object sender, EventArgs e)
+        {
+            bool falconRunning = falcon.isFalconRunning();
+            bool dcsBiosConnected = dcsBios.IsDCSBIOSConnected();
+            bool dcsConnected = dcs.IsDCSConnected();
+
+            if (falconRunning)
+            {
+                falconConnectionMenuStatus.Text = "Simulator: Falcon BMS Running";
+            }
+            else if (dcsBiosConnected)
+            {
+                falconConnectionMenuStatus.Text = "Simulator: DCS-BIOS Connected";
+            }
+            else if (dcsConnected)
+            {
+                falconConnectionMenuStatus.Text = "Simulator: DCS Connected";
+            }
+            else
+            {
+                falconConnectionMenuStatus.Text = "Simulator: Not Connected";
+            }
+        }
+
+        private void CheckSimulatorStatus()
+        {
+            bool falconRunning = falcon.isFalconRunning();
+            bool dcsBiosConnected = dcsBios.IsDCSBIOSConnected();
+            bool dcsConnected = dcs.IsDCSConnected();
+
+            if (falconRunning)
+            {
+                if (falcon.GetFlightData() != null)
+                {
+                    metroProcessLabel.Text = falcon.GetFalconProcessName();
+                    metroVersionLabel.Text = falcon.GetFalconVersion();
+                    metroStatusLabel.Text = falcon.GetFlyingState();
+                    UpdateCheckBoxes();
+                    UpdateScreens();
+                }
+            }
+            else if (dcsBiosConnected)
+            {
+                metroProcessLabel.Text = "DCS World (BIOS)";
+                metroVersionLabel.Text = "DCS-BIOS Connected";
+                metroStatusLabel.Text = dcsBios.GetConnectionStatus();
+                UpdateDCSBIOSData();
+            }
+            else if (dcsConnected)
+            {
+                metroProcessLabel.Text = "DCS World";
+                metroVersionLabel.Text = "DCS Connected";
+                metroStatusLabel.Text = dcs.GetConnectionStatus();
+                UpdateDCSData();
+            }
+            else
+            {
+                // Handle no simulator running state
+                metroProcessLabel.Text = "No Simulator";
+                metroVersionLabel.Text = "N/A";
+                metroStatusLabel.Text = "Waiting for connection...";
+            }
+        }
+
+        private void CheckFalconStatus()
+        {
+            CheckSimulatorStatus();
+        }
+        #endregion
+        
+        #region Theming
+>>>>>>> Stashed changes
         //THEMING
         private void ApplyThemeToControls(Control.ControlCollection controls)
         {
@@ -606,12 +784,60 @@ namespace FalconBMSArduinoConnector
                     UpdateScreens();
                 }
 
+<<<<<<< Updated upstream
             }
             else
             {
                 // Handle Falcon not running state
             }
         }
+=======
+        #region DCS Data Functions
+        private void UpdateDCSData()
+        {
+            var dcsData = dcs.GetFlightData();
+
+            // Update some checkboxes with DCS data (map to similar Falcon lights)
+            metroCheckBox1.Checked = (bool)dcsData["master_caution"];  // Master Caution
+            metroCheckBox78.Checked = (bool)dcsData["gear_down"];      // Gear Down (mapped to nose gear)
+
+            // Update labels with DCS flight data
+            metro_uhf_preset_label.Text = $"Aircraft: {dcsData["aircraft_type"]}";
+            metro_uhf_freq_label.Text = $"Speed: {dcsData["speed"]:F1} kts";
+            iffmode_label.Text = $"Alt: {dcsData["altitude"]:F0} ft | Hdg: {dcsData["heading"]:F0}°";
+
+            // Update DED with DCS basic info
+            metroDEDLabel_1.Text = $"DCS WORLD CONNECTED";
+            metroDEDLabel_2.Text = $"AIRCRAFT: {dcsData["aircraft_type"]}";
+            metroDEDLabel_3.Text = $"ALT: {dcsData["altitude"]:F0} FT";
+            metroDEDLabel_4.Text = $"SPD: {dcsData["speed"]:F1} KTS";
+            metroDEDLabel_5.Text = $"HDG: {dcsData["heading"]:F0} DEG";
+        }
+
+        private void UpdateDCSBIOSData()
+        {
+            var dcsBiosData = dcsBios.GetFlightData();
+
+            // Update checkboxes with DCS-BIOS data
+            metroCheckBox1.Checked = (bool)dcsBiosData["master_caution"];  // Master Caution
+            metroCheckBox78.Checked = (bool)dcsBiosData["gear_down"];      // Gear Down
+
+            // Update labels with DCS-BIOS flight data
+            metro_uhf_preset_label.Text = $"Aircraft: {dcsBiosData["aircraft_type"]}";
+            metro_uhf_freq_label.Text = $"Speed: {dcsBiosData["speed"]:F1} kts";
+            iffmode_label.Text = $"Alt: {dcsBiosData["altitude"]:F0} ft | Hdg: {dcsBiosData["heading"]:F0}°";
+
+            // Update DED with DCS-BIOS info
+            metroDEDLabel_1.Text = $"DCS-BIOS CONNECTED";
+            metroDEDLabel_2.Text = $"AIRCRAFT: {dcsBiosData["aircraft_type"]}";
+            metroDEDLabel_3.Text = $"ALT: {dcsBiosData["altitude"]:F0} FT";
+            metroDEDLabel_4.Text = $"SPD: {dcsBiosData["speed"]:F1} KTS";
+            metroDEDLabel_5.Text = $"HDG: {dcsBiosData["heading"]:F0} DEG";
+        }
+        #endregion
+
+        #region Onscreen Data Fucntions
+>>>>>>> Stashed changes
         private void UpdateScreens()
         {
             metroDEDLabel_1.Text = falcon.GetFlightData().DEDLines[0];

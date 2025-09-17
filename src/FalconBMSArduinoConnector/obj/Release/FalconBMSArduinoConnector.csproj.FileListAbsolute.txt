@@ -25,3 +25,19 @@ C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoCon
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\MetroFramework.Design.dll
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\MetroFramework.dll
 C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\MetroFramework.Fonts.dll
+<<<<<<< Updated upstream
+=======
+C:\Users\Alex\Documents\GitHub\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\Resources\FBAC_ICON.ico
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\Resources\FBAC_ICON.ico
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\MetroFramework.Design.dll
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\MetroFramework.dll
+D:\Github Projects\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\bin\Release\MetroFramework.Fonts.dll
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.csproj.AssemblyReference.cache
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.exe.config
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.FalconBMSArduinoConnector.resources
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.Properties.Resources.resources
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.csproj.GenerateResource.cache
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.exe
+C:\Users\Alex\Desktop\FalconBMSArduinoConnector\src\FalconBMSArduinoConnector\obj\Release\FalconBMSArduinoConnector.pdb
+>>>>>>> Stashed changes

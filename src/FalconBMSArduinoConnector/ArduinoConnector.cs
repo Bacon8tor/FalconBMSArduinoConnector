@@ -27,6 +27,16 @@ namespace FalconBMSArduinoConnector
 
         private FlightData flightData ;
         private Reader bmsReader = new Reader();
+        private DCSConnector dcsConnector;
+        private DCSBIOSConnector dcsBiosConnector;
+        private FalconConnector falconConnector;
+
+        public void SetSimulatorConnectors(FalconConnector falcon, DCSConnector dcs, DCSBIOSConnector dcsBios)
+        {
+            falconConnector = falcon;
+            dcsConnector = dcs;
+            dcsBiosConnector = dcsBios;
+        }
         // Optional: connect logic (if needed later)
         private SerialPort _serialPort;
         private volatile bool _continue;
@@ -168,15 +178,60 @@ namespace FalconBMSArduinoConnector
 
                         Console.WriteLine($"Received command: 0x{command:X2}");
 
-                        if (fData == null)
-                        {   
+                        // Check which simulator is running (priority: Falcon > DCS-BIOS > DCS)
+                        bool isFalconRunning = falconConnector?.isFalconRunning() ?? false;
+                        bool isDCSBIOSConnected = dcsBiosConnector?.IsDCSBIOSConnected() ?? false;
+                        bool isDCSConnected = dcsConnector?.IsDCSConnected() ?? false;
+
+                        if (fData == null && !isDCSBIOSConnected && !isDCSConnected)
+                        {
                             SendResponse(command, new byte[] { 0x00 });
-                            Console.WriteLine("Flight data is null, skipping command processing.");
+                            Console.WriteLine("No simulator data available, skipping command processing.");
                             continue;
                         }
-                        else
+                        else if (isFalconRunning)
                         {
-                            switch (command)
+                            // Handle Falcon BMS commands (highest priority)
+                            HandleFalconCommand(command, fData);
+                        }
+                        else if (isDCSBIOSConnected)
+                        {
+                            // Handle DCS-BIOS commands (preferred over simple DCS)
+                            HandleDCSBIOSCommand(command);
+                        }
+                        else if (isDCSConnected)
+                        {
+                            // Handle simple DCS commands
+                            HandleDCSCommand(command);
+                        }
+                    }
+                    else
+                    {
+                        Thread.Sleep(10); // reduce CPU usage
+                    }
+                }
+                catch (IOException ioEx)
+                {
+                    Console.WriteLine("Serial IO error: " + ioEx.Message);
+                    HandleDisconnection();
+                }
+                catch (InvalidOperationException opEx)
+                {
+                    Console.WriteLine("Serial operation error: " + opEx.Message);
+                    HandleDisconnection();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Unexpected error: " + ex.Message);
+                    HandleDisconnection();
+                }
+
+            }
+        }
+
+        private void HandleFalconCommand(byte command, FlightData fData)
+        {
+            switch (command)
                             {
                                 //LightBits
                                 case 0x01:
@@ -353,34 +408,73 @@ namespace FalconBMSArduinoConnector
                                 // Add more cases as needed
                                 default:
                                     SendResponse(0x00, new byte[] { 0x00 });
-                                    Console.WriteLine($"Unknown command: 0x{command:X2}");
+                                    Console.WriteLine($"Falcon: Unknown command: 0x{command:X2}");
                                     break;
-
-
                             }
                         }
-                    }
-                    else
-                    {
-                        Thread.Sleep(10); // reduce CPU usage
-                    }
-                }
-                catch (IOException ioEx)
-                {
-                    Console.WriteLine("Serial IO error: " + ioEx.Message);
-                    HandleDisconnection();
-                }
-                catch (InvalidOperationException opEx)
-                {
-                    Console.WriteLine("Serial operation error: " + opEx.Message);
-                    HandleDisconnection();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Unexpected error: " + ex.Message);
-                    HandleDisconnection();
-                }
 
+        private void HandleDCSBIOSCommand(byte command)
+        {
+            var dcsBiosData = dcsBiosConnector.GetFlightData();
+
+            switch (command)
+            {
+                case 0x01: // LightBits - Map DCS-BIOS data to light bits
+                    uint lightBits = 0;
+                    if ((bool)dcsBiosData["master_caution"]) lightBits |= 0x01; // Master Caution
+                    if ((bool)dcsBiosData["gear_down"]) lightBits |= 0x8000; // Landing gear
+                    byte[] lightBitsBytes = BitConverter.GetBytes(lightBits);
+                    SendResponse(0x01, lightBitsBytes);
+                    break;
+
+                case 0x05: // DED Lines - Send DCS-BIOS flight info
+                    string[] dedLines = {
+                        "DCS-BIOS CONNECTED",
+                        $"AIRCRAFT: {dcsBiosData["aircraft_type"]}",
+                        $"ALT: {dcsBiosData["altitude"]:F0} FT",
+                        $"SPD: {dcsBiosData["speed"]:F1} KTS",
+                        $"HDG: {dcsBiosData["heading"]:F0} DEG"
+                    };
+
+                    byte[] mergedDED = new byte[120];
+                    for (int i = 0; i < 5; i++)
+                    {
+                        byte[] lineBytes = Encoding.ASCII.GetBytes(dedLines[i].PadRight(24).Substring(0, 24));
+                        Array.Copy(lineBytes, 0, mergedDED, i * 24, 24);
+                    }
+                    SendResponse(0x05, mergedDED);
+                    break;
+
+                case 0x21: // Speed (kias)
+                    float speed = Convert.ToSingle(dcsBiosData["speed"]);
+                    byte[] speedBytes = BitConverter.GetBytes(speed);
+                    SendResponse(0x21, speedBytes);
+                    break;
+
+                case 0x22: // Fuel (map to internal fuel)
+                    float fuel = Convert.ToSingle(dcsBiosData["fuel"]);
+                    byte[] fuelBytes = BitConverter.GetBytes(fuel);
+                    SendResponse(0x22, fuelBytes);
+                    break;
+
+                case 0x38: // Heading (map to desired course)
+                    float heading = Convert.ToSingle(dcsBiosData["heading"]);
+                    byte[] headingBytes = BitConverter.GetBytes(heading);
+                    SendResponse(0x38, headingBytes);
+                    break;
+
+                case 0x0F: // Handshake
+                    SendResponse(0x0F, new byte[] { 0xAB });
+                    break;
+
+                case 0x5A: // Handshake response
+                    SendResponse(0xA5, new byte[] { 0x5A });
+                    break;
+
+                default:
+                    SendResponse(command, new byte[] { 0x00 });
+                    Console.WriteLine($"DCS-BIOS: Unknown command: 0x{command:X2}");
+                    break;
             }
         }
 
@@ -397,6 +491,70 @@ namespace FalconBMSArduinoConnector
             catch { }
 
             OnDataReceived?.Invoke(this, "Disconnected");  // UI can listen and toggle button
+        }
+
+        private void HandleDCSCommand(byte command)
+        {
+            var dcsData = dcsConnector.GetFlightData();
+
+            switch (command)
+            {
+                case 0x01: // LightBits - Map DCS data to light bits
+                    uint lightBits = 0;
+                    if ((bool)dcsData["master_caution"]) lightBits |= 0x01; // Master Caution
+                    byte[] lightBitsBytes = BitConverter.GetBytes(lightBits);
+                    SendResponse(0x01, lightBitsBytes);
+                    break;
+
+                case 0x05: // DED Lines - Send DCS flight info
+                    string[] dedLines = {
+                        "DCS WORLD CONNECTED",
+                        $"AIRCRAFT: {dcsData["aircraft_type"]}",
+                        $"ALT: {dcsData["altitude"]:F0} FT",
+                        $"SPD: {dcsData["speed"]:F1} KTS",
+                        $"HDG: {dcsData["heading"]:F0} DEG"
+                    };
+
+                    byte[] mergedDED = new byte[120];
+                    for (int i = 0; i < 5; i++)
+                    {
+                        byte[] lineBytes = Encoding.ASCII.GetBytes(dedLines[i].PadRight(24).Substring(0, 24));
+                        Array.Copy(lineBytes, 0, mergedDED, i * 24, 24);
+                    }
+                    SendResponse(0x05, mergedDED);
+                    break;
+
+                case 0x21: // Speed (kias)
+                    float speed = Convert.ToSingle(dcsData["speed"]);
+                    byte[] speedBytes = BitConverter.GetBytes(speed);
+                    SendResponse(0x21, speedBytes);
+                    break;
+
+                case 0x22: // Fuel (map to internal fuel)
+                    float fuel = Convert.ToSingle(dcsData["fuel"]);
+                    byte[] fuelBytes = BitConverter.GetBytes(fuel);
+                    SendResponse(0x22, fuelBytes);
+                    break;
+
+                case 0x38: // Heading (map to desired course)
+                    float heading = Convert.ToSingle(dcsData["heading"]);
+                    byte[] headingBytes = BitConverter.GetBytes(heading);
+                    SendResponse(0x38, headingBytes);
+                    break;
+
+                case 0x0F: // Handshake
+                    SendResponse(0x0F, new byte[] { 0xAB });
+                    break;
+
+                case 0x5A: // Handshake response
+                    SendResponse(0xA5, new byte[] { 0x5A });
+                    break;
+
+                default:
+                    SendResponse(command, new byte[] { 0x00 });
+                    Console.WriteLine($"DCS: Unknown command: 0x{command:X2}");
+                    break;
+            }
         }
 
         //Copied FROM DEDUINO Project , was good example of how to send DED accounting for Inverese.  https://github.com/uriba107/deduino_connector
