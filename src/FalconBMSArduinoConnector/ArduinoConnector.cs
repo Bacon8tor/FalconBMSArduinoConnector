@@ -33,7 +33,7 @@ namespace FalconBMSArduinoConnector
         private Thread readThread = null;
         private bool _isConnected = false;
         
-        public bool ConnectSerial(String name,bool DTR)
+        public bool ConnectSerial(String name,bool DTR, int baudRate = 115200)
         {
             // If already connected, disconnect
             if (_serialPort != null && _serialPort.IsOpen)
@@ -60,15 +60,17 @@ namespace FalconBMSArduinoConnector
 
             // Set serial parameters
             _serialPort.PortName = name;
-            _serialPort.BaudRate = 115200;
+            _serialPort.BaudRate = baudRate;
             _serialPort.Parity = Parity.None;
             _serialPort.DataBits = 8;
             _serialPort.StopBits = StopBits.One;
             _serialPort.Handshake = Handshake.None;
+
             if (DTR)
             {
                 _serialPort.DtrEnable = true;
             }
+            
             _serialPort.ReadTimeout = 1000;
             _serialPort.WriteTimeout = 1000;
 
@@ -422,7 +424,10 @@ namespace FalconBMSArduinoConnector
             try
             {
                 if (_serialPort != null && _serialPort.IsOpen)
+                    //_serialPort.DtrEnable = false;
+                    //_serialPort.RtsEnable = false;
                     _serialPort.Close();
+                    
             }
             catch { }
 

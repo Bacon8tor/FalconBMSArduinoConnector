@@ -36,6 +36,7 @@ namespace FalconBMSArduinoConnector
         {
             public string PortName { get; set; }
             public string TabName { get; set; }
+            public int BaudRate { get; set; } = 115200;
         }
         public class UserSettings
         {
@@ -317,7 +318,7 @@ namespace FalconBMSArduinoConnector
 
         }
 
-        private void AddArduinoConnectionTab(string selectedPort = null, string tabName = null)
+        private void AddArduinoConnectionTab(string selectedPort = null, string tabName = null, int baudRate = 115200)
         {
            // Console.WriteLine(selectedPort);
             var connector = new ArduinoConnector();
@@ -329,11 +330,17 @@ namespace FalconBMSArduinoConnector
             };
 
 
-            var comboBox = new MetroComboBox() { Left = 5, Top = 15, Width = 121, Theme = this.Theme };
+            var comboBox = new MetroComboBox() { Name = "portComboBox", Left = 5, Top = 15, Width = 121, Theme = this.Theme };
             var button = new MetroButton() { Text = "Connect", Left = 150, Top = 20, Theme = this.Theme };
             var removeButton = new MetroButton() { Text = "Remove", Left = 5, Top = 150, Theme = this.Theme };
             var DTRcheckbox = new MetroCheckBox() { Width = 220, Left = 150, Top = 55, Text = "Micro/ProMicro/Leonardo_Device", Theme = this.Theme };
             var renameButton = new MetroButton() { Text = "Rename", Left = 100, Top = 150, Theme = this.Theme };
+
+            // Baud rate label and combobox
+            var baudLabel = new MetroLabel() { Text = "Baud Rate:", Left = 5, Top = 55, Width = 70, Theme = this.Theme };
+            var baudComboBox = new MetroComboBox() { Name = "baudComboBox", Left = 5, Top = 75, Width = 121, Theme = this.Theme, DropDownStyle = ComboBoxStyle.DropDownList };
+            baudComboBox.Items.AddRange(new object[] { 9600, 19200, 38400, 57600, 115200, 230400, 250000, 500000, 1000000 });
+            baudComboBox.SelectedItem = baudRate;
 
             var ports = SerialPort.GetPortNames().Distinct().ToArray();
             comboBox.DataSource = ports;
@@ -361,10 +368,15 @@ namespace FalconBMSArduinoConnector
             {
                 if (!connector.IsConnected)
                 {
-                    if (connector.ConnectSerial(comboBox.Text, DTRcheckbox.Checked))
+                    int selectedBaud = 115200;
+                    if (baudComboBox.SelectedItem != null)
+                    {
+                        int.TryParse(baudComboBox.SelectedItem.ToString(), out selectedBaud);
+                    }
+                    if (connector.ConnectSerial(comboBox.Text, DTRcheckbox.Checked, selectedBaud))
                     {
                         button.Text = "Disconnect";
-                        Console.WriteLine($"Connected to {comboBox.Text}");
+                        Console.WriteLine($"Connected to {comboBox.Text} at {selectedBaud} baud");
                     }
                     else
                     {
@@ -423,12 +435,13 @@ namespace FalconBMSArduinoConnector
             
             tabPage.Controls.Add(removeButton);
             tabPage.Controls.Add(DTRcheckbox);
-
+            tabPage.Controls.Add(baudLabel);
+            tabPage.Controls.Add(baudComboBox);
             tabPage.Controls.Add(button);
             tabPage.Controls.Add(comboBox);
             tabPage.Controls.Add(renameButton);
 
-            
+
             tabPage.Theme = this.Theme;
             metroTabControl1.TabPages.Add(tabPage);
         }
@@ -452,23 +465,32 @@ namespace FalconBMSArduinoConnector
             for (int i = 0; i < metroTabControl1.TabPages.Count; i++)
             {
                 var tabPage = metroTabControl1.TabPages[i];
-                var comboBox = tabPage.Controls.OfType<MetroComboBox>().FirstOrDefault();
+                var portCombo = tabPage.Controls.OfType<MetroComboBox>().FirstOrDefault(c => c.Name == "portComboBox");
+                var baudCombo = tabPage.Controls.OfType<MetroComboBox>().FirstOrDefault(c => c.Name == "baudComboBox");
                 var button = tabPage.Controls.OfType<MetroButton>().FirstOrDefault(b => b.Text == "Connect");
                 var dtrCheckbox = tabPage.Controls.OfType<MetroCheckBox>().FirstOrDefault();
 
-                if (comboBox != null && button != null)
+                if (portCombo != null && button != null)
                 {
-                    string selectedPort = comboBox.Text;
+                    string selectedPort = portCombo.Text;
                     bool useDtr = dtrCheckbox != null && dtrCheckbox.Checked;
+                    int baudRate = 115200; // default
+                    if (baudCombo != null && baudCombo.SelectedItem != null)
+                    {
+                        if (!int.TryParse(baudCombo.SelectedItem.ToString(), out baudRate))
+                        {
+                            baudRate = 115200; // fallback to default if parse fails
+                        }
+                    }
 
                     // If button says Connect, it means it's not connected yet
                     if (button.Text == "Connect")
                     {
                         var connector = arduinoConnections[i];
-                        if (connector.ConnectSerial(selectedPort, useDtr))
+                        if (connector.ConnectSerial(selectedPort, useDtr, baudRate))
                         {
                             button.Text = "Disconnect";
-                            Console.WriteLine($"Auto-connected to {selectedPort}");
+                            Console.WriteLine($"Auto-connected to {selectedPort} at {baudRate} baud");
                         }
                         else
                         {
@@ -845,13 +867,25 @@ namespace FalconBMSArduinoConnector
 
             foreach (MetroTabPage page in metroTabControl1.TabPages)
             {
-                var combo = page.Controls.OfType<MetroComboBox>().FirstOrDefault();
-                if (combo != null)
+                var portCombo = page.Controls.OfType<MetroComboBox>().FirstOrDefault(c => c.Name == "portComboBox");
+                var baudCombo = page.Controls.OfType<MetroComboBox>().FirstOrDefault(c => c.Name == "baudComboBox");
+
+                if (portCombo != null)
                 {
+                    int baudRate = 115200; // default
+                    if (baudCombo != null && baudCombo.SelectedItem != null)
+                    {
+                        if (!int.TryParse(baudCombo.SelectedItem.ToString(), out baudRate))
+                        {
+                            baudRate = 115200; // fallback to default if parse fails
+                        }
+                    }
+
                     data.Add(new ArduinoTabInfo
                     {
-                        PortName = combo.Text,
-                        TabName = page.Text
+                        PortName = portCombo.Text,
+                        TabName = page.Text,
+                        BaudRate = baudRate
                     });
                 }
             }
@@ -884,7 +918,7 @@ namespace FalconBMSArduinoConnector
                         foreach (var tab in tabs)
                         {
                             //Console.WriteLine("Port :" + tab.PortName + " Name: " + tab.TabName);
-                            AddArduinoConnectionTab(tab.PortName, tab.TabName);
+                            AddArduinoConnectionTab(tab.PortName, tab.TabName, tab.BaudRate);
                         }
                     }
                 }
