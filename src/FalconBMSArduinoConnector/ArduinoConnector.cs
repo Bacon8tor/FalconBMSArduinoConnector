@@ -369,6 +369,14 @@ namespace FalconBMSArduinoConnector
                                     byte[] bearingToBeacon = BitConverter.GetBytes(fData.bearingToBeacon);
                                     SendResponse(0x40, bearingToBeacon);
                                     break;
+                                case 0x42:
+                                    var ivb = fData.IntellivibeData;
+                                    
+                                    // TODO: add more bits, just add In3D for now
+                                    var statusBits = (uint)(ivb.In3D ? 1 : 0);
+
+                                    SendResponse(0x42, BitConverter.GetBytes(statusBits));
+                                    break;
                                 //PACKET FAILED
                                 case 0x99:
                                     Console.WriteLine(" Packet Failed CheckSum");
