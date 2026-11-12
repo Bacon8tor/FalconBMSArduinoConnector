@@ -1793,7 +1793,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(575, 500);
             this.Name = "FalconBMSArduinoConnector";
-            this.Text = "Falcon BMS Arduino Connector v0.4.0";
+            this.Text = "Falcon BMS Arduino Connector v0.6.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Closing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.metroSidePanel.ResumeLayout(false);
