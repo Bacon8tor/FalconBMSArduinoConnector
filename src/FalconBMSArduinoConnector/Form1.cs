@@ -49,6 +49,8 @@ namespace FalconBMSArduinoConnector
         public FalconBMSArduinoConnector()
         {
             InitializeComponent();
+            // Title comes from AssemblyVersion so it cannot drift from the release number
+            Text = "Falcon BMS Arduino Connector v" + GetType().Assembly.GetName().Version.ToString(3);
             SetupNotifyIcon();
             metroStyleManager = new MetroStyleManager();
             metroStyleManager.Owner = this;
