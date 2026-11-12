@@ -1,172 +1,113 @@
 ﻿using F4SharedMem;
 using F4SharedMem.Headers;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace FalconBMSArduinoConnector
 {
     internal class FalconConnector
     {
-        private Reader _reader = new Reader();
-        private IntellivibeData _intellivibeData = new IntellivibeData();
-        public FlyStates falconState;
+        private const int ProcessCheckIntervalMs = 1000;
+
+        private readonly Reader _reader = new Reader();
+        private readonly Stopwatch _processCheckTimer = new Stopwatch();
+        private string _processName = "N/A";
         private bool _isFalconRunning;
+
+        /// <summary>
+        /// True when BMS (or a shared-memory test tool) is running. The process list is
+        /// expensive to query, so it is refreshed at most once per second.
+        /// </summary>
         public bool isFalconRunning()
         {
-            FlightData fData =  _reader.GetCurrentData();
-           
-            
-            bool isFalconDetected =  _reader.IsFalconRunning;
-            bool isProcessRunning = Process.GetProcessesByName("Falcon BMS").Length > 0;
-            bool isBMSRecorderRunning = Process.GetProcessesByName("F4SharedMemoryRecorder").Length > 0; //You can use F4SharedMemoryRecorder to test lights 
-
-            if (isFalconDetected && isProcessRunning || isBMSRecorderRunning)
+            if (!_processCheckTimer.IsRunning || _processCheckTimer.ElapsedMilliseconds >= ProcessCheckIntervalMs)
             {
-                //check if in 3d _intellivibeData.In3D.ToString();
-                ;
-
-                _isFalconRunning = true;
-                return true;
-                
+                _processName = DetectProcess();
+                _processCheckTimer.Restart();
             }
-                
-                    return false;
+
+            bool isFalconDetected = _reader.IsFalconRunning;
+            //You can use F4SharedMemoryRecorder to test lights
+            _isFalconRunning = (isFalconDetected && _processName == "Falcon BMS") || _processName == "F4SharedMemoryRecorder";
+            return _isFalconRunning;
         }
 
-        public bool IsLightOn(LightBits bit)
+        private static string DetectProcess()
         {
-            if(!_isFalconRunning) return false; // If Falcon is not running
-            FlightData data = _reader.GetCurrentData();
-            if (data == null) return false;
-            return (data.lightBits & (uint)bit) != 0;
+            if (IsProcessRunning("Falcon BMS")) return "Falcon BMS";
+            if (IsProcessRunning("F4SharedMemoryRecorder")) return "F4SharedMemoryRecorder";
+            if (IsProcessRunning("RTTClient64")) return "RTTClient64";
+            return "N/A";
         }
 
-        public bool IsLightOn( LightBits2 bit)
+        private static bool IsProcessRunning(string name)
         {
-            if (!_isFalconRunning) return false; // If Falcon is not running
-            FlightData data = _reader.GetCurrentData();
-            if (data == null) return false;
-            return (data.lightBits2 & (uint)bit) != 0;
+            var processes = Process.GetProcessesByName(name);
+            foreach (var p in processes) p.Dispose();
+            return processes.Length > 0;
         }
 
-        public bool IsLightOn( LightBits3 bit)
+        public bool IsLightOn(LightBits bit) => IsLightOn(GetFlightDataIfRunning(), bit);
+        public bool IsLightOn(LightBits2 bit) => IsLightOn(GetFlightDataIfRunning(), bit);
+        public bool IsLightOn(LightBits3 bit) => IsLightOn(GetFlightDataIfRunning(), bit);
+
+        // Overloads that take an existing snapshot, so callers can read shared memory once per update
+        public static bool IsLightOn(FlightData data, LightBits bit) => data != null && (data.lightBits & (uint)bit) != 0;
+        public static bool IsLightOn(FlightData data, LightBits2 bit) => data != null && (data.lightBits2 & (uint)bit) != 0;
+        public static bool IsLightOn(FlightData data, LightBits3 bit) => data != null && (data.lightBits3 & (uint)bit) != 0;
+
+        private FlightData GetFlightDataIfRunning() => _isFalconRunning ? _reader.GetCurrentData() : null;
+
+        public string GetFalconVersion() => GetFalconVersion(GetFlightDataIfRunning());
+
+        public string GetFalconVersion(FlightData data)
         {
-            if (!_isFalconRunning) return false; // If Falcon is not running
-            FlightData data = _reader.GetCurrentData();
-            if (data == null) return false;
-            return (data.lightBits3 & (uint)bit) != 0;
-            
+            if (!_isFalconRunning) return "N/A";
+            if (data == null) return "";
+            return data.BMSVersionMajor + "." + data.BMSVersionMinor + "." + data.BMSVersionMicro + "." + data.BMSBuildNumber;
         }
 
-        public string GetFalconVersion()
-        {
-            if (!_isFalconRunning) return "N/A"; // If Falcon is not running
-            try
-            {
+        public string GetFalconProcessName() => _processName;
 
-                FlightData data = _reader.GetCurrentData();
-                if(data == null) { return ""; }
-                return data.BMSVersionMajor + "." + data.BMSVersionMinor + "." + data.BMSVersionMicro + "." + data.BMSBuildNumber;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error getting Falcon version: " + ex.Message);
-                return "N/A";
-            }
-            
-            
-        }
+        public string GetFlyingState() => GetFlyingState(_reader.GetCurrentData());
 
-        public string GetFalconProcessName()
-        {
-            bool isProcessRunning = Process.GetProcessesByName("Falcon BMS").Length > 0;
-            bool isBMSRecorderRunning = Process.GetProcessesByName("F4SharedMemoryRecorder").Length > 0; //You can use F4SharedMemoryRecorder to test lights 
-            bool isRTTRunning = Process.GetProcessesByName("RTTClient64").Length > 0;
-            if (isProcessRunning)
-            {
-                return "Falcon BMS";
-            }
-            else if (isBMSRecorderRunning)
-            {
-                return "F4SharedMemoryRecorder";
-            }
-            else if (isRTTRunning)
-            {
-                return "RTTClient64";
-            }
-            else
-            {
-                return "N/A";
-            }
-        }
-
-        public string GetFlyingState()
+        public string GetFlyingState(FlightData data)
         {
             try
             {
-                var data = _reader?.GetCurrentData();
-
                 if (data == null)
-                {
                     return "No data available";
-                }
 
                 var iv = data.IntellivibeData;
 
-
-                if (iv.IsExitGame)
-                    return "Exited Game";
-
-                if (iv.IsEndFlight)
-                    return "End of Flight";
-
-                if (iv.IsEjecting)
-                    return "Ejecting";
-
-                if (iv.IsPaused)
-                    return "Paused";
-
-                if (iv.IsFrozen)
-                    return "Frozen";
-
-                if (!iv.In3D)
-                    return "In 3D World";
-
-                if (iv.IsOverG)
-                    return "Over-G";
-
-                if (iv.IsOnGround)
-                    return "On Ground";
-
+                if (iv.IsExitGame) return "Exited Game";
+                if (iv.IsEndFlight) return "End of Flight";
+                if (iv.IsEjecting) return "Ejecting";
+                if (iv.IsPaused) return "Paused";
+                if (iv.IsFrozen) return "Frozen";
+                if (!iv.In3D) return "Not in 3D";
+                if (iv.IsOverG) return "Over-G";
+                if (iv.IsOnGround) return "On Ground";
                 return "Flying";
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error getting flying state: " + ex.Message);
+                Debug.WriteLine("Error getting flying state: " + ex.Message);
                 return "Error";
             }
         }
 
-        public FlyStates GetFalconState()
+        public FlyStates? GetFalconState()
         {
             FlightData data = _reader.GetCurrentData();
-            FlyStates falconState = (FlyStates)data.pilotsStatus[0];
-            return falconState;
+            if (data?.pilotsStatus == null || data.pilotsStatus.Length == 0)
+                return null;
+            return (FlyStates)data.pilotsStatus[0];
         }
 
         public FlightData GetFlightData()
         {
-            FlightData data = _reader.GetCurrentData();
-            
-            return data;
+            return _reader.GetCurrentData();
         }
-
-       
     }
 }
