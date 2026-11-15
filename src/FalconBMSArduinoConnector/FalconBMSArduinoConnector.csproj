@@ -38,9 +38,14 @@
   <PropertyGroup>
     <ApplicationIcon>FBAC.ico</ApplicationIcon>
   </PropertyGroup>
+  <!-- Put F4SharedMem.dll in src\lib\ (preferred), or pass /p:F4SharedMemPath=... ; the old Downloads path is the fallback -->
+  <PropertyGroup>
+    <F4SharedMemPath Condition="'$(F4SharedMemPath)' == '' And Exists('..\lib\F4SharedMem.dll')">..\lib\F4SharedMem.dll</F4SharedMemPath>
+    <F4SharedMemPath Condition="'$(F4SharedMemPath)' == ''">..\..\..\..\Downloads\F4SharedMem_for_BMS_4_37__x86\F4SharedMem.dll</F4SharedMemPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="F4SharedMem">
-      <HintPath>..\..\..\..\Downloads\F4SharedMem_for_BMS_4_37__x86\F4SharedMem.dll</HintPath>
+      <HintPath>$(F4SharedMemPath)</HintPath>
     </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
